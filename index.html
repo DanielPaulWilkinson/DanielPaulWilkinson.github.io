@@ -3,98 +3,54 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dan Wilkinson | Websites for small businesses, churches and charities</title>
-<meta name="description" content="Simple, reliable websites for small businesses, churches and charities in Selby and beyond.">
-<style>
-:root{--navy:#1F3A5F;--ink:#1d2430;--muted:#5a6472;--bg:#fff;--soft:#f4f6f9;--line:#e2e6ec}
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
-a{color:var(--navy)}
-.wrap{max-width:960px;margin:0 auto;padding:0 24px}
-nav{border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
-nav .brand{font-weight:700;color:var(--navy);text-decoration:none}
-nav ul{list-style:none;display:flex;gap:20px;margin:0;padding:0}
-nav ul a{text-decoration:none;color:var(--muted);font-size:.95rem}
-.hero{background:var(--navy);color:#fff;padding:64px 0}
-.hero .wrap{display:flex;align-items:center;gap:48px}
-.hero h1{font-size:2.6rem;margin:0 0 12px;line-height:1.15}
-.hero p{font-size:1.2rem;margin:0 0 28px;opacity:.92;max-width:520px}
-.hero img{width:220px;height:220px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,.85);flex-shrink:0}
-.btn{display:inline-block;background:#fff;color:var(--navy);padding:12px 22px;border-radius:6px;font-weight:600;text-decoration:none}
-.btn.alt{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6);margin-left:10px}
-section{padding:64px 0}
-section.soft{background:var(--soft)}
-h2{color:var(--navy);font-size:1.8rem;margin:0 0 8px}
-.lead{color:var(--muted);margin:0 0 32px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
-.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px}
-.card h3{margin:0 0 6px;font-size:1.15rem}
-.price{color:var(--navy);font-weight:700;font-size:1.3rem;margin:0 0 10px}
-.card ul{padding-left:18px;margin:0;color:var(--muted)}
-.ph{background:#fff3cd;color:#7a5a00;font-size:.75rem;font-weight:700;padding:2px 6px;border-radius:4px;vertical-align:middle}
-.thumb{height:140px;border-radius:6px;background:repeating-linear-gradient(45deg,#e8ecf2,#e8ecf2 10px,#f2f4f8 10px,#f2f4f8 20px);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600;margin-bottom:14px}
-.note{color:var(--muted);font-size:.95rem;margin-top:20px}
-.about p{max-width:680px}
-.contact .card{max-width:560px}
-footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:.9rem}
-@media(max-width:700px){.hero .wrap{flex-direction:column-reverse;text-align:center;gap:28px}.hero h1{font-size:2rem}.hero img{width:160px;height:160px}nav ul{display:none}.btn.alt{margin:10px 0 0}}
-.work{display:grid;gap:28px}
-.proj{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;display:grid}
-.proj img{display:block;width:100%;height:auto;border-bottom:1px solid var(--line)}
-.proj .body{padding:22px 24px 24px}
-.proj h3{margin:0 0 4px;font-size:1.2rem;color:var(--navy)}
-.proj p{margin:0 0 14px}
-.status{display:inline-block;font-size:.85rem;font-weight:600;color:var(--navy);border-left:3px solid var(--navy);padding-left:8px;margin-bottom:10px}
-.tags{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0 0 14px}
-.tags li{font-size:.8rem;color:#3b4554;background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:2px 8px}
-.links{display:flex;flex-wrap:wrap;gap:18px;font-weight:600}
-.links a{text-underline-offset:3px}
-a:focus-visible,.btn:focus-visible{outline:3px solid #f2b705;outline-offset:3px}
-.proj.feature{grid-template-columns:1.3fr 1fr}
-.proj.feature img{height:100%;object-fit:cover;object-position:top left;border-bottom:0;border-right:1px solid var(--line)}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-@media(max-width:760px){.proj.feature,.pair{grid-template-columns:1fr}.proj.feature img{height:auto;border-right:0;border-bottom:1px solid var(--line)}}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-</style>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Dan Wilkinson | Websites for churches, charities and small businesses in Selby</title>
+<meta name="description" content="Simple, reliable websites and small apps for churches, charities and small businesses in Selby, North Yorkshire. Fixed prices agreed up front.">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav><div class="wrap"><a class="brand" href="#">Dan Wilkinson</a>
-<ul><li><a href="#services">Services</a></li><li><a href="#work">Work</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
-
-<header class="hero"><div class="wrap">
-<div>
-<h1>Dan Wilkinson</h1>
-<p>I build simple, reliable websites for small businesses, churches and charities in Selby and beyond.</p>
-<a class="btn" href="#contact">Get a quote</a><a class="btn alt" href="#services">See prices</a>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+<nav class="wrap" aria-label="Main"><a class="brand" href="#">Dan Wilkinson</a>
+<ul><li><a href="#services">Prices</a></li><li><a href="#work">Work</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+<div class="wrap hero">
+<div class="hero-text">
+<h1>Websites for churches, charities and small businesses in Selby.</h1>
+<p>I'm Dan Wilkinson, a software engineer. I build simple, reliable sites and small apps for local organisations, a few hours each week alongside my full-time job.</p>
+<p class="actions"><a class="btn" href="#contact">Ask for a quote</a><a class="btn ghost" href="#services">See prices</a></p>
 </div>
-<img src="headshot.jpg" alt="Dan Wilkinson">
-</div></header>
-
-<section id="services"><div class="wrap">
-<h2>Services</h2>
-<p class="lead">Fixed prices agreed up front. No hourly surprises.</p>
-<div class="grid">
-<div class="card"><h3>One-page website</h3><p class="price">From £300</p>
-<ul><li>A clear single page with who you are, what you do and how to reach you</li><li>Works on phones</li><li>Help with domain and hosting</li></ul></div>
-<div class="card"><h3>Small multi-page website</h3><p class="price">From £600</p>
-<ul><li>Up to five pages, such as services, events or news</li><li>Easy for you to update</li><li>Basic search engine set-up</li></ul></div>
-<div class="card"><h3>Fixes and updates</h3><p class="price">From £50</p>
-<ul><li>WordPress and Shopify problems</li><li>Broken layouts, forms or plugins</li><li>Speed and security tidy-ups</li></ul></div>
-<div class="card"><h3>Small web apps</h3><p class="price">Priced per job</p>
-<ul><li>Booking forms, simple tools, small databases</li><li>Scoped and priced before any work starts</li></ul></div>
+<figure class="portrait"><img src="headshot.jpg" width="320" height="320" alt="Dan Wilkinson smiling, head and shoulders"><figcaption>Dan, based in Selby</figcaption></figure>
 </div>
-<p class="note">I take on a small number of jobs alongside a full-time role, so I'll always tell you a realistic finish date before we start.</p>
+</header>
+<main id="main">
+<section id="services" class="prices"><div class="wrap">
+<h2>Prices</h2>
+<p class="lead">Fixed prices agreed before any work starts. No hourly surprises.</p>
+<ol class="pricelist">
+<li><div class="row"><h3>One-page website</h3><span class="leader" aria-hidden="true"></span><p class="price">from £300</p></div>
+<p class="what">One clear page with who you are, what you do and how to reach you. Works on phones, and I'll help with the domain and hosting.</p></li>
+<li><div class="row"><h3>Small multi-page website</h3><span class="leader" aria-hidden="true"></span><p class="price">from £600</p></div>
+<p class="what">Up to five pages, such as services, events or news. Easy for you to update, with basic search engine set-up.</p></li>
+<li><div class="row"><h3>Fixes and updates</h3><span class="leader" aria-hidden="true"></span><p class="price">from £50</p></div>
+<p class="what">WordPress and Shopify problems, broken layouts, forms or plugins, and speed and security tidy-ups.</p></li>
+<li><div class="row"><h3>Small web apps</h3><span class="leader" aria-hidden="true"></span><p class="price">priced per job</p></div>
+<p class="what">Booking forms, simple tools and small databases. Scoped and priced before any work starts.</p></li>
+</ol>
+<p class="note">I take on a small number of jobs alongside a full-time role, so I'll always give you a realistic finish date before we start.</p>
 </div></section>
 
-<section id="work" class="soft"><div class="wrap">
+<section id="work" class="work-sec"><div class="wrap">
 <h2>Example work</h2>
 <p class="lead">Three recent projects: one for my church, two I built and use myself.</p>
 <div class="work">
 <article class="proj feature">
 <img src="images/men-together.webp" width="800" height="500" loading="lazy" alt="Men Together landing page: a navy header with the title Men Together and the line 'A place for the men of St James, Selby, to be known', above a gold How to join button.">
 <div class="body">
-<span class="status">Church landing page &middot; launching soon</span>
+<span class="status">Church landing page, launching soon</span>
 <h3>Men Together</h3>
 <p>A welcoming one-page site for the men's fellowship at St James the Apostle, Selby. It explains what the group is, who it's for and how to join, and works well on a phone.</p>
 <ul class="tags" aria-label="Built with"><li>HTML and CSS</li><li>Accessible</li><li>Mobile first</li></ul>
@@ -123,22 +79,25 @@ a:focus-visible,.btn:focus-visible{outline:3px solid #f2b705;outline-offset:3px}
 </div>
 </div></section>
 
-<section id="about" class="about"><div class="wrap">
+<section id="about" class="about"><div class="wrap about-grid">
+<div>
 <h2>About</h2>
-<p>I'm a software engineer living in Selby with my wife and our boys. By day I build software professionally. In a few hours each week I help local organisations get a website that works and is easy to look after.</p>
+<p>I'm a software engineer living in Selby with my wife and our boys. By day I build software professionally. For a few hours each week I help local organisations get a website that works and is easy to look after.</p>
 <p>I keep things honest and simple: a clear price, plain English, and a site you can run without calling me every week.</p>
+</div>
+<dl class="facts">
+<dt>Based in</dt><dd>Selby, North Yorkshire. Happy to work remotely.</dd>
+<dt>Time</dt><dd>A few hours each week, so a small number of jobs at once.</dd>
+<dt>Code</dt><dd><a href="https://github.com/DanielPaulWilkinson">github.com/DanielPaulWilkinson</a></dd>
+</dl>
 </div></section>
+</main>
 
-<section id="contact" class="soft contact"><div class="wrap">
+<footer id="contact" class="contact"><div class="wrap">
 <h2>Contact</h2>
 <p class="lead">Tell me what you need and I'll reply with a fixed quote.</p>
-<div class="card">
-<p><strong>Email:</strong> <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p>
-<p><strong>GitHub:</strong> <a href="https://github.com/DanielPaulWilkinson">github.com/DanielPaulWilkinson</a></p>
-<p style="margin:0;color:var(--muted)">Based in Selby, North Yorkshire. Happy to work remotely.</p>
-</div>
-</div></section>
-
-<footer><div class="wrap">© 2026 Daniel Wilkinson</div></footer>
+<p class="email"><a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p>
+<p class="small">&copy; 2026 Daniel Wilkinson</p>
+</div></footer>
 </body>
 </html>
