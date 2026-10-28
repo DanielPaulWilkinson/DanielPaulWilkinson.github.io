@@ -39,11 +39,28 @@ h2{color:var(--navy);font-size:1.8rem;margin:0 0 8px}
 .contact .card{max-width:560px}
 footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:.9rem}
 @media(max-width:700px){.hero .wrap{flex-direction:column-reverse;text-align:center;gap:28px}.hero h1{font-size:2rem}.hero img{width:160px;height:160px}nav ul{display:none}.btn.alt{margin:10px 0 0}}
+.work{display:grid;gap:28px}
+.proj{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;display:grid}
+.proj img{display:block;width:100%;height:auto;border-bottom:1px solid var(--line)}
+.proj .body{padding:22px 24px 24px}
+.proj h3{margin:0 0 4px;font-size:1.2rem;color:var(--navy)}
+.proj p{margin:0 0 14px}
+.status{display:inline-block;font-size:.85rem;font-weight:600;color:var(--navy);border-left:3px solid var(--navy);padding-left:8px;margin-bottom:10px}
+.tags{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0 0 14px}
+.tags li{font-size:.8rem;color:#3b4554;background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:2px 8px}
+.links{display:flex;flex-wrap:wrap;gap:18px;font-weight:600}
+.links a{text-underline-offset:3px}
+a:focus-visible,.btn:focus-visible{outline:3px solid #f2b705;outline-offset:3px}
+.proj.feature{grid-template-columns:1.3fr 1fr}
+.proj.feature img{height:100%;object-fit:cover;object-position:top left;border-bottom:0;border-right:1px solid var(--line)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:760px){.proj.feature,.pair{grid-template-columns:1fr}.proj.feature img{height:auto;border-right:0;border-bottom:1px solid var(--line)}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 </head>
 <body>
 <nav><div class="wrap"><a class="brand" href="#">Dan Wilkinson</a>
-<ul><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
+<ul><li><a href="#services">Services</a></li><li><a href="#work">Work</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
 
 <header class="hero"><div class="wrap">
 <div>
@@ -70,13 +87,39 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-s
 <p class="note">I take on a small number of jobs alongside a full-time role, so I'll always tell you a realistic finish date before we start.</p>
 </div></section>
 
-<section id="work" class="soft" hidden><div class="wrap">
+<section id="work" class="soft"><div class="wrap">
 <h2>Example work</h2>
-<p class="lead">A few recent projects.</p>
-<div class="grid">
-<div class="card"><div class="thumb">Screenshot</div><h3>Project name <span class="ph">[ADD PROJECT]</span></h3><p>For example, a church or community group website. One line on what it does and who it helps.</p></div>
-<div class="card"><div class="thumb">Screenshot</div><h3>Project name <span class="ph">[ADD PROJECT]</span></h3><p>For example, a site for a local business, friend or charity. One line on the result.</p></div>
-<div class="card"><div class="thumb">Screenshot</div><h3>Project name <span class="ph">[ADD PROJECT]</span></h3><p>For example, a personal project or tool from GitHub. One line on what it solves.</p></div>
+<p class="lead">Three recent projects: one for my church, two I built and use myself.</p>
+<div class="work">
+<article class="proj feature">
+<img src="images/men-together.webp" width="800" height="500" loading="lazy" alt="Men Together landing page: a navy header with the title Men Together and the line 'A place for the men of St James, Selby, to be known', above a gold How to join button.">
+<div class="body">
+<span class="status">Church landing page &middot; launching soon</span>
+<h3>Men Together</h3>
+<p>A welcoming one-page site for the men's fellowship at St James the Apostle, Selby. It explains what the group is, who it's for and how to join, and works well on a phone.</p>
+<ul class="tags" aria-label="Built with"><li>HTML and CSS</li><li>Accessible</li><li>Mobile first</li></ul>
+</div>
+</article>
+<div class="pair">
+<article class="proj">
+<img src="images/brew-journal.webp" width="800" height="570" loading="lazy" alt="Brew Journal home screen showing a New brew button and the last brew, Finca El Puente on a V60, with its ratio, time and grind setting.">
+<div class="body">
+<h3>Brew Journal</h3>
+<p>A phone app for logging coffee brews that installs from the browser and works offline. It keeps everything on the device and suggests what to change next time, showing how a small business could offer a simple app without app store fees.</p>
+<ul class="tags" aria-label="Built with"><li>Web app (PWA)</li><li>Works offline</li><li>JavaScript</li></ul>
+<p class="links"><a href="https://danielpaulwilkinson.github.io/coffee-puck/">Try it<span class="sr"> (Brew Journal live app)</span></a><a href="https://github.com/DanielPaulWilkinson/coffee-puck">See the code<span class="sr"> for Brew Journal</span></a></p>
+</div>
+</article>
+<article class="proj">
+<img src="images/house-brief.webp" width="800" height="425" loading="lazy" alt="Daily house brief report with a map of Selby and nearby villages and a sortable table of homes showing price, bedrooms, distance to church and condition. Sample data.">
+<div class="body">
+<h3>Daily house brief</h3>
+<p>Turns property alert emails into a short daily summary and a report you can filter, with a map, area details, distance to church and likely costs. The same approach can turn any pile of routine emails into one clear daily update.</p>
+<ul class="tags" aria-label="Built with"><li>Python</li><li>Automation</li><li>Maps</li></ul>
+<p class="links"><a href="https://github.com/DanielPaulWilkinson/movinghome_bot">See the code<span class="sr"> for the daily house brief</span></a></p>
+</div>
+</article>
+</div>
 </div>
 </div></section>
 
