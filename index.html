@@ -46,6 +46,7 @@
 <section id="work" class="work-sec"><div class="wrap">
 <h2>Example work</h2>
 <p class="lead">Six recent projects: one for my church, five I built and use myself.</p>
+<h3 class="group">For churches and small businesses</h3>
 <div class="work">
 <article class="proj feature">
 <img src="images/men-together.webp" width="800" height="500" loading="lazy" alt="Men Together landing page: a navy header with the title Men Together and the line 'A place for the men of St James, Selby, to be known', above a gold How to join button.">
@@ -77,37 +78,30 @@
 </div>
 </article>
 </div>
-<div class="pair">
-<article class="proj">
-<img src="images/house-brief.webp" width="800" height="425" loading="lazy" alt="Daily house brief report with a map of Selby and nearby villages and a sortable table of homes showing price, bedrooms, distance to church and condition. Sample data.">
-<div class="body">
-<h3>Daily house brief</h3>
-<p>Turns property alert emails into a short daily summary and a report you can filter, with a map, area details, distance to church and likely costs. The same approach can turn any pile of routine emails into one clear daily update.</p>
-<ul class="tags" aria-label="Built with"><li>Python</li><li>Automation</li><li>Maps</li></ul>
-<p class="links"><a href="https://github.com/DanielPaulWilkinson/movinghome_bot">See the code<span class="sr"> for the daily house brief</span></a></p>
 </div>
-</article>
-<article class="proj">
-<img src="images/hue-mcp.webp" width="800" height="505" loading="lazy" alt="Terminal-style illustration: a request to dim a reading lamp to 30 percent becomes a set_light tool call, and a request for an evening scene becomes recall_scene. Example data.">
-<div class="body">
+<h3 class="group">AI and private tools</h3>
+<div class="trio">
+<article class="proj compact"><div class="body">
+<h3>Daily house brief</h3>
+<p>Turns property alert emails into a short daily summary and a filterable report with a map, distance to church and likely costs. The same idea works for any pile of routine emails.</p>
+<ul class="tags" aria-label="Built with"><li>Python</li><li>Automation</li></ul>
+<p class="links"><a href="https://github.com/DanielPaulWilkinson/movinghome_bot">See the code<span class="sr"> for the daily house brief</span></a></p>
+</div></article>
+<article class="proj compact"><div class="body">
 <span class="status">AI-first</span>
 <h3>Hue lights for AI assistants</h3>
-<p>Talk to your lights through an AI assistant. A small server using the Model Context Protocol lets an assistant list your Philips Hue lights, rooms and scenes and change them when you ask in plain English. Keys stay on your own machine.</p>
-<ul class="tags" aria-label="Built with"><li>MCP</li><li>Node.js</li><li>Hue API</li></ul>
+<p>A small Model Context Protocol server that lets an AI assistant list and change your Philips Hue lights, rooms and scenes when you ask in plain English. Keys stay on your machine.</p>
+<ul class="tags" aria-label="Built with"><li>MCP</li><li>Node.js</li></ul>
 <p class="links"><a href="https://github.com/DanielPaulWilkinson/hue-mcp">See the code<span class="sr"> for the Hue lights server</span></a></p>
-</div>
-</article>
-</div>
-<article class="proj feature">
-<img src="images/local-reviewer.webp" width="800" height="500" loading="lazy" alt="Local reviewer results page headed 'Push blocked. Fix the items marked below.', listing a missing image alt text found by ESLint as a must-fix item. Sample data.">
-<div class="body">
-<span class="status">AI-first, private repo</span>
+</div></article>
+<article class="proj compact"><div class="body">
+<span class="status">AI-first, private</span>
 <h3>Local AI code reviewer</h3>
-<p>A check that runs before code is pushed. Your own linters go first, and only they can block a push. Then a model on your own graphics card, through Ollama, gives up to five suggestions on security (OWASP), accessibility and performance, shown on an accessible results page. Nothing leaves the machine. In a real test it blocked a push over an image with no alt text and flagged a layout-shift risk.</p>
+<p>Runs before code is pushed. Your linters go first, and only they can block. Then a model on your own GPU (Ollama) gives up to five suggestions on security, accessibility and performance. Nothing leaves the machine. In a real test it blocked a missing image alt.</p>
 <ul class="tags" aria-label="Built with"><li>Node.js</li><li>Ollama</li><li>Git hooks</li></ul>
 <p class="links">Private repo, demo on request</p>
+</div></article>
 </div>
-</article>
 </div>
 </div></section>
 
