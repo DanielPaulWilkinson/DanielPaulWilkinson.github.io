@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Bible study companion | Dan Wilkinson</title>
+<meta name="description" content="An offline Bible study companion that runs entirely on my PC, with no account. Search by meaning, Greek and Hebrew word lookup, cross-references and commentaries.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/projects/bible-companion/">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../../#work">Example work</a></li><li aria-current="page">Bible study companion</li></ol></nav>
+<span class="status">AI-first, private</span>
+<h1>Bible study companion</h1>
+<p class="lead">An offline Bible study companion that runs entirely on my PC, with no account. Search by meaning, Greek and Hebrew word lookup, cross-references and commentaries.</p>
+<figure class="shot wide"><img src="../../images/p/bible-1440.webp" width="1200" height="750" alt="John 3:16 in the KJV beside a Matthew Henry commentary panel headed &#x27;Interpretation, not Scripture&#x27;."></figure>
+<h2>What it is</h2>
+<p>A Bible study app that works offline. It has the KJV, BSB, WEB and ASV built in, with the ESV to follow once Crossway approves API access. You can search by meaning as well as by words, look up the Greek and Hebrew behind a verse, follow OpenBible cross-references, and read public-domain commentaries from Matthew Henry, John Gill, Jamieson-Fausset-Brown and the Church Fathers.</p>
+<h2>Why I built it</h2>
+<p>I wanted one place to read, search and study without an account, adverts or tracking. Commentaries help with understanding, so they're included, but every one is clearly labelled &ldquo;Interpretation, not Scripture&rdquo;.</p>
+<h2>Screenshots</h2>
+<div class="shots"><figure class="shot"><img src="../../images/p/bible-390.webp" width="390" height="844" loading="lazy" alt="Search by meaning on a phone, showing verses closest to &#x27;God&#x27;s faithfulness when afraid&#x27;."><figcaption>Search by meaning on a phone.</figcaption></figure></div>
+<h2>How it's built</h2>
+<p>Vue 3, TypeScript, Vite and Tailwind. A setup script downloads the public sources and builds the data on your own machine.</p>
+<h2>How to run it</h2>
+<p>Needs Node 22 or later. The repo is private, so cloning is by invitation.</p>
+<ol>
+<li><code>git clone</code> the repo (by invitation)</li>
+<li><code>npm install</code></li>
+<li><code>npm run setup</code> (downloads and builds the Bible data)</li>
+<li><code>npm run build</code></li>
+<li><code>npm run preview</code></li>
+</ol>
+<h2>Status and limits</h2>
+<p>Runs on my PC for personal study. The ESV needs your own Crossway API key, entered in the app's settings. Search by meaning covers the KJV. The repo is private.</p>
+<h2>Links</h2>
+<p>Private repo, demo on request. <a href="../../#contact">Get in touch</a>.</p>
+<p class="back"><a href="../../#work">Back to all work</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>
