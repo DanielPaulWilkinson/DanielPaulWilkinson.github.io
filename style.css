@@ -65,6 +65,32 @@ section{padding:80px 0}
 .proj.compact .body{padding:18px 20px 20px}.proj.compact h3{font-size:1.15rem}.proj.compact p{font-size:.95rem}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
 
+.card{position:relative;transition:box-shadow .15s}
+.card-link{color:inherit;text-decoration:none}
+.card-link::after{content:"";position:absolute;inset:0;z-index:1}
+.card:hover{box-shadow:0 0 0 2px var(--navy)}
+.card:hover .card-link{text-decoration:underline}
+.card-link:focus-visible{outline:none}
+.card:focus-within{outline:3px solid var(--brass);outline-offset:3px}
+.more{font-weight:600;color:var(--navy);margin:0!important;border-top:1px solid #E2E5EA;padding-top:10px}
+.more::after{content:" \2192";color:var(--brass)}
+.trio .card .body{display:flex;flex-direction:column;height:100%}.trio .more{margin-top:auto!important}
+/* Project pages */
+.project{padding:40px 0 72px}
+.narrow{max-width:780px}
+.crumb ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0 0 28px;font-size:.92rem;color:var(--slate)}
+.crumb li+li::before{content:"/";margin-right:6px;color:var(--brass)}
+.project h1{font-size:clamp(2rem,5vw,2.9rem);color:var(--navy);margin-bottom:12px}
+.project h2{font-size:1.45rem;margin:40px 0 8px;padding-top:12px;border-top:2px solid var(--brass);display:inline-block}
+.project p{max-width:65ch}
+.shot{margin:0}.shot img{display:block;border-radius:8px;border:1px solid #D5D8DD;background:var(--stone)}
+.shot.wide img{width:100%}
+.shots{display:flex;flex-wrap:wrap;gap:24px}.shots .shot{flex:0 1 260px}
+.shot figcaption{font-size:.9rem;color:var(--slate);margin-top:8px}
+.plinks{padding-left:1.2em}.plinks li{margin-bottom:6px;font-weight:600}
+.back{margin-top:48px;font-weight:600}
+.project+.contact{padding:32px 0}
+.contact .small a{color:#fff}
 /* About */
 .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:56px}
 .about p{max-width:60ch}

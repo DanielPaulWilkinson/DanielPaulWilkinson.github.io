@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Local AI code reviewer | Dan Wilkinson</title>
+<meta name="description" content="Runs before code is pushed. Your linters go first, and only they can block. Then a model on your own GPU gives up to five suggestions. Nothing leaves the machine.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/projects/local-reviewer/">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../../#work">Example work</a></li><li aria-current="page">Local AI code reviewer</li></ol></nav>
+<span class="status">AI-first, private</span>
+<h1>Local AI code reviewer</h1>
+<p class="lead">Runs before code is pushed. Your linters go first, and only they can block. Then a model on your own GPU gives up to five suggestions. Nothing leaves the machine.</p>
+<figure class="shot wide"><img src="../../images/p/rev-1440.webp" width="800" height="1000" alt="Reviewer results page headed &#x27;Push blocked. Fix the items marked below.&#x27;, with a missing alt text listed as must fix. Sample data."></figure>
+<h2>What it is</h2>
+<p>A pre-push check. It runs your own linters first (ESLint, gitleaks, Semgrep when installed), and only they can block a push. Then a local model, run through Ollama on your own graphics card, gives up to five advisory suggestions on security (OWASP), accessibility and performance, shown on an accessible results page.</p>
+<h2>Why I built it</h2>
+<p>I wanted AI review without sending code to anyone. Nothing leaves the machine.</p>
+<h2>Screenshots</h2>
+<div class="shots"><figure class="shot"><img src="../../images/p/rev-390.webp" width="360" height="720" loading="lazy" alt="Results page on a phone, with must-fix items above model suggestions."><figcaption>Results page on a phone, with must-fix items above model suggestions.</figcaption></figure></div>
+<h2>How it's built</h2>
+<p>Node.js, a Git pre-push hook, your existing linters and Ollama (tested with qwen2.5-coder 7b and 14b).</p>
+<h2>Status and limits</h2>
+<p>In a real test it blocked a push for a missing image alt and flagged a layout-shift risk. Small models get things wrong, so their findings are advice only. The repo is private.</p>
+<h2>Links</h2>
+<p>Private repo, demo on request. <a href="../../#contact">Get in touch</a>.</p>
+<p class="back"><a href="../../#work">Back to all work</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>
