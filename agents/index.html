@@ -33,9 +33,12 @@
 <li><strong>Claude Code:</strong> save the <code>.claude.md</code> variant as <code>.claude/agents/&lt;name&gt;.md</code> (or in <code>~/.claude/agents/</code> for every project).</li>
 <li><strong>Programs:</strong> read <a href="index.json">index.json</a>; each agent lists its <code>url</code>, <code>install_path</code>, Claude Code variant, skills and handoffs.</li>
 </ol>
-<p>Install every Copilot agent at once (needs <code>jq</code>; run <code>mkdir -p .github/agents</code> first):</p>
-<pre tabindex="0" class="cmd"><code>for a in $(curl -fsSL https://danielpaulwilkinson.github.io/agents/index.json | jq -r &#x27;.agents[].name&#x27;); do curl -fsSL https://danielpaulwilkinson.github.io/agents/$a/$a.agent.md -o .github/agents/$a.agent.md; done</code></pre>
-<button class="btn copy" type="button" data-copy="for a in $(curl -fsSL https://danielpaulwilkinson.github.io/agents/index.json | jq -r &#x27;.agents[].name&#x27;); do curl -fsSL https://danielpaulwilkinson.github.io/agents/$a/$a.agent.md -o .github/agents/$a.agent.md; done" hidden>Copy command</button><p class="copied" role="status" aria-live="polite"></p>
+<p>Install every Copilot agent at once (needs Node; stops rather than overwrite an existing folder):</p>
+<pre tabindex="0" class="cmd"><code>npx degit DanielPaulWilkinson/DanielPaulWilkinson.github.io/dist/agents .github/agents</code></pre>
+<button class="btn copy" type="button" data-copy="npx degit DanielPaulWilkinson/DanielPaulWilkinson.github.io/dist/agents .github/agents" hidden>Copy command</button><p class="copied" role="status" aria-live="polite"></p>
+<p>Or every Claude Code agent:</p>
+<pre tabindex="0" class="cmd"><code>npx degit DanielPaulWilkinson/DanielPaulWilkinson.github.io/dist/claude-agents .claude/agents</code></pre>
+<button class="btn copy" type="button" data-copy="npx degit DanielPaulWilkinson/DanielPaulWilkinson.github.io/dist/claude-agents .claude/agents" hidden>Copy command</button><p class="copied" role="status" aria-live="polite"></p>
 <p class="small-print">No model is pinned, so each agent uses your default. Read an agent before installing it: they can run tools in your repo. Also listed in <a href="../skills/llms.txt">llms.txt</a>.</p>
 </section>
 <h2>The agents</h2>

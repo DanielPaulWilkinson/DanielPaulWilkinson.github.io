@@ -32,6 +32,9 @@
 <blockquote class="prompt"><p>Fetch https://danielpaulwilkinson.github.io/skills/index.json, pick the skill that fits this task, fetch its SKILL.md and follow it.</p></blockquote>
 <button class="btn copy" type="button" data-copy="Fetch https://danielpaulwilkinson.github.io/skills/index.json, pick the skill that fits this task, fetch its SKILL.md and follow it." hidden>Copy instruction</button><p class="copied" role="status" aria-live="polite"></p>
 <ol class="steps"><li>The agent reads <a href="index.json">index.json</a>, a list of every skill with a one-line "use it when".</li><li>It fetches the matching <code>SKILL.md</code>. If its tools won't read <code>.md</code>, each skill has a <code>SKILL.txt</code> copy.</li><li>It follows the steps. You stay in charge: none of these skills send, buy or publish anything without your yes.</li></ol>
+<p>Install every skill into a repo at once (needs Node; stops rather than overwrite an existing folder):</p>
+<pre tabindex="0" class="cmd"><code>npx degit DanielPaulWilkinson/DanielPaulWilkinson.github.io/dist/skills .github/skills</code></pre>
+<button class="btn copy" type="button" data-copy="npx degit DanielPaulWilkinson/DanielPaulWilkinson.github.io/dist/skills .github/skills" hidden>Copy command</button><p class="copied" role="status" aria-live="polite"></p>
 <p class="small-print">Also listed in <a href="llms.txt">llms.txt</a> for agents that look there first.</p>
 </section>
 <h2>The skills</h2>
