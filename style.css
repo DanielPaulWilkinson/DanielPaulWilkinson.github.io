@@ -194,3 +194,8 @@ h2{font-size:1.75rem}
 .item-tags li{font-size:.78rem;color:var(--slate);border:1px solid var(--line-strong);border-radius:999px;padding:1px 8px}
 html[data-theme=dark] .btn:hover{background:var(--stone)}
 html[data-theme=dark] .card:hover{box-shadow:0 0 0 2px var(--brass)}
+
+.show-more{display:block;width:100%;max-width:24rem;margin:20px auto 8px;padding:12px 18px;border-radius:6px;border:1px solid var(--line-strong);background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer;text-align:center}
+.show-more:hover{border-color:var(--navy)}
+.show-more:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+[data-filter-item]:focus{outline:3px solid var(--brass);outline-offset:4px;border-radius:4px}
