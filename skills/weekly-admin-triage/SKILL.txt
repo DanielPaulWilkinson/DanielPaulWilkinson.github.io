@@ -3,7 +3,7 @@ name: weekly-admin-triage
 description: >-
   Use once a week, or when someone says their admin is piling up, to sort every
   open admin item into do now, schedule, delegate or ignore. Written for people
-  juggling family, work and church or community commitments. Keep it to about
+  juggling work, home and community commitments. Keep it to about
   20 minutes.
 ---
 # Weekly admin triage

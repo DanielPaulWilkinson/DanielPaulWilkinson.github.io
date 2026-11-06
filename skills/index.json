@@ -35,7 +35,7 @@
     {
       "name": "weekly-admin-triage",
       "title": "Weekly admin triage",
-      "description": "Use once a week, or when someone says their admin is piling up, to sort every open admin item into do now, schedule, delegate or ignore. Written for people juggling family, work and church or community commitments. Keep it to about 20 minutes.",
+      "description": "Use once a week, or when someone says their admin is piling up, to sort every open admin item into do now, schedule, delegate or ignore. Written for people juggling work, home and community commitments. Keep it to about 20 minutes.",
       "version": "1.0.0",
       "updated": "2026-11-06",
       "url": "https://danielpaulwilkinson.github.io/skills/weekly-admin-triage/SKILL.md",
@@ -80,7 +80,7 @@
     {
       "name": "blast-radius",
       "title": "Blast radius",
-      "description": "Find what a change could break somewhere else before it ships, beyond the diff, and prove the one fact it's safe because of by running real code instead of writing it up. Use for 'blast radius of X', 'what could this break', or reviewing a small diff you don't trust.\" disable-model-invocation: true",
+      "description": "Find what a change could break somewhere else before it ships, beyond the diff, and prove the one fact it's safe because of by running real code instead of writing it up. Use for 'blast radius of X', 'what could this break', or reviewing a small diff you don't trust.",
       "version": "1.0.0",
       "updated": "2026-11-06",
       "url": "https://danielpaulwilkinson.github.io/skills/blast-radius/SKILL.md",
@@ -214,7 +214,7 @@
     {
       "name": "interrogate",
       "title": "Interrogate",
-      "description": "Use for \\\"interrogate\\\", \\\"adversarial review\\\", \\\"multi-model review\\\", \\\"challenge this\\\", \\\"stress test this code\\\", \\\"find blind spots\\\", or \\\"tear this apart\\\". Multiple LLM reviewers challenge changes from independent angles.\" disable-model-invocation: true",
+      "description": "Use for \\\"interrogate\\\", \\\"adversarial review\\\", \\\"multi-model review\\\", \\\"challenge this\\\", \\\"stress test this code\\\", \\\"find blind spots\\\", or \\\"tear this apart\\\". Multiple LLM reviewers challenge changes from independent angles.",
       "version": "1.0.0",
       "updated": "2026-11-06",
       "url": "https://danielpaulwilkinson.github.io/skills/interrogate/SKILL.md",
@@ -373,7 +373,7 @@
     {
       "name": "teach",
       "title": "Teach",
-      "description": "Explain a body of work plainly so a person actually understands it. Runs the `how` and `why` skills and weaves what they find into one clear explanation. Use for 'teach me this', 'help me really understand X', 'explain this change or subsystem to me'.\" disable-model-invocation: true",
+      "description": "Explain a body of work plainly so a person actually understands it. Runs the `how` and `why` skills and weaves what they find into one clear explanation. Use for 'teach me this', 'help me really understand X', 'explain this change or subsystem to me'.",
       "version": "1.0.0",
       "updated": "2026-11-06",
       "url": "https://danielpaulwilkinson.github.io/skills/teach/SKILL.md",
@@ -822,7 +822,7 @@
     {
       "name": "unslop",
       "title": "Unslop",
-      "description": "Detect and remove AI writing patterns. Scan text for puffery, vague attributions, AI vocabulary, and style tells. Rewrite for clarity and human voice.\" aliases: [\"ai-text-detection\", \"human-voice\"]",
+      "description": "Detect and remove AI writing patterns. Scan text for puffery, vague attributions, AI vocabulary, and style tells. Rewrite for clarity and human voice.",
       "version": "1.0.0",
       "updated": "2026-11-06",
       "url": "https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md",
