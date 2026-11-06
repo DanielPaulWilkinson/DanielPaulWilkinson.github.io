@@ -17,9 +17,9 @@ A short weekly routine that turns a messy pile of admin into four short lists. T
 
 ## Before you start
 Ask the person for:
-1. **The pile.** Everything on their mind: emails needing a reply, forms, bills, bookings, school or club messages, church or volunteer rota requests, things people asked them to do. A rough brain-dump list is fine.
-2. **Their week.** The fixed commitments they already have (work hours, family time, regular meetings) and roughly how much admin time they have free.
-3. **Who can help.** Anyone they share admin with: a partner, a colleague, a volunteer team, a church office or club secretary.
+1. **The pile.** Everything on their mind: emails needing a reply, forms, bills, bookings, school or club messages, volunteer rota requests, things people asked them to do. A rough brain-dump list is fine.
+2. **Their week.** The fixed commitments they already have (work hours, home time, regular meetings) and roughly how much admin time they have free.
+3. **Who can help.** Anyone they share admin with: a partner, a colleague, a volunteer team, an office or club secretary.
 
 If you can read their calendar, email or task list and they have said you may, use it. Otherwise work only from what they tell you. Never send, pay, book or reply to anything without their explicit yes.
 
@@ -36,7 +36,7 @@ Go through the pile one item at a time. For each, decide:
 Rules of thumb:
 - If you are unsure between Do now and Schedule, choose Schedule with a real date.
 - If an item has sat on the list for 3 weeks, it is probably Ignore or Delegate. Say so.
-- Protect family time and rest. Do not schedule admin into time the person has already set aside for family, worship or sleep unless they ask.
+- Protect rest and personal time. Do not schedule admin into time the person has already set aside for home life or sleep unless they ask.
 - Say no to new volunteer or rota requests only if the person wants to; offer a short, kind wording.
 
 ## Output
@@ -51,7 +51,7 @@ Give back one short message:
 Keep the whole reply readable on a phone in under a minute.
 
 ## Weekly review (2 minutes)
-At the start of next week's triage, ask: what from last week's Schedule list did not happen? Move each item to Do now, re-schedule it once, or drop it. Notice patterns (for example, the same kind of form every month) and suggest one small system to stop it recurring, such as a standing reminder or a shared family calendar.
+At the start of next week's triage, ask: what from last week's Schedule list did not happen? Move each item to Do now, re-schedule it once, or drop it. Notice patterns (for example, the same kind of form every month) and suggest one small system to stop it recurring, such as a standing reminder or a shared household calendar.
 
 ## Rules
 - Simple beats complete. Four lists, one message, about 20 minutes.
