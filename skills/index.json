@@ -52,7 +52,10 @@
         "type": [
           "process"
         ]
-      }
+      },
+      "used_by": [],
+      "install_command": "mkdir -p .github/skills/weekly-admin-triage && curl -fsSL https://danielpaulwilkinson.github.io/skills/weekly-admin-triage/SKILL.md -o .github/skills/weekly-admin-triage/SKILL.md",
+      "install_path": ".github/skills/weekly-admin-triage/SKILL.md"
     },
     {
       "name": "best-practices",
@@ -75,7 +78,36 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        },
+        {
+          "name": "implementer",
+          "title": "Implementer",
+          "page": "https://danielpaulwilkinson.github.io/agents/implementer/"
+        },
+        {
+          "name": "refactorer",
+          "title": "Refactorer",
+          "page": "https://danielpaulwilkinson.github.io/agents/refactorer/"
+        },
+        {
+          "name": "security-auditor",
+          "title": "Security Auditor",
+          "page": "https://danielpaulwilkinson.github.io/agents/security-auditor/"
+        },
+        {
+          "name": "technical-investigator",
+          "title": "Technical Investigator",
+          "page": "https://danielpaulwilkinson.github.io/agents/technical-investigator/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/best-practices && curl -fsSL https://danielpaulwilkinson.github.io/skills/best-practices/SKILL.md -o .github/skills/best-practices/SKILL.md",
+      "install_path": ".github/skills/best-practices/SKILL.md"
     },
     {
       "name": "blast-radius",
@@ -98,7 +130,26 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "code-reviewer",
+          "title": "Code Reviewer",
+          "page": "https://danielpaulwilkinson.github.io/agents/code-reviewer/"
+        },
+        {
+          "name": "debugger",
+          "title": "Debugger",
+          "page": "https://danielpaulwilkinson.github.io/agents/debugger/"
+        },
+        {
+          "name": "refactorer",
+          "title": "Refactorer",
+          "page": "https://danielpaulwilkinson.github.io/agents/refactorer/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/blast-radius && curl -fsSL https://danielpaulwilkinson.github.io/skills/blast-radius/SKILL.md -o .github/skills/blast-radius/SKILL.md",
+      "install_path": ".github/skills/blast-radius/SKILL.md"
     },
     {
       "name": "challenge",
@@ -121,7 +172,21 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        },
+        {
+          "name": "technical-investigator",
+          "title": "Technical Investigator",
+          "page": "https://danielpaulwilkinson.github.io/agents/technical-investigator/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/challenge && curl -fsSL https://danielpaulwilkinson.github.io/skills/challenge/SKILL.md -o .github/skills/challenge/SKILL.md",
+      "install_path": ".github/skills/challenge/SKILL.md"
     },
     {
       "name": "decision-analysis",
@@ -143,7 +208,21 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        },
+        {
+          "name": "technical-investigator",
+          "title": "Technical Investigator",
+          "page": "https://danielpaulwilkinson.github.io/agents/technical-investigator/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/decision-analysis && curl -fsSL https://danielpaulwilkinson.github.io/skills/decision-analysis/SKILL.md -o .github/skills/decision-analysis/SKILL.md",
+      "install_path": ".github/skills/decision-analysis/SKILL.md"
     },
     {
       "name": "decision-compression",
@@ -165,7 +244,10 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [],
+      "install_command": "mkdir -p .github/skills/decision-compression && curl -fsSL https://danielpaulwilkinson.github.io/skills/decision-compression/SKILL.md -o .github/skills/decision-compression/SKILL.md",
+      "install_path": ".github/skills/decision-compression/SKILL.md"
     },
     {
       "name": "diagnose",
@@ -187,7 +269,26 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "debugger",
+          "title": "Debugger",
+          "page": "https://danielpaulwilkinson.github.io/agents/debugger/"
+        },
+        {
+          "name": "performance-analyst",
+          "title": "Performance Analyst",
+          "page": "https://danielpaulwilkinson.github.io/agents/performance-analyst/"
+        },
+        {
+          "name": "technical-investigator",
+          "title": "Technical Investigator",
+          "page": "https://danielpaulwilkinson.github.io/agents/technical-investigator/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/diagnose && curl -fsSL https://danielpaulwilkinson.github.io/skills/diagnose/SKILL.md -o .github/skills/diagnose/SKILL.md",
+      "install_path": ".github/skills/diagnose/SKILL.md"
     },
     {
       "name": "goal-analysis",
@@ -209,7 +310,46 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        },
+        {
+          "name": "documenter",
+          "title": "Documenter",
+          "page": "https://danielpaulwilkinson.github.io/agents/documenter/"
+        },
+        {
+          "name": "performance-analyst",
+          "title": "Performance Analyst",
+          "page": "https://danielpaulwilkinson.github.io/agents/performance-analyst/"
+        },
+        {
+          "name": "qa-tester",
+          "title": "Qa Tester",
+          "page": "https://danielpaulwilkinson.github.io/agents/qa-tester/"
+        },
+        {
+          "name": "requirements-planner",
+          "title": "Requirements Planner",
+          "page": "https://danielpaulwilkinson.github.io/agents/requirements-planner/"
+        },
+        {
+          "name": "security-auditor",
+          "title": "Security Auditor",
+          "page": "https://danielpaulwilkinson.github.io/agents/security-auditor/"
+        },
+        {
+          "name": "technical-investigator",
+          "title": "Technical Investigator",
+          "page": "https://danielpaulwilkinson.github.io/agents/technical-investigator/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/goal-analysis && curl -fsSL https://danielpaulwilkinson.github.io/skills/goal-analysis/SKILL.md -o .github/skills/goal-analysis/SKILL.md",
+      "install_path": ".github/skills/goal-analysis/SKILL.md"
     },
     {
       "name": "interrogate",
@@ -231,7 +371,10 @@
         "type": [
           "quality"
         ]
-      }
+      },
+      "used_by": [],
+      "install_command": "mkdir -p .github/skills/interrogate && curl -fsSL https://danielpaulwilkinson.github.io/skills/interrogate/SKILL.md -o .github/skills/interrogate/SKILL.md",
+      "install_path": ".github/skills/interrogate/SKILL.md"
     },
     {
       "name": "interview-me",
@@ -253,7 +396,10 @@
         "type": [
           "process"
         ]
-      }
+      },
+      "used_by": [],
+      "install_command": "mkdir -p .github/skills/interview-me && curl -fsSL https://danielpaulwilkinson.github.io/skills/interview-me/SKILL.md -o .github/skills/interview-me/SKILL.md",
+      "install_path": ".github/skills/interview-me/SKILL.md"
     },
     {
       "name": "investigation",
@@ -276,7 +422,26 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        },
+        {
+          "name": "security-auditor",
+          "title": "Security Auditor",
+          "page": "https://danielpaulwilkinson.github.io/agents/security-auditor/"
+        },
+        {
+          "name": "technical-investigator",
+          "title": "Technical Investigator",
+          "page": "https://danielpaulwilkinson.github.io/agents/technical-investigator/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/investigation && curl -fsSL https://danielpaulwilkinson.github.io/skills/investigation/SKILL.md -o .github/skills/investigation/SKILL.md",
+      "install_path": ".github/skills/investigation/SKILL.md"
     },
     {
       "name": "option-analysis",
@@ -299,7 +464,21 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        },
+        {
+          "name": "technical-investigator",
+          "title": "Technical Investigator",
+          "page": "https://danielpaulwilkinson.github.io/agents/technical-investigator/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/option-analysis && curl -fsSL https://danielpaulwilkinson.github.io/skills/option-analysis/SKILL.md -o .github/skills/option-analysis/SKILL.md",
+      "install_path": ".github/skills/option-analysis/SKILL.md"
     },
     {
       "name": "recommendation",
@@ -322,7 +501,21 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        },
+        {
+          "name": "technical-investigator",
+          "title": "Technical Investigator",
+          "page": "https://danielpaulwilkinson.github.io/agents/technical-investigator/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/recommendation && curl -fsSL https://danielpaulwilkinson.github.io/skills/recommendation/SKILL.md -o .github/skills/recommendation/SKILL.md",
+      "install_path": ".github/skills/recommendation/SKILL.md"
     },
     {
       "name": "risk-analysis",
@@ -345,7 +538,36 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        },
+        {
+          "name": "performance-analyst",
+          "title": "Performance Analyst",
+          "page": "https://danielpaulwilkinson.github.io/agents/performance-analyst/"
+        },
+        {
+          "name": "requirements-planner",
+          "title": "Requirements Planner",
+          "page": "https://danielpaulwilkinson.github.io/agents/requirements-planner/"
+        },
+        {
+          "name": "security-auditor",
+          "title": "Security Auditor",
+          "page": "https://danielpaulwilkinson.github.io/agents/security-auditor/"
+        },
+        {
+          "name": "technical-investigator",
+          "title": "Technical Investigator",
+          "page": "https://danielpaulwilkinson.github.io/agents/technical-investigator/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/risk-analysis && curl -fsSL https://danielpaulwilkinson.github.io/skills/risk-analysis/SKILL.md -o .github/skills/risk-analysis/SKILL.md",
+      "install_path": ".github/skills/risk-analysis/SKILL.md"
     },
     {
       "name": "solution-discovery",
@@ -368,7 +590,21 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        },
+        {
+          "name": "technical-investigator",
+          "title": "Technical Investigator",
+          "page": "https://danielpaulwilkinson.github.io/agents/technical-investigator/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/solution-discovery && curl -fsSL https://danielpaulwilkinson.github.io/skills/solution-discovery/SKILL.md -o .github/skills/solution-discovery/SKILL.md",
+      "install_path": ".github/skills/solution-discovery/SKILL.md"
     },
     {
       "name": "teach",
@@ -390,7 +626,10 @@
         "type": [
           "process"
         ]
-      }
+      },
+      "used_by": [],
+      "install_command": "mkdir -p .github/skills/teach && curl -fsSL https://danielpaulwilkinson.github.io/skills/teach/SKILL.md -o .github/skills/teach/SKILL.md",
+      "install_path": ".github/skills/teach/SKILL.md"
     },
     {
       "name": "the-fool",
@@ -413,7 +652,10 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [],
+      "install_command": "mkdir -p .github/skills/the-fool && curl -fsSL https://danielpaulwilkinson.github.io/skills/the-fool/SKILL.md -o .github/skills/the-fool/SKILL.md",
+      "install_path": ".github/skills/the-fool/SKILL.md"
     },
     {
       "name": "using-agent-skills",
@@ -435,7 +677,10 @@
         "type": [
           "process"
         ]
-      }
+      },
+      "used_by": [],
+      "install_command": "mkdir -p .github/skills/using-agent-skills && curl -fsSL https://danielpaulwilkinson.github.io/skills/using-agent-skills/SKILL.md -o .github/skills/using-agent-skills/SKILL.md",
+      "install_path": ".github/skills/using-agent-skills/SKILL.md"
     },
     {
       "name": "accessibility",
@@ -458,7 +703,26 @@
         "type": [
           "quality"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "code-reviewer",
+          "title": "Code Reviewer",
+          "page": "https://danielpaulwilkinson.github.io/agents/code-reviewer/"
+        },
+        {
+          "name": "implementer",
+          "title": "Implementer",
+          "page": "https://danielpaulwilkinson.github.io/agents/implementer/"
+        },
+        {
+          "name": "qa-tester",
+          "title": "Qa Tester",
+          "page": "https://danielpaulwilkinson.github.io/agents/qa-tester/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/accessibility && curl -fsSL https://danielpaulwilkinson.github.io/skills/accessibility/SKILL.md -o .github/skills/accessibility/SKILL.md",
+      "install_path": ".github/skills/accessibility/SKILL.md"
     },
     {
       "name": "api-design",
@@ -480,7 +744,16 @@
         "type": [
           "implementation"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/api-design && curl -fsSL https://danielpaulwilkinson.github.io/skills/api-design/SKILL.md -o .github/skills/api-design/SKILL.md",
+      "install_path": ".github/skills/api-design/SKILL.md"
     },
     {
       "name": "browser-testing-with-devtools",
@@ -502,7 +775,21 @@
         "type": [
           "quality"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "performance-analyst",
+          "title": "Performance Analyst",
+          "page": "https://danielpaulwilkinson.github.io/agents/performance-analyst/"
+        },
+        {
+          "name": "qa-tester",
+          "title": "Qa Tester",
+          "page": "https://danielpaulwilkinson.github.io/agents/qa-tester/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/browser-testing-with-devtools && curl -fsSL https://danielpaulwilkinson.github.io/skills/browser-testing-with-devtools/SKILL.md -o .github/skills/browser-testing-with-devtools/SKILL.md",
+      "install_path": ".github/skills/browser-testing-with-devtools/SKILL.md"
     },
     {
       "name": "data-modelling",
@@ -524,7 +811,16 @@
         "type": [
           "implementation"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/data-modelling && curl -fsSL https://danielpaulwilkinson.github.io/skills/data-modelling/SKILL.md -o .github/skills/data-modelling/SKILL.md",
+      "install_path": ".github/skills/data-modelling/SKILL.md"
     },
     {
       "name": "documentation-and-adrs",
@@ -547,7 +843,26 @@
         "type": [
           "process"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        },
+        {
+          "name": "documenter",
+          "title": "Documenter",
+          "page": "https://danielpaulwilkinson.github.io/agents/documenter/"
+        },
+        {
+          "name": "refactorer",
+          "title": "Refactorer",
+          "page": "https://danielpaulwilkinson.github.io/agents/refactorer/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/documentation-and-adrs && curl -fsSL https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/SKILL.md -o .github/skills/documentation-and-adrs/SKILL.md",
+      "install_path": ".github/skills/documentation-and-adrs/SKILL.md"
     },
     {
       "name": "error-handling",
@@ -569,7 +884,16 @@
         "type": [
           "implementation"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "implementer",
+          "title": "Implementer",
+          "page": "https://danielpaulwilkinson.github.io/agents/implementer/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/error-handling && curl -fsSL https://danielpaulwilkinson.github.io/skills/error-handling/SKILL.md -o .github/skills/error-handling/SKILL.md",
+      "install_path": ".github/skills/error-handling/SKILL.md"
     },
     {
       "name": "frontend-design",
@@ -592,7 +916,10 @@
         "type": [
           "implementation"
         ]
-      }
+      },
+      "used_by": [],
+      "install_command": "mkdir -p .github/skills/frontend-design && curl -fsSL https://danielpaulwilkinson.github.io/skills/frontend-design/SKILL.md -o .github/skills/frontend-design/SKILL.md",
+      "install_path": ".github/skills/frontend-design/SKILL.md"
     },
     {
       "name": "frontend-ui-engineering",
@@ -614,7 +941,16 @@
         "type": [
           "implementation"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "implementer",
+          "title": "Implementer",
+          "page": "https://danielpaulwilkinson.github.io/agents/implementer/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/frontend-ui-engineering && curl -fsSL https://danielpaulwilkinson.github.io/skills/frontend-ui-engineering/SKILL.md -o .github/skills/frontend-ui-engineering/SKILL.md",
+      "install_path": ".github/skills/frontend-ui-engineering/SKILL.md"
     },
     {
       "name": "i18n",
@@ -636,7 +972,10 @@
         "type": [
           "implementation"
         ]
-      }
+      },
+      "used_by": [],
+      "install_command": "mkdir -p .github/skills/i18n && curl -fsSL https://danielpaulwilkinson.github.io/skills/i18n/SKILL.md -o .github/skills/i18n/SKILL.md",
+      "install_path": ".github/skills/i18n/SKILL.md"
     },
     {
       "name": "incremental-implementation",
@@ -658,7 +997,21 @@
         "type": [
           "process"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "implementer",
+          "title": "Implementer",
+          "page": "https://danielpaulwilkinson.github.io/agents/implementer/"
+        },
+        {
+          "name": "refactorer",
+          "title": "Refactorer",
+          "page": "https://danielpaulwilkinson.github.io/agents/refactorer/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/incremental-implementation && curl -fsSL https://danielpaulwilkinson.github.io/skills/incremental-implementation/SKILL.md -o .github/skills/incremental-implementation/SKILL.md",
+      "install_path": ".github/skills/incremental-implementation/SKILL.md"
     },
     {
       "name": "observability",
@@ -681,7 +1034,16 @@
         "type": [
           "implementation"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "performance-analyst",
+          "title": "Performance Analyst",
+          "page": "https://danielpaulwilkinson.github.io/agents/performance-analyst/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/observability && curl -fsSL https://danielpaulwilkinson.github.io/skills/observability/SKILL.md -o .github/skills/observability/SKILL.md",
+      "install_path": ".github/skills/observability/SKILL.md"
     },
     {
       "name": "performance-optimization",
@@ -704,7 +1066,16 @@
         "type": [
           "analysis"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "performance-analyst",
+          "title": "Performance Analyst",
+          "page": "https://danielpaulwilkinson.github.io/agents/performance-analyst/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/performance-optimization && curl -fsSL https://danielpaulwilkinson.github.io/skills/performance-optimization/SKILL.md -o .github/skills/performance-optimization/SKILL.md",
+      "install_path": ".github/skills/performance-optimization/SKILL.md"
     },
     {
       "name": "ux-patterns",
@@ -727,7 +1098,16 @@
         "type": [
           "implementation"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "implementer",
+          "title": "Implementer",
+          "page": "https://danielpaulwilkinson.github.io/agents/implementer/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/ux-patterns && curl -fsSL https://danielpaulwilkinson.github.io/skills/ux-patterns/SKILL.md -o .github/skills/ux-patterns/SKILL.md",
+      "install_path": ".github/skills/ux-patterns/SKILL.md"
     },
     {
       "name": "code-simplification",
@@ -750,7 +1130,16 @@
         "type": [
           "quality"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "refactorer",
+          "title": "Refactorer",
+          "page": "https://danielpaulwilkinson.github.io/agents/refactorer/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/code-simplification && curl -fsSL https://danielpaulwilkinson.github.io/skills/code-simplification/SKILL.md -o .github/skills/code-simplification/SKILL.md",
+      "install_path": ".github/skills/code-simplification/SKILL.md"
     },
     {
       "name": "review",
@@ -772,7 +1161,36 @@
         "type": [
           "quality"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "code-reviewer",
+          "title": "Code Reviewer",
+          "page": "https://danielpaulwilkinson.github.io/agents/code-reviewer/"
+        },
+        {
+          "name": "debugger",
+          "title": "Debugger",
+          "page": "https://danielpaulwilkinson.github.io/agents/debugger/"
+        },
+        {
+          "name": "implementer",
+          "title": "Implementer",
+          "page": "https://danielpaulwilkinson.github.io/agents/implementer/"
+        },
+        {
+          "name": "qa-tester",
+          "title": "Qa Tester",
+          "page": "https://danielpaulwilkinson.github.io/agents/qa-tester/"
+        },
+        {
+          "name": "refactorer",
+          "title": "Refactorer",
+          "page": "https://danielpaulwilkinson.github.io/agents/refactorer/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/review && curl -fsSL https://danielpaulwilkinson.github.io/skills/review/SKILL.md -o .github/skills/review/SKILL.md",
+      "install_path": ".github/skills/review/SKILL.md"
     },
     {
       "name": "security-and-hardening",
@@ -795,7 +1213,16 @@
         "type": [
           "quality"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "security-auditor",
+          "title": "Security Auditor",
+          "page": "https://danielpaulwilkinson.github.io/agents/security-auditor/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/security-and-hardening && curl -fsSL https://danielpaulwilkinson.github.io/skills/security-and-hardening/SKILL.md -o .github/skills/security-and-hardening/SKILL.md",
+      "install_path": ".github/skills/security-and-hardening/SKILL.md"
     },
     {
       "name": "test-writing",
@@ -817,7 +1244,26 @@
         "type": [
           "quality"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "debugger",
+          "title": "Debugger",
+          "page": "https://danielpaulwilkinson.github.io/agents/debugger/"
+        },
+        {
+          "name": "qa-tester",
+          "title": "Qa Tester",
+          "page": "https://danielpaulwilkinson.github.io/agents/qa-tester/"
+        },
+        {
+          "name": "refactorer",
+          "title": "Refactorer",
+          "page": "https://danielpaulwilkinson.github.io/agents/refactorer/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/test-writing && curl -fsSL https://danielpaulwilkinson.github.io/skills/test-writing/SKILL.md -o .github/skills/test-writing/SKILL.md",
+      "install_path": ".github/skills/test-writing/SKILL.md"
     },
     {
       "name": "unslop",
@@ -839,7 +1285,46 @@
         "type": [
           "quality"
         ]
-      }
+      },
+      "used_by": [
+        {
+          "name": "architect",
+          "title": "Architect",
+          "page": "https://danielpaulwilkinson.github.io/agents/architect/"
+        },
+        {
+          "name": "code-reviewer",
+          "title": "Code Reviewer",
+          "page": "https://danielpaulwilkinson.github.io/agents/code-reviewer/"
+        },
+        {
+          "name": "documenter",
+          "title": "Documenter",
+          "page": "https://danielpaulwilkinson.github.io/agents/documenter/"
+        },
+        {
+          "name": "performance-analyst",
+          "title": "Performance Analyst",
+          "page": "https://danielpaulwilkinson.github.io/agents/performance-analyst/"
+        },
+        {
+          "name": "requirements-planner",
+          "title": "Requirements Planner",
+          "page": "https://danielpaulwilkinson.github.io/agents/requirements-planner/"
+        },
+        {
+          "name": "security-auditor",
+          "title": "Security Auditor",
+          "page": "https://danielpaulwilkinson.github.io/agents/security-auditor/"
+        },
+        {
+          "name": "technical-investigator",
+          "title": "Technical Investigator",
+          "page": "https://danielpaulwilkinson.github.io/agents/technical-investigator/"
+        }
+      ],
+      "install_command": "mkdir -p .github/skills/unslop && curl -fsSL https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md -o .github/skills/unslop/SKILL.md",
+      "install_path": ".github/skills/unslop/SKILL.md"
     }
   ]
 }

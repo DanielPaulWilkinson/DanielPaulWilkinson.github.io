@@ -199,3 +199,11 @@ html[data-theme=dark] .card:hover{box-shadow:0 0 0 2px var(--brass)}
 .show-more:hover{border-color:var(--navy)}
 .show-more:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
 [data-filter-item]:focus{outline:3px solid var(--brass);outline-offset:4px;border-radius:4px}
+
+.cross-links{margin:8px 0 4px;font-size:.92rem;color:var(--slate)}
+.cross-label{font-weight:600;color:var(--ink)}
+.cross-links a{font-weight:600}
+.mini-install{margin:10px 0 0;padding:10px 12px;background:var(--stone);border-radius:6px;border:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}
+.mini-install code{font-family:ui-monospace,Consolas,monospace;font-size:.78rem;line-height:1.4;overflow-wrap:anywhere;flex:1 1 12rem;color:var(--ink)}
+.mini-install .btn.copy{flex:0 0 auto;padding:6px 12px;font-size:.85rem;background:var(--deep);color:var(--on-navy)}
+.mini-install .copied{flex:1 0 100%;margin:0;font-size:.85rem;min-height:1.1em}
