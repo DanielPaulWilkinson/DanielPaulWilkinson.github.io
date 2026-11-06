@@ -7,6 +7,726 @@
   "how_to_install": "Download url to install_path in your repository (VS Code / GitHub Copilot custom agent). For Claude Code, download variants[0].url to variants[0].install_path. No model is pinned; add a model field if you want one.",
   "agents": [
     {
+      "name": "architect",
+      "title": "Architect",
+      "description": "Use when: designing systems, defining API contracts, modelling data, writing ADRs, evaluating technology choices, or planning migrations. SDLC phase: Design & Architecture.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "format": "vscode-copilot-custom-agent",
+      "url": "https://danielpaulwilkinson.github.io/agents/architect/architect.agent.md",
+      "agent_md": "https://danielpaulwilkinson.github.io/agents/architect/AGENT.md",
+      "text_url": "https://danielpaulwilkinson.github.io/agents/architect/AGENT.txt",
+      "page": "https://danielpaulwilkinson.github.io/agents/architect/",
+      "install_path": ".github/agents/architect.agent.md",
+      "tools": [
+        "read",
+        "search",
+        "web"
+      ],
+      "model": null,
+      "variants": [
+        {
+          "format": "claude-code-subagent",
+          "url": "https://danielpaulwilkinson.github.io/agents/architect/architect.claude.md",
+          "install_path": ".claude/agents/architect.md",
+          "tools": [
+            "Read",
+            "Grep",
+            "Glob",
+            "WebFetch",
+            "WebSearch"
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "api-design",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "best-practices",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "challenge",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "data-modelling",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "decision-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "documentation-and-adrs",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "goal-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "investigation",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "option-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "recommendation",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "risk-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "solution-discovery",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "unslop",
+          "url": null,
+          "status": "not yet in library"
+        }
+      ],
+      "mentions_agents": [],
+      "handoffs": []
+    },
+    {
+      "name": "code-reviewer",
+      "title": "Code Reviewer",
+      "description": "Use when: reviewing code, checking for bugs, auditing security, evaluating code quality, or enforcing standards. SDLC phase: Code Review.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "format": "vscode-copilot-custom-agent",
+      "url": "https://danielpaulwilkinson.github.io/agents/code-reviewer/code-reviewer.agent.md",
+      "agent_md": "https://danielpaulwilkinson.github.io/agents/code-reviewer/AGENT.md",
+      "text_url": "https://danielpaulwilkinson.github.io/agents/code-reviewer/AGENT.txt",
+      "page": "https://danielpaulwilkinson.github.io/agents/code-reviewer/",
+      "install_path": ".github/agents/code-reviewer.agent.md",
+      "tools": [
+        "vscode",
+        "execute",
+        "read",
+        "agent",
+        "search",
+        "web",
+        "browser",
+        "todo"
+      ],
+      "model": null,
+      "variants": [
+        {
+          "format": "claude-code-subagent",
+          "url": "https://danielpaulwilkinson.github.io/agents/code-reviewer/code-reviewer.claude.md",
+          "install_path": ".claude/agents/code-reviewer.md",
+          "tools": [
+            "Bash",
+            "Read",
+            "Agent",
+            "Grep",
+            "Glob",
+            "WebFetch",
+            "WebSearch",
+            "TodoWrite"
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "accessibility",
+          "url": "https://danielpaulwilkinson.github.io/skills/accessibility/SKILL.md",
+          "status": "in library"
+        },
+        {
+          "name": "blast-radius",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "review",
+          "url": "https://danielpaulwilkinson.github.io/skills/review/SKILL.md",
+          "status": "in library"
+        },
+        {
+          "name": "unslop",
+          "url": null,
+          "status": "not yet in library"
+        }
+      ],
+      "mentions_agents": [],
+      "handoffs": []
+    },
+    {
+      "name": "debugger",
+      "title": "Debugger",
+      "description": "Use when: diagnosing bugs, performing root cause analysis, fixing errors, tracing unexpected behaviour, or resolving failing tests. SDLC phase: Debugging.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "format": "vscode-copilot-custom-agent",
+      "url": "https://danielpaulwilkinson.github.io/agents/debugger/debugger.agent.md",
+      "agent_md": "https://danielpaulwilkinson.github.io/agents/debugger/AGENT.md",
+      "text_url": "https://danielpaulwilkinson.github.io/agents/debugger/AGENT.txt",
+      "page": "https://danielpaulwilkinson.github.io/agents/debugger/",
+      "install_path": ".github/agents/debugger.agent.md",
+      "tools": [
+        "read",
+        "edit",
+        "search",
+        "execute"
+      ],
+      "model": null,
+      "variants": [
+        {
+          "format": "claude-code-subagent",
+          "url": "https://danielpaulwilkinson.github.io/agents/debugger/debugger.claude.md",
+          "install_path": ".claude/agents/debugger.md",
+          "tools": [
+            "Read",
+            "Edit",
+            "Write",
+            "Grep",
+            "Glob",
+            "Bash"
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "blast-radius",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "diagnose",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "review",
+          "url": "https://danielpaulwilkinson.github.io/skills/review/SKILL.md",
+          "status": "in library"
+        },
+        {
+          "name": "test-writing",
+          "url": null,
+          "status": "not yet in library"
+        }
+      ],
+      "mentions_agents": [
+        "technical-investigator"
+      ],
+      "handoffs": []
+    },
+    {
+      "name": "documenter",
+      "title": "Documenter",
+      "description": "Use when: writing or updating documentation, generating JSDoc/TSDoc for exported APIs, writing READMEs, updating changelogs, creating ADRs for architectural decisions, or improving code comments. SDLC phase: Documentation.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "format": "vscode-copilot-custom-agent",
+      "url": "https://danielpaulwilkinson.github.io/agents/documenter/documenter.agent.md",
+      "agent_md": "https://danielpaulwilkinson.github.io/agents/documenter/AGENT.md",
+      "text_url": "https://danielpaulwilkinson.github.io/agents/documenter/AGENT.txt",
+      "page": "https://danielpaulwilkinson.github.io/agents/documenter/",
+      "install_path": ".github/agents/documenter.agent.md",
+      "tools": [
+        "read",
+        "edit",
+        "search",
+        "web"
+      ],
+      "model": null,
+      "variants": [
+        {
+          "format": "claude-code-subagent",
+          "url": "https://danielpaulwilkinson.github.io/agents/documenter/documenter.claude.md",
+          "install_path": ".claude/agents/documenter.md",
+          "tools": [
+            "Read",
+            "Edit",
+            "Write",
+            "Grep",
+            "Glob",
+            "WebFetch",
+            "WebSearch"
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "documentation-and-adrs",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "goal-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "unslop",
+          "url": null,
+          "status": "not yet in library"
+        }
+      ],
+      "mentions_agents": [],
+      "handoffs": []
+    },
+    {
+      "name": "implementer",
+      "title": "Implementer",
+      "description": "Use when: building features, generating code, implementing user stories, or writing production code. SDLC phase: Implementation & Coding.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "format": "vscode-copilot-custom-agent",
+      "url": "https://danielpaulwilkinson.github.io/agents/implementer/implementer.agent.md",
+      "agent_md": "https://danielpaulwilkinson.github.io/agents/implementer/AGENT.md",
+      "text_url": "https://danielpaulwilkinson.github.io/agents/implementer/AGENT.txt",
+      "page": "https://danielpaulwilkinson.github.io/agents/implementer/",
+      "install_path": ".github/agents/implementer.agent.md",
+      "tools": [
+        "read",
+        "edit",
+        "search",
+        "execute"
+      ],
+      "model": null,
+      "variants": [
+        {
+          "format": "claude-code-subagent",
+          "url": "https://danielpaulwilkinson.github.io/agents/implementer/implementer.claude.md",
+          "install_path": ".claude/agents/implementer.md",
+          "tools": [
+            "Read",
+            "Edit",
+            "Write",
+            "Grep",
+            "Glob",
+            "Bash"
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "accessibility",
+          "url": "https://danielpaulwilkinson.github.io/skills/accessibility/SKILL.md",
+          "status": "in library"
+        },
+        {
+          "name": "best-practices",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "error-handling",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "frontend-ui-engineering",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "incremental-implementation",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "review",
+          "url": "https://danielpaulwilkinson.github.io/skills/review/SKILL.md",
+          "status": "in library"
+        },
+        {
+          "name": "ux-patterns",
+          "url": null,
+          "status": "not yet in library"
+        }
+      ],
+      "mentions_agents": [],
+      "handoffs": []
+    },
+    {
+      "name": "pathfinder",
+      "title": "Pathfinder — Software Engineering Goal Investigator",
+      "description": "Investigates how to achieve a software engineering goal, explores multiple viable approaches, researches current technical evidence and best practices, evaluates architecture, implementation, security, testing, operations, cost, maintainability, and risk, challenges its own conclusion, and recommends the best practical path forward. Use for architecture, technology selection, implementation strategy, migrations, engineering process, infrastructure, tooling, and significant technical decisions.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "format": "vscode-copilot-custom-agent",
+      "url": "https://danielpaulwilkinson.github.io/agents/pathfinder/pathfinder.agent.md",
+      "agent_md": "https://danielpaulwilkinson.github.io/agents/pathfinder/AGENT.md",
+      "text_url": "https://danielpaulwilkinson.github.io/agents/pathfinder/AGENT.txt",
+      "page": "https://danielpaulwilkinson.github.io/agents/pathfinder/",
+      "install_path": ".github/agents/pathfinder.agent.md",
+      "tools": [],
+      "model": null,
+      "variants": [
+        {
+          "format": "claude-code-subagent",
+          "url": "https://danielpaulwilkinson.github.io/agents/pathfinder/pathfinder.claude.md",
+          "install_path": ".claude/agents/pathfinder.md",
+          "tools": []
+        }
+      ],
+      "skills": [],
+      "mentions_agents": [],
+      "handoffs": []
+    },
+    {
+      "name": "performance-analyst",
+      "title": "Performance Analyst",
+      "description": "Use when: investigating performance problems, profiling slow operations, analysing Core Web Vitals, benchmarking, diagnosing bundle size regressions, or building a performance improvement plan. SDLC phase: Performance Engineering.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "format": "vscode-copilot-custom-agent",
+      "url": "https://danielpaulwilkinson.github.io/agents/performance-analyst/performance-analyst.agent.md",
+      "agent_md": "https://danielpaulwilkinson.github.io/agents/performance-analyst/AGENT.md",
+      "text_url": "https://danielpaulwilkinson.github.io/agents/performance-analyst/AGENT.txt",
+      "page": "https://danielpaulwilkinson.github.io/agents/performance-analyst/",
+      "install_path": ".github/agents/performance-analyst.agent.md",
+      "tools": [
+        "read",
+        "search",
+        "execute",
+        "web"
+      ],
+      "model": null,
+      "variants": [
+        {
+          "format": "claude-code-subagent",
+          "url": "https://danielpaulwilkinson.github.io/agents/performance-analyst/performance-analyst.claude.md",
+          "install_path": ".claude/agents/performance-analyst.md",
+          "tools": [
+            "Read",
+            "Grep",
+            "Glob",
+            "Bash",
+            "WebFetch",
+            "WebSearch"
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "browser-testing-with-devtools",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "diagnose",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "goal-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "observability",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "performance-optimization",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "risk-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "unslop",
+          "url": null,
+          "status": "not yet in library"
+        }
+      ],
+      "mentions_agents": [
+        "debugger"
+      ],
+      "handoffs": []
+    },
+    {
+      "name": "qa-tester",
+      "title": "QA Tester",
+      "description": "Use when: writing tests, analysing coverage gaps, creating test plans from acceptance criteria, fixing flaky tests, or improving test quality from presence-checking to behaviour-verifying. SDLC phase: Testing & Quality Assurance.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "format": "vscode-copilot-custom-agent",
+      "url": "https://danielpaulwilkinson.github.io/agents/qa-tester/qa-tester.agent.md",
+      "agent_md": "https://danielpaulwilkinson.github.io/agents/qa-tester/AGENT.md",
+      "text_url": "https://danielpaulwilkinson.github.io/agents/qa-tester/AGENT.txt",
+      "page": "https://danielpaulwilkinson.github.io/agents/qa-tester/",
+      "install_path": ".github/agents/qa-tester.agent.md",
+      "tools": [
+        "read",
+        "edit",
+        "search",
+        "execute"
+      ],
+      "model": null,
+      "variants": [
+        {
+          "format": "claude-code-subagent",
+          "url": "https://danielpaulwilkinson.github.io/agents/qa-tester/qa-tester.claude.md",
+          "install_path": ".claude/agents/qa-tester.md",
+          "tools": [
+            "Read",
+            "Edit",
+            "Write",
+            "Grep",
+            "Glob",
+            "Bash"
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "accessibility",
+          "url": "https://danielpaulwilkinson.github.io/skills/accessibility/SKILL.md",
+          "status": "in library"
+        },
+        {
+          "name": "browser-testing-with-devtools",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "goal-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "review",
+          "url": "https://danielpaulwilkinson.github.io/skills/review/SKILL.md",
+          "status": "in library"
+        },
+        {
+          "name": "test-writing",
+          "url": null,
+          "status": "not yet in library"
+        }
+      ],
+      "mentions_agents": [],
+      "handoffs": []
+    },
+    {
+      "name": "refactorer",
+      "title": "Refactorer",
+      "description": "Use when: reducing tech debt, improving code health, upgrading dependencies, restructuring code, or performing safe refactoring. SDLC phase: Maintenance & Refactoring.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "format": "vscode-copilot-custom-agent",
+      "url": "https://danielpaulwilkinson.github.io/agents/refactorer/refactorer.agent.md",
+      "agent_md": "https://danielpaulwilkinson.github.io/agents/refactorer/AGENT.md",
+      "text_url": "https://danielpaulwilkinson.github.io/agents/refactorer/AGENT.txt",
+      "page": "https://danielpaulwilkinson.github.io/agents/refactorer/",
+      "install_path": ".github/agents/refactorer.agent.md",
+      "tools": [
+        "read",
+        "edit",
+        "search",
+        "execute"
+      ],
+      "model": null,
+      "variants": [
+        {
+          "format": "claude-code-subagent",
+          "url": "https://danielpaulwilkinson.github.io/agents/refactorer/refactorer.claude.md",
+          "install_path": ".claude/agents/refactorer.md",
+          "tools": [
+            "Read",
+            "Edit",
+            "Write",
+            "Grep",
+            "Glob",
+            "Bash"
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "best-practices",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "blast-radius",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "code-simplification",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "documentation-and-adrs",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "incremental-implementation",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "review",
+          "url": "https://danielpaulwilkinson.github.io/skills/review/SKILL.md",
+          "status": "in library"
+        },
+        {
+          "name": "test-writing",
+          "url": null,
+          "status": "not yet in library"
+        }
+      ],
+      "mentions_agents": [],
+      "handoffs": []
+    },
+    {
+      "name": "requirements-planner",
+      "title": "Requirements Planner",
+      "description": "Use when: gathering requirements, writing user stories, defining acceptance criteria, breaking down epics, planning sprints, or refining product specs. SDLC phase: Requirements & Planning.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "format": "vscode-copilot-custom-agent",
+      "url": "https://danielpaulwilkinson.github.io/agents/requirements-planner/requirements-planner.agent.md",
+      "agent_md": "https://danielpaulwilkinson.github.io/agents/requirements-planner/AGENT.md",
+      "text_url": "https://danielpaulwilkinson.github.io/agents/requirements-planner/AGENT.txt",
+      "page": "https://danielpaulwilkinson.github.io/agents/requirements-planner/",
+      "install_path": ".github/agents/requirements-planner.agent.md",
+      "tools": [
+        "read",
+        "search",
+        "web"
+      ],
+      "model": null,
+      "variants": [
+        {
+          "format": "claude-code-subagent",
+          "url": "https://danielpaulwilkinson.github.io/agents/requirements-planner/requirements-planner.claude.md",
+          "install_path": ".claude/agents/requirements-planner.md",
+          "tools": [
+            "Read",
+            "Grep",
+            "Glob",
+            "WebFetch",
+            "WebSearch"
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "goal-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "risk-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "unslop",
+          "url": null,
+          "status": "not yet in library"
+        }
+      ],
+      "mentions_agents": [],
+      "handoffs": []
+    },
+    {
+      "name": "security-auditor",
+      "title": "Security Auditor",
+      "description": "Use when: performing a dedicated security audit, reviewing for OWASP vulnerabilities, assessing dependency risks, threat modelling, or verifying security posture before a release. SDLC phase: Security Review.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "format": "vscode-copilot-custom-agent",
+      "url": "https://danielpaulwilkinson.github.io/agents/security-auditor/security-auditor.agent.md",
+      "agent_md": "https://danielpaulwilkinson.github.io/agents/security-auditor/AGENT.md",
+      "text_url": "https://danielpaulwilkinson.github.io/agents/security-auditor/AGENT.txt",
+      "page": "https://danielpaulwilkinson.github.io/agents/security-auditor/",
+      "install_path": ".github/agents/security-auditor.agent.md",
+      "tools": [
+        "read",
+        "search",
+        "execute",
+        "web"
+      ],
+      "model": null,
+      "variants": [
+        {
+          "format": "claude-code-subagent",
+          "url": "https://danielpaulwilkinson.github.io/agents/security-auditor/security-auditor.claude.md",
+          "install_path": ".claude/agents/security-auditor.md",
+          "tools": [
+            "Read",
+            "Grep",
+            "Glob",
+            "Bash",
+            "WebFetch",
+            "WebSearch"
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "best-practices",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "goal-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "investigation",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "risk-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "security-and-hardening",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "unslop",
+          "url": null,
+          "status": "not yet in library"
+        }
+      ],
+      "mentions_agents": [
+        "code-reviewer"
+      ],
+      "handoffs": []
+    },
+    {
       "name": "technical-investigator",
       "title": "Technical Investigator",
       "description": "Use when: investigating complex bugs, analysing architecture problems, diagnosing systemic issues, or researching solution options for a non-trivial technical problem. Read-only — presents findings and options, hands off implementation. SDLC phase: Analysis & Design.",
@@ -106,9 +826,9 @@
         {
           "label": "Implement Selected Solution",
           "agent": "implementer",
-          "in_library": false,
-          "page": null,
-          "status": "not yet in library"
+          "in_library": true,
+          "page": "https://danielpaulwilkinson.github.io/agents/implementer/",
+          "status": null
         }
       ]
     }

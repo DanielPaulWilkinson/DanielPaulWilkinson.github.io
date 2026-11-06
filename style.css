@@ -3,12 +3,12 @@
 :root{--navy:#1F3A5F;--deep:#142840;--stone:#E6E4DF;--ink:#1B2230;--slate:#4E5866;--brass:#C9A24A;--paper:#FFFFFF;
 --serif:"Source Serif",Charter,Georgia,serif;--sans:"Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{margin:0;font:1.0625rem/1.6 var(--sans);color:var(--ink);background:var(--paper)}
 img{max-width:100%;height:auto}
 a{color:var(--navy);text-underline-offset:3px}
 a:focus-visible{outline:3px solid var(--brass);outline-offset:3px;border-radius:2px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 24px}
 .skip{position:absolute;left:12px;top:-60px;background:#fff;color:var(--navy);padding:8px 14px;z-index:9}
 .skip:focus{top:12px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -137,7 +137,7 @@ h2{font-size:1.75rem}
 .copied{margin:6px 0 0;font-size:.92rem;min-height:1.2em}
 .rawlinks{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:baseline;font-weight:600;margin:0 0 8px}
 .ver{font-weight:400;font-size:.9rem;color:var(--slate)}
-.skill-body{border-top:2px solid var(--navy);margin-top:24px}
+.skill-body{border-top:2px solid var(--navy);margin-top:24px;overflow-x:auto;max-width:100%}
 .skill-body h4{font-size:1.1rem;margin:24px 0 6px;color:var(--navy)}
 .skill-body li{margin-bottom:4px}
 .skill-body hr{border:0;border-top:1px solid #CFD5DD;margin:32px 0}
@@ -159,6 +159,6 @@ h2{font-size:1.75rem}
 .skills h4 a{text-decoration-color:var(--brass)}
 .skills p{margin:0 0 6px}
 .skill-links{display:flex;gap:20px;font-weight:600;font-size:.95rem}
-.project pre{background:#eef2f7;color:var(--ink);padding:14px 16px;border-radius:6px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+.project pre{background:#eef2f7;color:var(--ink);padding:14px 16px;border-radius:6px;overflow-x:auto;max-width:100%;font-size:.88rem;line-height:1.5}
 .project pre code{background:none;padding:0;color:inherit}
 .project pre:focus-visible{outline:3px solid var(--brass)}
