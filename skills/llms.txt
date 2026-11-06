@@ -10,3 +10,9 @@
 - [Frontend design](https://danielpaulwilkinson.github.io/skills/frontend-design/SKILL.md): Use when building or restyling a web page or UI, to choose a distinctive visual direction instead of templated defaults.
 - [Accessibility](https://danielpaulwilkinson.github.io/skills/accessibility/SKILL.md): WCAG 2.1/2.2 AA audit methodology using the POUR framework: Perceivable, Operable, Understandable, Robust. Covers semantic HTML, ARIA patterns, keyboard navigation, focus management, colour contrast, screen reader testing, and dynamic content.
 - [Code review](https://danielpaulwilkinson.github.io/skills/review/SKILL.md): Reviews code changes for correctness, security, performance, maintainability, and design quality across five structured passes. Use from any agent that produces or modifies code and needs a quality check before completing.
+
+## Agents
+
+Index: https://danielpaulwilkinson.github.io/agents/index.json
+
+- [Technical Investigator](https://danielpaulwilkinson.github.io/agents/technical-investigator/technical-investigator.agent.md): Use when: investigating complex bugs, analysing architecture problems, diagnosing systemic issues, or researching solution options for a non-trivial technical problem. Read-only — presents findings and options, hands off implementation. SDLC phase: Analysis & Design.

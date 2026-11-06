@@ -1,0 +1,116 @@
+{
+  "schema": "agent-index",
+  "schema_version": 1,
+  "name": "Dan Wilkinson's agent library",
+  "updated": "2026-11-06",
+  "base": "https://danielpaulwilkinson.github.io/agents/",
+  "how_to_install": "Download url to install_path in your repository (VS Code / GitHub Copilot custom agent). For Claude Code, download variants[0].url to variants[0].install_path. No model is pinned; add a model field if you want one.",
+  "agents": [
+    {
+      "name": "technical-investigator",
+      "title": "Technical Investigator",
+      "description": "Use when: investigating complex bugs, analysing architecture problems, diagnosing systemic issues, or researching solution options for a non-trivial technical problem. Read-only — presents findings and options, hands off implementation. SDLC phase: Analysis & Design.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "format": "vscode-copilot-custom-agent",
+      "url": "https://danielpaulwilkinson.github.io/agents/technical-investigator/technical-investigator.agent.md",
+      "agent_md": "https://danielpaulwilkinson.github.io/agents/technical-investigator/AGENT.md",
+      "text_url": "https://danielpaulwilkinson.github.io/agents/technical-investigator/AGENT.txt",
+      "page": "https://danielpaulwilkinson.github.io/agents/technical-investigator/",
+      "install_path": ".github/agents/technical-investigator.agent.md",
+      "tools": [
+        "read",
+        "search",
+        "execute",
+        "web",
+        "agent"
+      ],
+      "model": null,
+      "variants": [
+        {
+          "format": "claude-code-subagent",
+          "url": "https://danielpaulwilkinson.github.io/agents/technical-investigator/technical-investigator.claude.md",
+          "install_path": ".claude/agents/technical-investigator.md",
+          "tools": [
+            "Read",
+            "Grep",
+            "Glob",
+            "Bash",
+            "WebFetch",
+            "WebSearch",
+            "Agent"
+          ]
+        }
+      ],
+      "skills": [
+        {
+          "name": "best-practices",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "challenge",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "decision-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "diagnose",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "goal-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "investigation",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "option-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "recommendation",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "risk-analysis",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "solution-discovery",
+          "url": null,
+          "status": "not yet in library"
+        },
+        {
+          "name": "unslop",
+          "url": null,
+          "status": "not yet in library"
+        }
+      ],
+      "mentions_agents": [
+        "debugger"
+      ],
+      "handoffs": [
+        {
+          "label": "Implement Selected Solution",
+          "agent": "implementer",
+          "in_library": false,
+          "page": null,
+          "status": "not yet in library"
+        }
+      ]
+    }
+  ]
+}

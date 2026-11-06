@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Agent library for VS Code and Claude Code | Dan Wilkinson</title>
+<meta name="description" content="Ready-made AI agent definitions you can install into a repository with one command: VS Code / GitHub Copilot custom agents, with Claude Code variants.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/agents/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../">Dan Wilkinson</a><ul><li><a href="../#work">Work</a></li><li><a href="../skills/">Skills</a></li><li><a href="../agents/">Agents</a></li><li><a href="../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skills-home"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../">Home</a></li><li aria-current="page">Agents</li></ol></nav>
+<h1>Agent library</h1>
+<p class="lead">Ready-made agent definitions for software work. Each is a VS Code / GitHub Copilot custom agent file, with a converted Claude Code subagent alongside. Many follow steps from the <a href="../skills/">skill library</a>.</p>
+<section class="howto" aria-labelledby="inst-h"><h2 id="inst-h">How to install</h2>
+<ol class="steps">
+<li><strong>VS Code / GitHub Copilot:</strong> save the file as <code>.github/agents/&lt;name&gt;.agent.md</code> in your repo, then pick the agent in Chat.</li>
+<li><strong>Claude Code:</strong> save the <code>.claude.md</code> variant as <code>.claude/agents/&lt;name&gt;.md</code> (or in <code>~/.claude/agents/</code> for every project).</li>
+<li><strong>Programs:</strong> read <a href="index.json">index.json</a>; each agent lists its <code>url</code>, <code>install_path</code>, Claude Code variant, skills and handoffs.</li>
+</ol>
+<p>Install every Copilot agent at once (needs <code>jq</code>; run <code>mkdir -p .github/agents</code> first):</p>
+<pre tabindex="0" class="cmd"><code>for a in $(curl -fsSL https://danielpaulwilkinson.github.io/agents/index.json | jq -r &#x27;.agents[].name&#x27;); do curl -fsSL https://danielpaulwilkinson.github.io/agents/$a/$a.agent.md -o .github/agents/$a.agent.md; done</code></pre>
+<button class="btn copy" type="button" data-copy="for a in $(curl -fsSL https://danielpaulwilkinson.github.io/agents/index.json | jq -r &#x27;.agents[].name&#x27;); do curl -fsSL https://danielpaulwilkinson.github.io/agents/$a/$a.agent.md -o .github/agents/$a.agent.md; done" hidden>Copy command</button><p class="copied" role="status" aria-live="polite"></p>
+<p class="small-print">No model is pinned, so each agent uses your default. Read an agent before installing it: they can run tools in your repo. Also listed in <a href="../skills/llms.txt">llms.txt</a>.</p>
+</section>
+<h2>The agents</h2>
+<ul class="skills"><li><h3><a href="technical-investigator/">Technical Investigator</a></h3><p>Use when: investigating complex bugs, analysing architecture problems, diagnosing systemic issues, or researching solution options for a non-trivial technical problem. Read-only — presents findings and options, hands off implementation. SDLC phase: Analysis &amp; Design.</p><p class="skill-links"><a href="technical-investigator/technical-investigator.agent.md" aria-label=".agent.md for Technical Investigator">.agent.md</a> <a href="technical-investigator/technical-investigator.claude.md" aria-label="Claude Code file for Technical Investigator">Claude Code file</a> <a href="technical-investigator/">Read it</a></p></li></ul>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>
