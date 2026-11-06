@@ -207,3 +207,13 @@ html[data-theme=dark] .card:hover{box-shadow:0 0 0 2px var(--brass)}
 .mini-install code{font-family:ui-monospace,Consolas,monospace;font-size:.78rem;line-height:1.4;overflow-wrap:anywhere;flex:1 1 12rem;color:var(--ink)}
 .mini-install .btn.copy{flex:0 0 auto;padding:6px 12px;font-size:.85rem;background:var(--deep);color:var(--on-navy)}
 .mini-install .copied{flex:1 0 100%;margin:0;font-size:.85rem;min-height:1.1em}
+
+.chooser-callout{margin:0 0 28px;padding:14px 16px;border-left:6px solid var(--brass);background:var(--stone);border-radius:0 6px 6px 0}
+.chooser-callout a{font-weight:600}
+table.chooser{width:100%;border-collapse:collapse;margin:16px 0 28px;font-size:.98rem}
+table.chooser th,table.chooser td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+table.chooser thead th{border-bottom:2px solid var(--navy);font-family:var(--serif)}
+table.chooser th[scope=row]{font-weight:600;color:var(--ink);width:62%}
+.chooser-notes{margin:0 0 20px;padding-left:1.2rem}
+.chooser-notes li{margin-bottom:10px}
+.chooser-note{margin:0 0 24px;color:var(--slate)}

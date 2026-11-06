@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Which one do I use? | Agent library | Dan Wilkinson</title>
+<meta name="description" content="Task-first guide to picking a starting agent from the library.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/agents/choose/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../theme-boot.js"></script>
+<script src="../../theme.js" defer></script>
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../agents/">Agents</a></li><li><a href="../../#contact">Contact</a></li></ul><button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Use dark theme">Dark</button></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Agents</a></li><li aria-current="page">Which one do I use?</li></ol></nav>
+<h1>Which one do I use?</h1>
+<p class="lead">Start from what you are doing. Each line points to one starting agent. Descriptions below come from the agents themselves.</p>
+<table class="chooser">
+<caption class="sr">Task to starting agent</caption>
+<thead><tr><th scope="col">I am...</th><th scope="col">Start with</th></tr></thead>
+<tbody>
+<tr><th scope="row">I&#x27;m gathering requirements or writing user stories</th><td><a href="../requirements-planner/">Requirements Planner</a></td></tr><tr><th scope="row">I&#x27;m planning a feature or refining a product spec</th><td><a href="../requirements-planner/">Requirements Planner</a></td></tr><tr><th scope="row">I&#x27;m designing a system, API, data model or ADR</th><td><a href="../architect/">Architect</a></td></tr><tr><th scope="row">I&#x27;m choosing an approach, technology or migration path for a goal</th><td><a href="../pathfinder/">Pathfinder</a></td></tr><tr><th scope="row">I&#x27;m investigating a complex or systemic problem</th><td><a href="../technical-investigator/">Technical Investigator</a></td></tr><tr><th scope="row">I&#x27;m fixing a localised bug with a clear symptom</th><td><a href="../debugger/">Debugger</a></td></tr><tr><th scope="row">I&#x27;m building a feature or writing production code</th><td><a href="../implementer/">Implementer</a></td></tr><tr><th scope="row">I&#x27;m reviewing a change or pull request</th><td><a href="../code-reviewer/">Code Reviewer</a></td></tr><tr><th scope="row">I&#x27;m doing a dedicated security audit</th><td><a href="../security-auditor/">Security Auditor</a></td></tr><tr><th scope="row">I&#x27;m writing tests or fixing flaky ones</th><td><a href="../qa-tester/">QA Tester</a></td></tr><tr><th scope="row">I&#x27;m investigating performance or Core Web Vitals</th><td><a href="../performance-analyst/">Performance Analyst</a></td></tr><tr><th scope="row">I&#x27;m refactoring or reducing tech debt</th><td><a href="../refactorer/">Refactorer</a></td></tr><tr><th scope="row">I&#x27;m writing docs, a README, changelog or comments</th><td><a href="../documenter/">Documenter</a></td></tr>
+</tbody>
+</table>
+<h2>When three agents look similar</h2>
+<ul class="chooser-notes">
+<li><strong>Architect vs Technical Investigator.</strong> Architect produces design artefacts (diagrams, API contracts, data models, ADRs) and evaluates technology choices; it never writes or edits application code. Technical Investigator diagnoses complex or systemic problems with evidence, maps options, and recommends a path; it is read-only and hands implementation to Implementer.</li>
+<li><strong>Pathfinder vs Technical Investigator.</strong> Pathfinder decides the best practical path for achieving an engineering goal (architecture, technology selection, implementation strategy, migrations, process, tooling). Technical Investigator investigates a non-trivial technical problem that already exists — complex bugs, architectural issues, intermittent failures — and researches solution options for that problem.</li>
+</ul>
+<p class="chooser-note">Skills can also be used standalone: open the <a href="../../skills/">skill library</a>, fetch a single <code>SKILL.md</code>, and follow it without installing an agent.</p>
+<p class="back"><a href="../">Back to all agents</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>
