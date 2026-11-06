@@ -10,7 +10,7 @@ html:not([data-theme=light]):not([data-theme=dark]){--navy:#9EB6D9;--deep:#0B122
 --card:#162033;--line:#2A384C;--line-strong:#3A4B63;--muted-line:#243246;--code-bg:#1A2433;--hero-text:#D5DEE9;--on-navy:#E8EEF6;--chip:#162033;--chip-border:#3A4B63;--chip-on:#E0B84E;--chip-on-text:#0F1724;--shadow-card:#162033;--header:#0B1220}
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:clip}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{margin:0;font:1.0625rem/1.6 var(--sans);color:var(--ink);background:var(--paper)}
 img{max-width:100%;height:auto}
 a{color:var(--navy);text-underline-offset:3px}
