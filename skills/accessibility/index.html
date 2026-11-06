@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Accessibility skill | Dan Wilkinson</title>
+<meta name="description" content="WCAG 2.1/2.2 AA audit methodology using the POUR framework: Perceivable, Operable, Understandable, Robust. Covers semantic HTML, ARIA patterns, keyboard navigation, focus management, colour contrast, screen reader testing, and dynamic content.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/accessibility/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Skills</a></li><li aria-current="page">Accessibility</li></ol></nav>
+<h1>Accessibility</h1>
+<p class="lead">WCAG 2.1/2.2 AA audit methodology using the POUR framework: Perceivable, Operable, Understandable, Robust. Covers semantic HTML, ARIA patterns, keyboard navigation, focus management, colour contrast, screen reader testing, and dynamic content.</p>
+<div class="fetch"><p class="fetch-label" id="l-173369">Point your agent at this file</p><p class="fetch-url"><code>https://danielpaulwilkinson.github.io/skills/accessibility/SKILL.md</code></p><button class="btn copy" type="button" data-copy="https://danielpaulwilkinson.github.io/skills/accessibility/SKILL.md" hidden>Copy URL</button><p class="copied" role="status" aria-live="polite"></p></div>
+<p class="rawlinks"><a href="SKILL.md">Raw SKILL.md</a> <a href="SKILL.txt">Plain text copy</a> <span class="ver">Version 1.0.0, updated 6 November 2026</span></p>
+<article class="skill-body">
+<p>Accessibility is not a feature — it is a quality dimension. WCAG 2.1 AA is the legal minimum in most jurisdictions and the practical baseline for any user-facing product.</p>
+<h2>POUR Framework</h2>
+<p>Every WCAG criterion falls under one of four principles. Structure audits by walking through each.</p>
+<ul>
+<li><strong>Perceivable</strong> — users can receive all information (visual, audio, text equivalents)</li>
+<li><strong>Operable</strong> — users can operate all functionality (keyboard, no seizures, enough time)</li>
+<li><strong>Understandable</strong> — content and UI are predictable and helpful</li>
+<li><strong>Robust</strong> — works with assistive technology today and in the future</li>
+</ul>
+<hr />
+<h2>Perceivable</h2>
+<h3>Text Alternatives (WCAG 1.1)</h3>
+<ul>
+<li>Every <code>&lt;img&gt;</code> has <code>alt</code> text that describes its purpose in context</li>
+<li>Decorative images use <code>alt=""</code> (empty string) — do not omit the <code>alt</code> attribute</li>
+<li>Icons that convey meaning have an accessible name: <code>aria-label</code> on the icon element, or adjacent visually-hidden text</li>
+<li>Complex images (charts, diagrams) have a long description or an equivalent data table adjacent to them</li>
+</ul>
+<h3>Colour Contrast (WCAG 1.4.3, 1.4.11)</h3>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Text type</th>
+<th>Minimum ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal text (&lt; 18pt, or &lt; 14pt bold)</td>
+<td>4.5:1</td>
+</tr>
+<tr>
+<td>Large text (≥ 18pt, or ≥ 14pt bold)</td>
+<td>3:1</td>
+</tr>
+<tr>
+<td>UI components and graphical objects</td>
+<td>3:1</td>
+</tr>
+<tr>
+<td>Decorative or disabled elements</td>
+<td>No requirement</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tools: Chrome DevTools colour picker shows the contrast ratio inline; the axe DevTools extension flags violations automatically.</p>
+<h3>Information Not Colour-Dependent (WCAG 1.4.1)</h3>
+<ul>
+<li>Status (error, warning, success) communicated via colour must also use an icon, text, or pattern</li>
+<li>Form validation errors cannot rely on red colour alone — include an error icon and text message</li>
+</ul>
+<h3>Text Resize (WCAG 1.4.4)</h3>
+<ul>
+<li>Page must be readable and functional when zoomed to 200% without horizontal scrolling</li>
+<li>Avoid fixed pixel heights on text containers — use <code>min-height</code> or let the container expand</li>
+</ul>
+<hr />
+<h2>Operable</h2>
+<h3>Keyboard Navigation (WCAG 2.1)</h3>
+<p>Every interactive element must be reachable and operable by keyboard alone:</p>
+<ul>
+<li>Tab order matches the visual reading order</li>
+<li>All hover-triggered content (tooltips, dropdowns) is also triggerable by keyboard focus</li>
+<li>Keyboard shortcuts do not conflict with browser or OS shortcuts</li>
+</ul>
+<p><strong>Focus visibility (WCAG 2.4.7)</strong>: the focused element must have a visible focus indicator. Never use <code>outline: none</code> without providing an alternative focus style that meets 3:1 contrast against adjacent colours.</p>
+<p><strong><code>tabindex</code> rules</strong>:</p>
+<ul>
+<li><code>tabindex="0"</code> — adds custom element to natural tab order</li>
+<li><code>tabindex="-1"</code> — focusable by script, not by Tab key (use for focus management)</li>
+<li><code>tabindex &gt; 0</code> — never use; creates unpredictable tab order</li>
+</ul>
+<h3>Focus Management</h3>
+<ul>
+<li>When content appears (modal opens, drawer expands), move focus to the first interactive element or the container heading</li>
+<li>When content is removed (modal closes), return focus to the element that triggered it</li>
+<li>After a route change in a SPA, move focus to the page heading or a skip link</li>
+</ul>
+<h3>Modals and Dialogs (WCAG 2.1)</h3>
+<ul>
+<li>Focus trapped inside the modal while it is open (Tab and Shift+Tab cycle within)</li>
+<li><code>Escape</code> key closes the modal</li>
+<li>Focus returns to the trigger element when the modal closes</li>
+<li>Modal element has: <code>role="dialog"</code>, <code>aria-modal="true"</code>, <code>aria-labelledby</code> pointing to the dialog title</li>
+</ul>
+<h3>No Keyboard Traps (WCAG 2.1.2)</h3>
+<p>Users must always be able to Tab away from any component. Never trap focus permanently.</p>
+<h3>Timing (WCAG 2.2)</h3>
+<ul>
+<li>Users can extend, pause, or disable time limits</li>
+<li>Auto-updating content can be paused or stopped</li>
+</ul>
+<h3>No Seizure Triggers (WCAG 2.3)</h3>
+<ul>
+<li>Nothing flashes more than 3 times per second</li>
+</ul>
+<hr />
+<h2>Understandable</h2>
+<h3>Language (WCAG 3.1)</h3>
+<ul>
+<li><code>&lt;html lang="en"&gt;</code> (or appropriate IETF BCP 47 code) on every page</li>
+<li>When language changes within content, mark the element: <code>&lt;span lang="fr"&gt;Bonjour&lt;/span&gt;</code></li>
+</ul>
+<h3>Forms (WCAG 1.3, 3.3)</h3>
+<ul>
+<li>Every input has a programmatically associated <code>&lt;label&gt;</code> via <code>for</code>/<code>id</code>, or <code>aria-labelledby</code></li>
+<li>Placeholder text is not a substitute for a label — it disappears on input and has poor contrast</li>
+<li>Error messages identify the specific field and describe what went wrong and how to fix it ("Enter a valid email address" not "Invalid input")</li>
+<li>Required fields are marked with more than colour: include "(required)" text, an asterisk with a legend, or <code>aria-required="true"</code></li>
+<li>Personal data fields have appropriate <code>autocomplete</code> attributes</li>
+</ul>
+<h3>Predictability (WCAG 3.2)</h3>
+<ul>
+<li>Navigation is consistent across pages</li>
+<li>Components behave consistently — a button that submits a form here submits a form everywhere</li>
+<li>No unexpected context changes on focus or input: no auto-submit, no auto-navigation on select</li>
+</ul>
+<hr />
+<h2>Robust</h2>
+<h3>Semantic HTML First</h3>
+<p>Prefer semantic HTML elements over ARIA. Semantic elements carry their roles implicitly and have better AT support.</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Use</th>
+<th>Not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;button&gt;</code></td>
+<td><code>&lt;div role="button" onClick&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;nav&gt;</code></td>
+<td><code>&lt;div role="navigation"&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;main&gt;</code></td>
+<td><code>&lt;div id="main"&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;ul&gt;</code> / <code>&lt;ol&gt;</code> with <code>&lt;li&gt;</code></td>
+<td>Divs with list-style</td>
+</tr>
+<tr>
+<td><code>&lt;table&gt;</code> with <code>&lt;th&gt;</code> headers</td>
+<td>Grid of divs</td>
+</tr>
+</tbody>
+</table></div>
+<h3>ARIA — Only When Semantic HTML Is Insufficient</h3>
+<ul>
+<li>Do not add <code>role</code> to elements that already have correct native semantics</li>
+<li><code>aria-label</code> overrides the accessible name — use it only when there is no visible label to reference</li>
+<li>Use <code>aria-labelledby</code> to point to an existing visible element instead of duplicating text</li>
+</ul>
+<p><strong>Common patterns:</strong>
+| Pattern | ARIA |
+|---|---|
+| Toggle button (accordion, dropdown) | <code>aria-expanded="true/false"</code> |
+| Active navigation link | <code>aria-current="page"</code> |
+| Selected tab/option | <code>aria-selected="true/false"</code> |
+| Non-urgent status update | <code>aria-live="polite"</code> on the container |
+| Urgent error announcement | <code>aria-live="assertive"</code> (use sparingly — interrupts the user) |
+| Loading region | <code>aria-busy="true"</code> while loading |
+| Icon-only button | <code>aria-label="Close"</code> |</p>
+<p><strong>Name, Role, Value</strong>: every interactive element must have an accessible name, the correct role (from native element or explicit ARIA), and correct state communicated via ARIA attributes.</p>
+<hr />
+<h2>Testing Approach</h2>
+<h3>Automated (catches ~30–40% of issues)</h3>
+<ul>
+<li><strong>axe-core</strong> / Axe DevTools browser extension: run on each page and modal state</li>
+<li>Lighthouse accessibility audit</li>
+<li>An accessibility lint plugin for your framework (for example <code>eslint-plugin-jsx-a11y</code> or <code>eslint-plugin-vuejs-accessibility</code>) in CI — catches issues at lint time</li>
+</ul>
+<h3>Manual keyboard test</h3>
+<ol>
+<li>Unplug the mouse</li>
+<li>Tab through the full page — every interactive element must be reachable</li>
+<li>Verify a visible focus indicator appears at every step</li>
+<li>Operate every interactive widget: open dropdown, close modal, select item, submit form</li>
+<li>Verify <code>Escape</code> closes all overlays</li>
+<li>Verify focus returns to the trigger after closing modals</li>
+</ol>
+<h3>Screen reader test</h3>
+<ul>
+<li><strong>macOS</strong>: VoiceOver — <code>Cmd+F5</code> to toggle; <code>Ctrl+Option+Right</code> to navigate</li>
+<li><strong>Windows</strong>: NVDA (free download)</li>
+<li>Navigate with the virtual cursor (arrow keys)</li>
+<li>Verify content reads in a logical order</li>
+<li>Verify dynamic changes (loading complete, error appeared) are announced</li>
+</ul>
+<h3>Zoom test</h3>
+<ul>
+<li>Zoom browser to 200% and 400%</li>
+<li>Verify no content is clipped, overlapping, or requires horizontal scrolling at 200%</li>
+</ul>
+<hr />
+<h2>Common Violations</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>WCAG</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Missing image <code>alt</code></td>
+<td>1.1.1</td>
+<td>Descriptive alt; <code>alt=""</code> for decorative</td>
+</tr>
+<tr>
+<td>Colour-only validation</td>
+<td>1.4.1</td>
+<td>Add icon and text alongside colour</td>
+</tr>
+<tr>
+<td>Low contrast text</td>
+<td>1.4.3</td>
+<td>Adjust colours to meet ratio</td>
+</tr>
+<tr>
+<td>Missing form labels</td>
+<td>1.3.1</td>
+<td>Associate <code>&lt;label&gt;</code> or use <code>aria-labelledby</code></td>
+</tr>
+<tr>
+<td><code>outline: none</code> without alternative</td>
+<td>2.4.7</td>
+<td>Restore or replace focus indicator</td>
+</tr>
+<tr>
+<td>Focus not managed on modal</td>
+<td>2.1.1</td>
+<td>Trap focus, return on close</td>
+</tr>
+<tr>
+<td>No skip link</td>
+<td>2.4.1</td>
+<td>Add "Skip to main content" link as first focusable element</td>
+</tr>
+<tr>
+<td><code>&lt;html&gt;</code> missing <code>lang</code></td>
+<td>3.1.1</td>
+<td>Set <code>&lt;html lang="en"&gt;</code></td>
+</tr>
+<tr>
+<td>Icon-only button with no name</td>
+<td>4.1.2</td>
+<td>Add <code>aria-label</code></td>
+</tr>
+<tr>
+<td><code>aria-live</code> on wrong container</td>
+<td>4.1.3</td>
+<td>Put <code>aria-live</code> on the container that receives updates, not the trigger</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+<p class="back"><a href="../">Back to all skills</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Dan Wilkinson
+
+> Software engineer in North Yorkshire building simple websites and small apps for churches, charities and small businesses.
+
+## Skill library for AI agents
+
+- [Skill index (JSON)](https://danielpaulwilkinson.github.io/skills/index.json): every skill with a one-line "use it when" and its SKILL.md URL.
+- [Skills llms.txt](https://danielpaulwilkinson.github.io/skills/llms.txt)

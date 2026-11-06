@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Skill library for AI agents | Dan Wilkinson</title>
+<meta name="description" content="Free, plain-English skills any AI agent can fetch by URL and follow: weekly admin triage, interviewing, devil&#x27;s advocate, frontend design, accessibility and code review.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../">Dan Wilkinson</a><ul><li><a href="../#work">Work</a></li><li><a href="../skills/">Skills</a></li><li><a href="../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skills-home"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../">Home</a></li><li aria-current="page">Skills</li></ol></nav>
+<h1>Skill library</h1>
+<p class="lead">Short, plain-English instructions that any AI agent can fetch by URL and follow. Each one is a single Markdown file. Free to use; credits are inside each file.</p>
+<section class="howto" aria-labelledby="howto-h"><h2 id="howto-h">How to use these with your agent</h2>
+<p>Paste this into your agent's chat, or into its standing instructions:</p>
+<blockquote class="prompt"><p>Fetch https://danielpaulwilkinson.github.io/skills/index.json, pick the skill that fits this task, fetch its SKILL.md and follow it.</p></blockquote>
+<button class="btn copy" type="button" data-copy="Fetch https://danielpaulwilkinson.github.io/skills/index.json, pick the skill that fits this task, fetch its SKILL.md and follow it." hidden>Copy instruction</button><p class="copied" role="status" aria-live="polite"></p>
+<ol class="steps"><li>The agent reads <a href="index.json">index.json</a>, a list of every skill with a one-line "use it when".</li><li>It fetches the matching <code>SKILL.md</code>. If its tools won't read <code>.md</code>, each skill has a <code>SKILL.txt</code> copy.</li><li>It follows the steps. You stay in charge: none of these skills send, buy or publish anything without your yes.</li></ol>
+<p class="small-print">Also listed in <a href="llms.txt">llms.txt</a> for agents that look there first.</p>
+</section>
+<h2>The skills</h2>
+<h3 class="shelf">Everyday</h3><p class="shelf-note">For life admin and planning.</p><ul class="skills"><li><h4><a href="weekly-admin-triage/">Weekly admin triage</a></h4><p>Use once a week, or when someone says their admin is piling up, to sort every open admin item into do now, schedule, delegate or ignore. Written for people juggling family, work and church or community commitments. Keep it to about 20 minutes.</p><p class="skill-links"><a href="weekly-admin-triage/SKILL.md" aria-label="Raw SKILL.md for Weekly admin triage">SKILL.md</a> <a href="weekly-admin-triage/">Read it</a></p></li></ul><h3 class="shelf">Thinking</h3><p class="shelf-note">For deciding what to build, or whether to.</p><ul class="skills"><li><h4><a href="interview-me/">Interview me</a></h4><p>Use before planning or building a new project, product, system or big decision when the ask is vague or underspecified, or when the user says &quot;interview me&quot; or &quot;grill me&quot;. Not for clear tasks, quick questions or scheduled/routine runs.</p><p class="skill-links"><a href="interview-me/SKILL.md" aria-label="Raw SKILL.md for Interview me">SKILL.md</a> <a href="interview-me/">Read it</a></p></li><li><h4><a href="the-fool/">The Fool</a></h4><p>Use when the user asks to challenge, stress-test, poke holes in or play devil&#x27;s advocate on a plan, idea or decision (&quot;what could go wrong?&quot;, &quot;argue the other side&quot;), or before committing time or money to a big plan.</p><p class="skill-links"><a href="the-fool/SKILL.md" aria-label="Raw SKILL.md for The Fool">SKILL.md</a> <a href="the-fool/">Read it</a></p></li></ul><h3 class="shelf">Building</h3><p class="shelf-note">For making and checking websites and code.</p><ul class="skills"><li><h4><a href="frontend-design/">Frontend design</a></h4><p>Use when building or restyling a web page or UI, to choose a distinctive visual direction instead of templated defaults.</p><p class="skill-links"><a href="frontend-design/SKILL.md" aria-label="Raw SKILL.md for Frontend design">SKILL.md</a> <a href="frontend-design/">Read it</a></p></li><li><h4><a href="accessibility/">Accessibility</a></h4><p>WCAG 2.1/2.2 AA audit methodology using the POUR framework: Perceivable, Operable, Understandable, Robust. Covers semantic HTML, ARIA patterns, keyboard navigation, focus management, colour contrast, screen reader testing, and dynamic content.</p><p class="skill-links"><a href="accessibility/SKILL.md" aria-label="Raw SKILL.md for Accessibility">SKILL.md</a> <a href="accessibility/">Read it</a></p></li><li><h4><a href="review/">Code review</a></h4><p>Reviews code changes for correctness, security, performance, maintainability, and design quality across five structured passes. Use from any agent that produces or modifies code and needs a quality check before completing.</p><p class="skill-links"><a href="review/SKILL.md" aria-label="Raw SKILL.md for Code review">SKILL.md</a> <a href="review/">Read it</a></p></li></ul>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>

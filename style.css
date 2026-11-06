@@ -119,7 +119,7 @@ section{padding:56px 0}
 .row{flex-wrap:wrap;gap:2px 10px}.leader{display:none}.price{font-size:1.4rem;width:100%}
 h2{font-size:1.75rem}
 }
-@media(max-width:400px){.top nav{flex-direction:column;align-items:flex-start;padding:12px 0;gap:6px}}
+@media(max-width:400px){.top nav{flex-direction:column;align-items:flex-start;padding:12px 24px;gap:6px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 .project code{font-family:ui-monospace,Consolas,monospace;font-size:.92em;background:#eef2f7;color:#1F3A5F;padding:1px 5px;border-radius:4px}
 .decks{list-style:none;padding:0;margin:1rem 0 1.5rem}
@@ -127,3 +127,35 @@ h2{font-size:1.75rem}
 .decks h3{margin:0 0 .25rem}
 .decks p{margin:.2rem 0}
 .deck-links a{display:inline-block;margin:.35rem 1.25rem .1rem 0;padding:.3rem 0;font-weight:600}
+/* Skill library */
+.fetch{margin:0 0 20px;padding:18px 20px;background:var(--navy);color:#fff;border-radius:6px;border-left:6px solid var(--brass)}
+.fetch-label{margin:0 0 6px;font-weight:600;color:#E9EEF4}
+.fetch-url{margin:0 0 12px}.fetch-url code{background:none;color:#fff;padding:0;font-size:.95rem;overflow-wrap:anywhere;font-family:ui-monospace,Consolas,monospace}
+.btn.copy{border:0;font:inherit;font-weight:600;cursor:pointer}
+.skills-home .btn.copy{background:var(--navy);color:#fff}.skills-home .btn.copy:hover{background:var(--deep)}
+.btn.copy:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.copied{margin:6px 0 0;font-size:.92rem;min-height:1.2em}
+.rawlinks{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:baseline;font-weight:600;margin:0 0 8px}
+.ver{font-weight:400;font-size:.9rem;color:var(--slate)}
+.skill-body{border-top:2px solid var(--navy);margin-top:24px}
+.skill-body h4{font-size:1.1rem;margin:24px 0 6px;color:var(--navy)}
+.skill-body li{margin-bottom:4px}
+.skill-body hr{border:0;border-top:1px solid #CFD5DD;margin:32px 0}
+.tablewrap{overflow-x:auto;margin:16px 0}
+.tablewrap:focus-visible{outline:3px solid var(--brass)}
+.skill-body table{border-collapse:collapse;font-size:.95rem;min-width:100%}
+.skill-body th,.skill-body td{text-align:left;padding:8px 10px;border-bottom:1px solid #CFD5DD;vertical-align:top}
+.skill-body th{border-bottom:2px solid var(--navy);font-family:var(--serif)}
+.howto{padding:0;margin:0 0 16px}
+.prompt{margin:16px 0 14px;padding:4px 0 4px 20px;border-left:6px solid var(--brass);font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,3.2vw,1.45rem);line-height:1.35;color:var(--navy);overflow-wrap:anywhere}
+.prompt p{margin:0}
+.steps li{margin-bottom:6px}
+.small-print{font-size:.92rem;color:var(--slate)}
+.shelf{font-size:1.15rem;margin:28px 0 2px}
+.shelf-note{margin:0 0 6px;color:var(--slate)}
+.skills{list-style:none;padding:0;margin:0;border-top:2px solid var(--navy)}
+.skills li{padding:16px 0;border-bottom:1px solid #CFD5DD}
+.skills h4{font-family:var(--serif);font-size:1.35rem;margin:0 0 4px}
+.skills h4 a{text-decoration-color:var(--brass)}
+.skills p{margin:0 0 6px}
+.skill-links{display:flex;gap:20px;font-weight:600;font-size:.95rem}

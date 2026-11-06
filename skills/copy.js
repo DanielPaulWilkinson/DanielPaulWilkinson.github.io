@@ -1,0 +1,1 @@
+document.querySelectorAll('button.copy').forEach(b=>{if(!navigator.clipboard)return;b.hidden=false;b.addEventListener('click',async()=>{const s=b.nextElementSibling;try{await navigator.clipboard.writeText(b.dataset.copy);s.textContent='Copied.'}catch(e){s.textContent='Copy failed. Select the text and copy it instead.'}})})

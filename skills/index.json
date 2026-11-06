@@ -1,0 +1,76 @@
+{
+  "schema": "skill-index",
+  "schema_version": 1,
+  "name": "Dan Wilkinson's skill library",
+  "updated": "2026-11-06",
+  "base": "https://danielpaulwilkinson.github.io/skills/",
+  "how_to_use": "Pick the skill whose description fits the task, fetch its url (Markdown with YAML frontmatter) and follow the instructions. Use text_url if your tool will not read .md files.",
+  "skills": [
+    {
+      "name": "weekly-admin-triage",
+      "title": "Weekly admin triage",
+      "description": "Use once a week, or when someone says their admin is piling up, to sort every open admin item into do now, schedule, delegate or ignore. Written for people juggling family, work and church or community commitments. Keep it to about 20 minutes.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/weekly-admin-triage/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/weekly-admin-triage/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/weekly-admin-triage/",
+      "group": "Everyday"
+    },
+    {
+      "name": "interview-me",
+      "title": "Interview me",
+      "description": "Use before planning or building a new project, product, system or big decision when the ask is vague or underspecified, or when the user says \"interview me\" or \"grill me\". Not for clear tasks, quick questions or scheduled/routine runs.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/interview-me/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/interview-me/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/interview-me/",
+      "group": "Thinking"
+    },
+    {
+      "name": "the-fool",
+      "title": "The Fool",
+      "description": "Use when the user asks to challenge, stress-test, poke holes in or play devil's advocate on a plan, idea or decision (\"what could go wrong?\", \"argue the other side\"), or before committing time or money to a big plan.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/the-fool/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/the-fool/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/the-fool/",
+      "group": "Thinking"
+    },
+    {
+      "name": "frontend-design",
+      "title": "Frontend design",
+      "description": "Use when building or restyling a web page or UI, to choose a distinctive visual direction instead of templated defaults.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/frontend-design/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/frontend-design/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/frontend-design/",
+      "group": "Building"
+    },
+    {
+      "name": "accessibility",
+      "title": "Accessibility",
+      "description": "WCAG 2.1/2.2 AA audit methodology using the POUR framework: Perceivable, Operable, Understandable, Robust. Covers semantic HTML, ARIA patterns, keyboard navigation, focus management, colour contrast, screen reader testing, and dynamic content.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/accessibility/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/accessibility/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/accessibility/",
+      "group": "Building"
+    },
+    {
+      "name": "review",
+      "title": "Code review",
+      "description": "Reviews code changes for correctness, security, performance, maintainability, and design quality across five structured passes. Use from any agent that produces or modifies code and needs a quality check before completing.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/review/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/review/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/review/",
+      "group": "Building"
+    }
+  ]
+}

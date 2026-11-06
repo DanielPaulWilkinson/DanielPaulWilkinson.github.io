@@ -1,0 +1,12 @@
+# Dan Wilkinson's skill library
+
+> Plain-English skills any AI agent can fetch and follow. Index: https://danielpaulwilkinson.github.io/skills/index.json
+
+## Skills
+
+- [Weekly admin triage](https://danielpaulwilkinson.github.io/skills/weekly-admin-triage/SKILL.md): Use once a week, or when someone says their admin is piling up, to sort every open admin item into do now, schedule, delegate or ignore. Written for people juggling family, work and church or community commitments. Keep it to about 20 minutes.
+- [Interview me](https://danielpaulwilkinson.github.io/skills/interview-me/SKILL.md): Use before planning or building a new project, product, system or big decision when the ask is vague or underspecified, or when the user says "interview me" or "grill me". Not for clear tasks, quick questions or scheduled/routine runs.
+- [The Fool](https://danielpaulwilkinson.github.io/skills/the-fool/SKILL.md): Use when the user asks to challenge, stress-test, poke holes in or play devil's advocate on a plan, idea or decision ("what could go wrong?", "argue the other side"), or before committing time or money to a big plan.
+- [Frontend design](https://danielpaulwilkinson.github.io/skills/frontend-design/SKILL.md): Use when building or restyling a web page or UI, to choose a distinctive visual direction instead of templated defaults.
+- [Accessibility](https://danielpaulwilkinson.github.io/skills/accessibility/SKILL.md): WCAG 2.1/2.2 AA audit methodology using the POUR framework: Perceivable, Operable, Understandable, Robust. Covers semantic HTML, ARIA patterns, keyboard navigation, focus management, colour contrast, screen reader testing, and dynamic content.
+- [Code review](https://danielpaulwilkinson.github.io/skills/review/SKILL.md): Reviews code changes for correctness, security, performance, maintainability, and design quality across five structured passes. Use from any agent that produces or modifies code and needs a quality check before completing.
