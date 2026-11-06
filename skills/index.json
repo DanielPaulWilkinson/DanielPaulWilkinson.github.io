@@ -4,7 +4,33 @@
   "name": "Dan Wilkinson's skill library",
   "updated": "2026-11-06",
   "base": "https://danielpaulwilkinson.github.io/skills/",
-  "how_to_use": "Pick the skill whose description fits the task, fetch its url (Markdown with YAML frontmatter) and follow the instructions. Use text_url if your tool will not read .md files.",
+  "how_to_use": "Pick the skill whose description fits the task, fetch its url (Markdown with YAML frontmatter) and follow the instructions. Use text_url if your tool will not read .md files. Optional tags.phase / tags.domain / tags.type support filtering.",
+  "facets": {
+    "phase": [
+      "plan",
+      "design",
+      "build",
+      "test",
+      "review",
+      "ship",
+      "debug"
+    ],
+    "domain": [
+      "frontend",
+      "security",
+      "performance",
+      "data",
+      "docs",
+      "ai",
+      "general"
+    ],
+    "type": [
+      "process",
+      "analysis",
+      "implementation",
+      "quality"
+    ]
+  },
   "skills": [
     {
       "name": "weekly-admin-triage",
@@ -15,7 +41,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/weekly-admin-triage/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/weekly-admin-triage/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/weekly-admin-triage/",
-      "group": "Everyday"
+      "group": "Everyday",
+      "tags": {
+        "phase": [
+          "plan"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "process"
+        ]
+      }
     },
     {
       "name": "best-practices",
@@ -26,7 +63,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/best-practices/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/best-practices/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/best-practices/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "design",
+          "build"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "blast-radius",
@@ -37,7 +86,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/blast-radius/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/blast-radius/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/blast-radius/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "review",
+          "ship"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "challenge",
@@ -48,7 +109,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/challenge/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/challenge/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/challenge/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan",
+          "review"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "decision-analysis",
@@ -59,7 +132,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/decision-analysis/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/decision-analysis/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/decision-analysis/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "decision-compression",
@@ -70,7 +154,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/decision-compression/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/decision-compression/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/decision-compression/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "diagnose",
@@ -81,7 +176,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/diagnose/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/diagnose/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/diagnose/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "debug"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "goal-analysis",
@@ -92,7 +198,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/goal-analysis/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/goal-analysis/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/goal-analysis/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "interrogate",
@@ -103,7 +220,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/interrogate/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/interrogate/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/interrogate/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "review"
+        ],
+        "domain": [
+          "ai"
+        ],
+        "type": [
+          "quality"
+        ]
+      }
     },
     {
       "name": "interview-me",
@@ -114,7 +242,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/interview-me/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/interview-me/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/interview-me/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "process"
+        ]
+      }
     },
     {
       "name": "investigation",
@@ -125,7 +264,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/investigation/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/investigation/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/investigation/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan",
+          "design"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "option-analysis",
@@ -136,7 +287,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/option-analysis/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/option-analysis/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/option-analysis/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan",
+          "design"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "recommendation",
@@ -147,7 +310,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/recommendation/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/recommendation/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/recommendation/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan",
+          "design"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "risk-analysis",
@@ -158,7 +333,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/risk-analysis/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/risk-analysis/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/risk-analysis/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan",
+          "review"
+        ],
+        "domain": [
+          "security"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "solution-discovery",
@@ -169,7 +356,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/solution-discovery/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/solution-discovery/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/solution-discovery/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan",
+          "design"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "teach",
@@ -180,7 +379,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/teach/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/teach/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/teach/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan"
+        ],
+        "domain": [
+          "docs"
+        ],
+        "type": [
+          "process"
+        ]
+      }
     },
     {
       "name": "the-fool",
@@ -191,7 +401,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/the-fool/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/the-fool/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/the-fool/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan",
+          "review"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "using-agent-skills",
@@ -202,7 +424,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/using-agent-skills/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/using-agent-skills/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/using-agent-skills/",
-      "group": "Thinking"
+      "group": "Thinking",
+      "tags": {
+        "phase": [
+          "plan"
+        ],
+        "domain": [
+          "ai"
+        ],
+        "type": [
+          "process"
+        ]
+      }
     },
     {
       "name": "accessibility",
@@ -213,7 +446,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/accessibility/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/accessibility/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/accessibility/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "build",
+          "review"
+        ],
+        "domain": [
+          "frontend"
+        ],
+        "type": [
+          "quality"
+        ]
+      }
     },
     {
       "name": "api-design",
@@ -224,7 +469,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/api-design/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/api-design/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/api-design/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "design"
+        ],
+        "domain": [
+          "data"
+        ],
+        "type": [
+          "implementation"
+        ]
+      }
     },
     {
       "name": "browser-testing-with-devtools",
@@ -235,7 +491,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/browser-testing-with-devtools/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/browser-testing-with-devtools/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/browser-testing-with-devtools/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "test"
+        ],
+        "domain": [
+          "frontend"
+        ],
+        "type": [
+          "quality"
+        ]
+      }
     },
     {
       "name": "data-modelling",
@@ -246,7 +513,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/data-modelling/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/data-modelling/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/data-modelling/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "design"
+        ],
+        "domain": [
+          "data"
+        ],
+        "type": [
+          "implementation"
+        ]
+      }
     },
     {
       "name": "documentation-and-adrs",
@@ -257,7 +535,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "design",
+          "ship"
+        ],
+        "domain": [
+          "docs"
+        ],
+        "type": [
+          "process"
+        ]
+      }
     },
     {
       "name": "error-handling",
@@ -268,7 +558,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/error-handling/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/error-handling/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/error-handling/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "build"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "implementation"
+        ]
+      }
     },
     {
       "name": "frontend-design",
@@ -279,7 +580,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/frontend-design/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/frontend-design/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/frontend-design/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "design",
+          "build"
+        ],
+        "domain": [
+          "frontend"
+        ],
+        "type": [
+          "implementation"
+        ]
+      }
     },
     {
       "name": "frontend-ui-engineering",
@@ -290,7 +603,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/frontend-ui-engineering/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/frontend-ui-engineering/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/frontend-ui-engineering/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "build"
+        ],
+        "domain": [
+          "frontend"
+        ],
+        "type": [
+          "implementation"
+        ]
+      }
     },
     {
       "name": "i18n",
@@ -301,7 +625,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/i18n/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/i18n/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/i18n/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "build"
+        ],
+        "domain": [
+          "frontend"
+        ],
+        "type": [
+          "implementation"
+        ]
+      }
     },
     {
       "name": "incremental-implementation",
@@ -312,7 +647,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/incremental-implementation/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/incremental-implementation/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/incremental-implementation/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "build"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "process"
+        ]
+      }
     },
     {
       "name": "observability",
@@ -323,7 +669,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/observability/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/observability/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/observability/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "ship",
+          "debug"
+        ],
+        "domain": [
+          "performance"
+        ],
+        "type": [
+          "implementation"
+        ]
+      }
     },
     {
       "name": "performance-optimization",
@@ -334,7 +692,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/performance-optimization/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/performance-optimization/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/performance-optimization/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "debug",
+          "ship"
+        ],
+        "domain": [
+          "performance"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "ux-patterns",
@@ -345,7 +715,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/ux-patterns/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/ux-patterns/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/ux-patterns/",
-      "group": "Building"
+      "group": "Building",
+      "tags": {
+        "phase": [
+          "design",
+          "build"
+        ],
+        "domain": [
+          "frontend"
+        ],
+        "type": [
+          "implementation"
+        ]
+      }
     },
     {
       "name": "code-simplification",
@@ -356,7 +738,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/code-simplification/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/code-simplification/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/code-simplification/",
-      "group": "Quality"
+      "group": "Quality",
+      "tags": {
+        "phase": [
+          "build",
+          "review"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "quality"
+        ]
+      }
     },
     {
       "name": "review",
@@ -367,7 +761,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/review/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/review/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/review/",
-      "group": "Quality"
+      "group": "Quality",
+      "tags": {
+        "phase": [
+          "review"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "quality"
+        ]
+      }
     },
     {
       "name": "security-and-hardening",
@@ -378,7 +783,19 @@
       "url": "https://danielpaulwilkinson.github.io/skills/security-and-hardening/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/security-and-hardening/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/security-and-hardening/",
-      "group": "Quality"
+      "group": "Quality",
+      "tags": {
+        "phase": [
+          "review",
+          "ship"
+        ],
+        "domain": [
+          "security"
+        ],
+        "type": [
+          "quality"
+        ]
+      }
     },
     {
       "name": "test-writing",
@@ -389,7 +806,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/test-writing/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/test-writing/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/test-writing/",
-      "group": "Quality"
+      "group": "Quality",
+      "tags": {
+        "phase": [
+          "test"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "quality"
+        ]
+      }
     },
     {
       "name": "unslop",
@@ -400,7 +828,18 @@
       "url": "https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/unslop/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/unslop/",
-      "group": "Quality"
+      "group": "Quality",
+      "tags": {
+        "phase": [
+          "review"
+        ],
+        "domain": [
+          "docs"
+        ],
+        "type": [
+          "quality"
+        ]
+      }
     }
   ]
 }

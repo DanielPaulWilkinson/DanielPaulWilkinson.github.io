@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; script-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Bible study companion | Dan Wilkinson</title>
 <meta name="description" content="An offline Bible study companion that runs entirely on my PC, with no account. Search by meaning, Greek and Hebrew word lookup, cross-references and commentaries.">
@@ -12,10 +12,12 @@
 <link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../style.css">
+<script src="../../theme-boot.js"></script>
+<script src="../../theme.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../#contact">Contact</a></li></ul><button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Use dark theme">Dark</button></nav></header>
 <main id="main" class="project"><div class="wrap narrow">
 <nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../../#work">Example work</a></li><li aria-current="page">Bible study companion</li></ol></nav>
 <span class="status">AI-first, private</span>

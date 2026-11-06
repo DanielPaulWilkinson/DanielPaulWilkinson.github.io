@@ -4,7 +4,33 @@
   "name": "Dan Wilkinson's agent library",
   "updated": "2026-11-06",
   "base": "https://danielpaulwilkinson.github.io/agents/",
-  "how_to_install": "Download url to install_path in your repository (VS Code / GitHub Copilot custom agent). For Claude Code, download variants[0].url to variants[0].install_path. No model is pinned; add a model field if you want one.",
+  "how_to_install": "Download url to install_path in your repository (VS Code / GitHub Copilot custom agent). For Claude Code, download variants[0].url to variants[0].install_path. No model is pinned; add a model field if you want one. Optional tags.phase / tags.domain / tags.type support filtering.",
+  "facets": {
+    "phase": [
+      "plan",
+      "design",
+      "build",
+      "test",
+      "review",
+      "ship",
+      "debug"
+    ],
+    "domain": [
+      "frontend",
+      "security",
+      "performance",
+      "data",
+      "docs",
+      "ai",
+      "general"
+    ],
+    "type": [
+      "analysis",
+      "implementation",
+      "quality",
+      "planning"
+    ]
+  },
   "agents": [
     {
       "name": "architect",
@@ -106,7 +132,18 @@
         }
       ],
       "mentions_agents": [],
-      "handoffs": []
+      "handoffs": [],
+      "tags": {
+        "phase": [
+          "design"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "code-reviewer",
@@ -171,7 +208,18 @@
         }
       ],
       "mentions_agents": [],
-      "handoffs": []
+      "handoffs": [],
+      "tags": {
+        "phase": [
+          "review"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "quality"
+        ]
+      }
     },
     {
       "name": "debugger",
@@ -232,7 +280,18 @@
       "mentions_agents": [
         "technical-investigator"
       ],
-      "handoffs": []
+      "handoffs": [],
+      "tags": {
+        "phase": [
+          "debug"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "implementation"
+        ]
+      }
     },
     {
       "name": "documenter",
@@ -287,7 +346,18 @@
         }
       ],
       "mentions_agents": [],
-      "handoffs": []
+      "handoffs": [],
+      "tags": {
+        "phase": [
+          "ship"
+        ],
+        "domain": [
+          "docs"
+        ],
+        "type": [
+          "implementation"
+        ]
+      }
     },
     {
       "name": "implementer",
@@ -361,7 +431,18 @@
         }
       ],
       "mentions_agents": [],
-      "handoffs": []
+      "handoffs": [],
+      "tags": {
+        "phase": [
+          "build"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "implementation"
+        ]
+      }
     },
     {
       "name": "pathfinder",
@@ -387,7 +468,19 @@
       ],
       "skills": [],
       "mentions_agents": [],
-      "handoffs": []
+      "handoffs": [],
+      "tags": {
+        "phase": [
+          "plan",
+          "design"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "performance-analyst",
@@ -463,7 +556,19 @@
       "mentions_agents": [
         "debugger"
       ],
-      "handoffs": []
+      "handoffs": [],
+      "tags": {
+        "phase": [
+          "debug",
+          "ship"
+        ],
+        "domain": [
+          "performance"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     },
     {
       "name": "qa-tester",
@@ -527,7 +632,18 @@
         }
       ],
       "mentions_agents": [],
-      "handoffs": []
+      "handoffs": [],
+      "tags": {
+        "phase": [
+          "test"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "quality"
+        ]
+      }
     },
     {
       "name": "refactorer",
@@ -601,7 +717,19 @@
         }
       ],
       "mentions_agents": [],
-      "handoffs": []
+      "handoffs": [],
+      "tags": {
+        "phase": [
+          "build",
+          "review"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "implementation"
+        ]
+      }
     },
     {
       "name": "requirements-planner",
@@ -653,7 +781,18 @@
         }
       ],
       "mentions_agents": [],
-      "handoffs": []
+      "handoffs": [],
+      "tags": {
+        "phase": [
+          "plan"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "planning"
+        ]
+      }
     },
     {
       "name": "security-auditor",
@@ -724,7 +863,18 @@
       "mentions_agents": [
         "code-reviewer"
       ],
-      "handoffs": []
+      "handoffs": [],
+      "tags": {
+        "phase": [
+          "review"
+        ],
+        "domain": [
+          "security"
+        ],
+        "type": [
+          "quality"
+        ]
+      }
     },
     {
       "name": "technical-investigator",
@@ -830,7 +980,19 @@
           "page": "https://danielpaulwilkinson.github.io/agents/implementer/",
           "status": null
         }
-      ]
+      ],
+      "tags": {
+        "phase": [
+          "debug",
+          "design"
+        ],
+        "domain": [
+          "general"
+        ],
+        "type": [
+          "analysis"
+        ]
+      }
     }
   ]
 }
