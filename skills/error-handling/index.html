@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Error handling skill | Dan Wilkinson</title>
+<meta name="description" content="Systematic error handling strategy: error taxonomy, error boundaries, retry patterns with exponential backoff, graceful degradation, user-facing messages, and error monitoring. Covers both frontend and API layers.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/error-handling/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../agents/">Agents</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Skills</a></li><li aria-current="page">Error handling</li></ol></nav>
+<h1>Error handling</h1>
+<p class="lead">Systematic error handling strategy: error taxonomy, error boundaries, retry patterns with exponential backoff, graceful degradation, user-facing messages, and error monitoring. Covers both frontend and API layers.</p>
+<div class="fetch"><p class="fetch-label" id="l-508352">Point your agent at this file</p><p class="fetch-url"><code>https://danielpaulwilkinson.github.io/skills/error-handling/SKILL.md</code></p><button class="btn copy" type="button" data-copy="https://danielpaulwilkinson.github.io/skills/error-handling/SKILL.md" hidden>Copy URL</button><p class="copied" role="status" aria-live="polite"></p></div>
+<p class="rawlinks"><a href="SKILL.md">Raw SKILL.md</a> <a href="SKILL.txt">Plain text copy</a> <span class="ver">Version 1.0.0, updated 6 November 2026</span></p>
+<article class="skill-body">
+<p>Handle errors deliberately, not accidentally. The question is not "does this throw?" but "when it throws, what does the user experience and what does the system record?"</p>
+<h2>Error Taxonomy</h2>
+<p>Classify errors before handling them. Different categories need different treatment.</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+<th>User message</th>
+<th>Recovery path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Validation</strong></td>
+<td>Invalid email, missing required field</td>
+<td>Inline field error</td>
+<td>User corrects and resubmits</td>
+</tr>
+<tr>
+<td><strong>Business rule</strong></td>
+<td>Insufficient balance, duplicate booking, rate limit</td>
+<td>Plain-language explanation</td>
+<td>User takes alternative action</td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td>Session expired, not logged in</td>
+<td>"Please log in"</td>
+<td>Redirect to login</td>
+</tr>
+<tr>
+<td><strong>Authorisation</strong></td>
+<td>Not permitted</td>
+<td>"You don't have access"</td>
+<td>Return or request access</td>
+</tr>
+<tr>
+<td><strong>Network</strong></td>
+<td>Timeout, connection refused, offline</td>
+<td>"Unable to connect — try again"</td>
+<td>Retry or check connection</td>
+</tr>
+<tr>
+<td><strong>System</strong></td>
+<td>Unexpected server error, dependency failure</td>
+<td>"Something went wrong"</td>
+<td>Retry; escalate if persists</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rule</strong>: never expose system errors to users. Never expose stack traces, file paths, database errors, or internal service names.</p>
+<hr />
+<h2>Error Boundaries</h2>
+<p>An error boundary is a component or layer that catches errors from below and prevents them propagating to crash the entire application.</p>
+<h3>Frontend (Vue)</h3>
+<p>Use <code>errorCaptured</code> lifecycle hook or a dedicated wrapper component to catch render errors within a section:</p>
+<p>```vue</p>
+<script setup lang="ts">
+import { ref, onErrorCaptured } from 'vue'
+
+const error = ref<Error | null>(null)
+
+onErrorCaptured((err) => {
+  error.value = err
+  // Return false to prevent propagation to parent boundaries
+  return false
+})
+
+function reset() {
+  error.value = null
+}
+</script>
+
+<p><template>
+  <slot v-if="!error" />
+<br />
+<div v-else class="error-boundary">
+    <p>Something went wrong in this section.</p>
+    <button @click="reset">Try again</button>
+  </div></p>
+<p></template>
+```</p>
+<p><strong>Granularity</strong>: a broken recommendations widget should not crash the product page. Apply boundaries at component sections, not only at the page root.</p>
+<h3>Service / API Layer</h3>
+<p>Catch errors at service boundaries before they reach UI components. Transform raw errors (Axios errors, fetch rejections, HTTP error responses) into typed domain error objects:</p>
+<p><code>``typescript
+// Bad — raw error reaches the component
+const user = await api.get(</code>/users/${id}`)</p>
+<p>// Good — typed error returned from the service layer
+const result = await userService.getById(id)
+if (!result.ok) {
+  // result.error is a typed error with a code and message
+}
+```</p>
+<p>Never let a <code>catch</code> block silently discard an error without at minimum logging it.</p>
+<hr />
+<h2>Async Error Handling</h2>
+<p>Every async operation can fail. Handle all paths explicitly.</p>
+<p>```typescript
+// Bad — unhandled promise rejection
+fetchUser(id).then(user =&gt; setUser(user))</p>
+<p>// Good — explicit error path
+fetchUser(id)
+  .then(user =&gt; setUser(user))
+  .catch(error =&gt; handleError(error))</p>
+<p>// Good — async/await with try/catch
+try {
+  const user = await fetchUser(id)
+  setUser(user)
+} catch (error) {
+  handleError(error)
+}
+```</p>
+<h3>Composable Error State</h3>
+<p>For API calls used in components, the composable should expose all three states explicitly:</p>
+<p><code>typescript
+const { data: user, loading, error } = useUser(id)
+// Component template must handle all three states</code></p>
+<p>Do not leave <code>error</code> unused. A composable that returns an error state no component ever renders is broken observability.</p>
+<hr />
+<h2>Retry Patterns</h2>
+<p>Not all errors are permanent. Network failures, rate limits, and transient service outages benefit from retry.</p>
+<h3>When to retry</h3>
+<ul>
+<li>Network timeout or connection failure</li>
+<li><code>429 Too Many Requests</code></li>
+<li><code>503 Service Unavailable</code></li>
+<li>Any idempotent operation (GET, PUT, DELETE)</li>
+</ul>
+<h3>When NOT to retry</h3>
+<ul>
+<li><code>400 Bad Request</code> — the input is wrong; retrying sends the same wrong input</li>
+<li><code>401 Unauthorized</code> — retrying will not fix authentication</li>
+<li><code>403 Forbidden</code> — retrying will not fix authorisation</li>
+<li><code>422 Validation failure</code> — same input, same result</li>
+</ul>
+<h3>Exponential Backoff with Jitter</h3>
+<p><code>typescript
+async function withRetry&lt;T&gt;(
+  fn: () =&gt; Promise&lt;T&gt;,
+  maxAttempts = 3,
+  baseDelayMs = 200
+): Promise&lt;T&gt; {
+  for (let attempt = 0; attempt &lt; maxAttempts; attempt++) {
+    try {
+      return await fn()
+    } catch (error) {
+      if (attempt === maxAttempts - 1) throw error
+      if (!isRetryable(error)) throw error
+      // Exponential backoff with random jitter to avoid thundering herd
+      const delay = baseDelayMs * 2 ** attempt + Math.random() * 100
+      await sleep(Math.min(delay, 30_000)) // cap at 30 seconds
+    }
+  }
+  throw new Error('Unreachable')
+}</code></p>
+<p>Cap the maximum delay to prevent very long waits on repeated failures. Add jitter to prevent all retrying clients hitting the server simultaneously after an outage.</p>
+<hr />
+<h2>Graceful Degradation</h2>
+<p>When a non-critical dependency fails, the core functionality should continue working.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Analytics service is down → page loads; events are dropped silently with a log</li>
+<li>Recommendations service is down → product page loads; "Recommended for you" section shows a placeholder or is hidden</li>
+<li>Image CDN is unreachable → <code>alt</code> text displays; page layout does not collapse</li>
+</ul>
+<p><strong>Strategy:</strong></p>
+<ol>
+<li>Identify which dependencies are critical (the page cannot function without) vs. non-critical</li>
+<li>Wrap non-critical calls in try/catch with a fallback value</li>
+<li>Log the failure for alerting; do not surface the error to the user</li>
+<li>Design the fallback state as a deliberate UI choice, not just an empty gap</li>
+</ol>
+<hr />
+<h2>User-Facing Error Messages</h2>
+<h3>Rules</h3>
+<ol>
+<li><strong>Plain language</strong>: write for the user, not for the developer</li>
+<li><strong>Actionable</strong>: tell the user what to do next</li>
+<li><strong>Honest but not technical</strong>: acknowledge the problem without dumping internals</li>
+<li><strong>Consistent tone</strong>: match the application's voice</li>
+</ol>
+<h3>Templates</h3>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network failure</td>
+<td>"Unable to connect. Check your internet connection and try again."</td>
+</tr>
+<tr>
+<td>Server error</td>
+<td>"Something went wrong on our end. Please try again in a moment."</td>
+</tr>
+<tr>
+<td>Session expired</td>
+<td>"Your session has expired. Please log in again."</td>
+</tr>
+<tr>
+<td>Not found</td>
+<td>"We couldn't find what you were looking for."</td>
+</tr>
+<tr>
+<td>Not authorised</td>
+<td>"You don't have permission to do that."</td>
+</tr>
+<tr>
+<td>Rate limited</td>
+<td>"Too many attempts. Please wait a moment before trying again."</td>
+</tr>
+<tr>
+<td>Form validation</td>
+<td>"Enter a valid email address" / "Password must be at least 8 characters"</td>
+</tr>
+</tbody>
+</table></div>
+<h3>What Not to Show</h3>
+<ul>
+<li>Stack traces or file paths</li>
+<li>HTTP status codes in user-facing text</li>
+<li>Internal service names or database error messages</li>
+<li>Codes that mean nothing to users: "Error code: INTERNAL_SVC_EXCEPTION_408"</li>
+</ul>
+<hr />
+<h2>Error Monitoring</h2>
+<p>All unhandled errors in production should be captured by an error monitoring service (Sentry, Datadog, Bugsnag).</p>
+<p><strong>What to capture:</strong></p>
+<ul>
+<li>Error type and message</li>
+<li>Full stack trace</li>
+<li>User ID (if authenticated) — hashed or anonymised if PII requirements apply</li>
+<li>URL and route</li>
+<li>Browser, OS, device class (for frontend errors)</li>
+<li>Breadcrumbs: recent user actions leading to the error</li>
+<li>Release version — to pinpoint when a regression was introduced</li>
+</ul>
+<p><strong>What not to capture:</strong></p>
+<ul>
+<li>Passwords, tokens, payment data in breadcrumbs or context</li>
+<li>High-cardinality values that inflate event volume per user (track error patterns, not every individual occurrence)</li>
+</ul>
+<p>Configure alerts for: new error types, error rate spikes, regressions in previously resolved errors.</p>
+<hr />
+<h2>Checklist</h2>
+<ul>
+<li>[ ] Every async call has an explicit error handler — no unhandled promise rejections</li>
+<li>[ ] <code>catch</code> blocks never silently discard errors — at minimum, log them</li>
+<li>[ ] Error boundaries prevent component-level crashes from crashing the entire page</li>
+<li>[ ] User-facing messages are plain language with a recovery action</li>
+<li>[ ] System errors are logged but not displayed to users</li>
+<li>[ ] Retries use exponential backoff with jitter and only on retryable error codes</li>
+<li>[ ] Non-critical dependencies degrade gracefully with a fallback UI</li>
+<li>[ ] All unhandled errors are captured by error monitoring in production</li>
+<li>[ ] No passwords, tokens, or PII in error logs or captured context</li>
+</ul>
+</article>
+<p class="back"><a href="../">Back to all skills</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>

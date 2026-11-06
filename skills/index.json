@@ -18,6 +18,94 @@
       "group": "Everyday"
     },
     {
+      "name": "best-practices",
+      "title": "Best practices",
+      "description": "Identifies software engineering best practices, architecture patterns, security controls, testing strategies, delivery practices, reliability and observability guidance, and relevant anti-patterns.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/best-practices/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/best-practices/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/best-practices/",
+      "group": "Thinking"
+    },
+    {
+      "name": "blast-radius",
+      "title": "Blast radius",
+      "description": "Find what a change could break somewhere else before it ships, beyond the diff, and prove the one fact it's safe because of by running real code instead of writing it up. Use for 'blast radius of X', 'what could this break', or reviewing a small diff you don't trust.\" disable-model-invocation: true",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/blast-radius/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/blast-radius/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/blast-radius/",
+      "group": "Thinking"
+    },
+    {
+      "name": "challenge",
+      "title": "Challenge",
+      "description": "Adversarially challenges a software engineering recommendation to uncover confirmation bias, weak assumptions, overlooked architectures, hidden costs, security issues, maintainability problems, and scenarios where another option wins.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/challenge/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/challenge/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/challenge/",
+      "group": "Thinking"
+    },
+    {
+      "name": "decision-analysis",
+      "title": "Decision analysis",
+      "description": "Compares software engineering options against goal-derived criteria using weighted scoring and qualitative judgement, including sensitivity analysis and hard-constraint disqualification.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/decision-analysis/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/decision-analysis/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/decision-analysis/",
+      "group": "Thinking"
+    },
+    {
+      "name": "decision-compression",
+      "title": "Decision compression",
+      "description": "Compresses a large software engineering investigation into a concise decision document while retaining decisive evidence, alternatives, trade-offs, risks, uncertainty, and actionable next steps.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/decision-compression/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/decision-compression/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/decision-compression/",
+      "group": "Thinking"
+    },
+    {
+      "name": "diagnose",
+      "title": "Diagnose",
+      "description": "Investigates a technical problem in an existing codebase using evidence-first methodology: form multiple hypotheses, gather code evidence to confirm or reject each, classify evidence quality, and identify root causes across system layers. Use from any agent that needs to understand a problem thoroughly before deciding how to fix it.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/diagnose/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/diagnose/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/diagnose/",
+      "group": "Thinking"
+    },
+    {
+      "name": "goal-analysis",
+      "title": "Goal analysis",
+      "description": "Turns a software engineering objective into a precise outcome, requirements, hard and soft constraints, success criteria, assumptions, unknowns, and concrete technical decisions to investigate.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/goal-analysis/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/goal-analysis/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/goal-analysis/",
+      "group": "Thinking"
+    },
+    {
+      "name": "interrogate",
+      "title": "Interrogate",
+      "description": "Use for \\\"interrogate\\\", \\\"adversarial review\\\", \\\"multi-model review\\\", \\\"challenge this\\\", \\\"stress test this code\\\", \\\"find blind spots\\\", or \\\"tear this apart\\\". Multiple LLM reviewers challenge changes from independent angles.\" disable-model-invocation: true",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/interrogate/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/interrogate/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/interrogate/",
+      "group": "Thinking"
+    },
+    {
       "name": "interview-me",
       "title": "Interview me",
       "description": "Use before planning or building a new project, product, system or big decision when the ask is vague or underspecified, or when the user says \"interview me\" or \"grill me\". Not for clear tasks, quick questions or scheduled/routine runs.",
@@ -26,6 +114,72 @@
       "url": "https://danielpaulwilkinson.github.io/skills/interview-me/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/interview-me/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/interview-me/",
+      "group": "Thinking"
+    },
+    {
+      "name": "investigation",
+      "title": "Investigation",
+      "description": "Performs evidence-based software engineering research covering technologies, libraries, frameworks, architectures, APIs, benchmarks, compatibility, security, ecosystem maturity, cost, failure modes, and real-world practice.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/investigation/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/investigation/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/investigation/",
+      "group": "Thinking"
+    },
+    {
+      "name": "option-analysis",
+      "title": "Option analysis",
+      "description": "Converts software engineering research into explicit competing options and evaluates architecture, implementation effort, cost, security, testing, maintainability, reliability, scalability, operations, and reversibility.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/option-analysis/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/option-analysis/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/option-analysis/",
+      "group": "Thinking"
+    },
+    {
+      "name": "recommendation",
+      "title": "Recommendation",
+      "description": "Produces a decisive software engineering recommendation from completed analysis, explaining why it wins, trade-offs, rejected alternatives, risks, implementation phases, confidence, and conditions that would change the decision.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/recommendation/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/recommendation/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/recommendation/",
+      "group": "Thinking"
+    },
+    {
+      "name": "risk-analysis",
+      "title": "Risk analysis",
+      "description": "Identifies and prioritises software engineering risks across technical design, security, reliability, operations, dependencies, vendors, cost, scalability, migration, and implementation.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/risk-analysis/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/risk-analysis/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/risk-analysis/",
+      "group": "Thinking"
+    },
+    {
+      "name": "solution-discovery",
+      "title": "Solution discovery",
+      "description": "Maps genuinely different software engineering approaches to a goal before detailed evaluation, including simple, conventional, modern, build, buy, managed, open-source, hybrid, and defer/validate strategies where relevant.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/solution-discovery/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/solution-discovery/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/solution-discovery/",
+      "group": "Thinking"
+    },
+    {
+      "name": "teach",
+      "title": "Teach",
+      "description": "Explain a body of work plainly so a person actually understands it. Runs the `how` and `why` skills and weaves what they find into one clear explanation. Use for 'teach me this', 'help me really understand X', 'explain this change or subsystem to me'.\" disable-model-invocation: true",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/teach/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/teach/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/teach/",
       "group": "Thinking"
     },
     {
@@ -40,15 +194,15 @@
       "group": "Thinking"
     },
     {
-      "name": "frontend-design",
-      "title": "Frontend design",
-      "description": "Use when building or restyling a web page or UI, to choose a distinctive visual direction instead of templated defaults.",
+      "name": "using-agent-skills",
+      "title": "Using agent skills",
+      "description": "Discovers and invokes agent skills. Use when starting a session or when you need to discover which skill applies to the current task. This is the meta-skill that governs how all other skills are discovered and invoked.",
       "version": "1.0.0",
       "updated": "2026-11-06",
-      "url": "https://danielpaulwilkinson.github.io/skills/frontend-design/SKILL.md",
-      "text_url": "https://danielpaulwilkinson.github.io/skills/frontend-design/SKILL.txt",
-      "page": "https://danielpaulwilkinson.github.io/skills/frontend-design/",
-      "group": "Building"
+      "url": "https://danielpaulwilkinson.github.io/skills/using-agent-skills/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/using-agent-skills/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/using-agent-skills/",
+      "group": "Thinking"
     },
     {
       "name": "accessibility",
@@ -62,6 +216,149 @@
       "group": "Building"
     },
     {
+      "name": "api-design",
+      "title": "API design",
+      "description": "REST and GraphQL API design principles: resource naming, HTTP method semantics, status codes, error contracts, versioning, pagination, authentication patterns, and contract-first development.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/api-design/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/api-design/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/api-design/",
+      "group": "Building"
+    },
+    {
+      "name": "browser-testing-with-devtools",
+      "title": "Browser testing with DevTools",
+      "description": "Tests in real browsers via Chrome DevTools MCP. Use when building or debugging anything that runs in a browser. Use when you need to inspect the DOM, capture console errors, analyze network requests, profile performance, or verify visual output with real runtime data. Requires the chrome-devtools MCP server to be configured.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/browser-testing-with-devtools/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/browser-testing-with-devtools/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/browser-testing-with-devtools/",
+      "group": "Building"
+    },
+    {
+      "name": "data-modelling",
+      "title": "Data modelling",
+      "description": "Domain model design: entities vs value objects, making invalid states unrepresentable in the type system, discriminated unions for state machines, relationship patterns, normalisation principles, and type-driven design for correctness.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/data-modelling/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/data-modelling/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/data-modelling/",
+      "group": "Building"
+    },
+    {
+      "name": "documentation-and-adrs",
+      "title": "Documentation and ADRs",
+      "description": "When and what to document: JSDoc/TSDoc standards for public APIs, README structure, ADR format for architectural decisions, changelog conventions, and code comment philosophy — document the why, not the what.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/",
+      "group": "Building"
+    },
+    {
+      "name": "error-handling",
+      "title": "Error handling",
+      "description": "Systematic error handling strategy: error taxonomy, error boundaries, retry patterns with exponential backoff, graceful degradation, user-facing messages, and error monitoring. Covers both frontend and API layers.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/error-handling/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/error-handling/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/error-handling/",
+      "group": "Building"
+    },
+    {
+      "name": "frontend-design",
+      "title": "Frontend design",
+      "description": "Use when building or restyling a web page or UI, to choose a distinctive visual direction instead of templated defaults.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/frontend-design/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/frontend-design/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/frontend-design/",
+      "group": "Building"
+    },
+    {
+      "name": "frontend-ui-engineering",
+      "title": "Frontend UI engineering",
+      "description": "Builds production-quality, accessible, responsive user-facing UIs. Use when building or modifying interfaces and pages, creating components, implementing layouts, meeting WCAG accessibility requirements, managing state, or when the output needs to look and feel production-quality rather than AI-generated.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/frontend-ui-engineering/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/frontend-ui-engineering/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/frontend-ui-engineering/",
+      "group": "Building"
+    },
+    {
+      "name": "i18n",
+      "title": "Internationalisation",
+      "description": "Internationalisation patterns: locale architecture, translation key naming conventions, plural forms, date/number/currency formatting with Intl APIs, RTL support, accessibility with i18n, and dynamic locale loading.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/i18n/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/i18n/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/i18n/",
+      "group": "Building"
+    },
+    {
+      "name": "incremental-implementation",
+      "title": "Incremental implementation",
+      "description": "Delivers changes incrementally. Use when implementing any feature or change that touches more than one file. Use when you're about to write a large amount of code at once, or when a task feels too big to land in one step.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/incremental-implementation/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/incremental-implementation/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/incremental-implementation/",
+      "group": "Building"
+    },
+    {
+      "name": "observability",
+      "title": "Observability",
+      "description": "Design and implement observability for production systems: structured logging, RED metrics, distributed tracing, symptom-based alerting, SLOs, and dashboards. Covers what to instrument, how to structure it, and how to alert on what actually matters.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/observability/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/observability/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/observability/",
+      "group": "Building"
+    },
+    {
+      "name": "performance-optimization",
+      "title": "Performance optimisation",
+      "description": "Systematic approach to performance work: measure first, identify the highest-impact bottleneck, fix it, then measure again. Covers Core Web Vitals, bundle analysis, rendering performance, caching, and network optimisation.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/performance-optimization/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/performance-optimization/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/performance-optimization/",
+      "group": "Building"
+    },
+    {
+      "name": "ux-patterns",
+      "title": "UX patterns",
+      "description": "UI/UX design patterns for production-quality interfaces: loading, empty, error, and success states; form design; interaction feedback; progressive disclosure; and Nielsen's usability heuristics.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/ux-patterns/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/ux-patterns/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/ux-patterns/",
+      "group": "Building"
+    },
+    {
+      "name": "code-simplification",
+      "title": "Code simplification",
+      "description": "Simplifies code for clarity. Use when refactoring code for clarity without changing behavior. Use when code works but is harder to read, maintain, or extend than it should be. Use when reviewing code that has accumulated unnecessary complexity.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/code-simplification/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/code-simplification/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/code-simplification/",
+      "group": "Quality"
+    },
+    {
       "name": "review",
       "title": "Code review",
       "description": "Reviews code changes for correctness, security, performance, maintainability, and design quality across five structured passes. Use from any agent that produces or modifies code and needs a quality check before completing.",
@@ -70,7 +367,40 @@
       "url": "https://danielpaulwilkinson.github.io/skills/review/SKILL.md",
       "text_url": "https://danielpaulwilkinson.github.io/skills/review/SKILL.txt",
       "page": "https://danielpaulwilkinson.github.io/skills/review/",
-      "group": "Building"
+      "group": "Quality"
+    },
+    {
+      "name": "security-and-hardening",
+      "title": "Security and hardening",
+      "description": "Audits code for security vulnerabilities using OWASP Top 10 methodology. Covers input validation, authentication, authorisation, secrets handling, XSS/CSRF/injection prevention, and dependency risk. Use during code review, pre-release audits, or dedicated security investigations.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/security-and-hardening/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/security-and-hardening/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/security-and-hardening/",
+      "group": "Quality"
+    },
+    {
+      "name": "test-writing",
+      "title": "Test writing",
+      "description": "Writes effective tests that catch real bugs: unit, integration, and E2E. Covers TDD red-green-refactor, test pyramid strategy, behaviour-driven naming, mocking boundaries, and systematic edge case coverage.",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/test-writing/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/test-writing/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/test-writing/",
+      "group": "Quality"
+    },
+    {
+      "name": "unslop",
+      "title": "Unslop",
+      "description": "Detect and remove AI writing patterns. Scan text for puffery, vague attributions, AI vocabulary, and style tells. Rewrite for clarity and human voice.\" aliases: [\"ai-text-detection\", \"human-voice\"]",
+      "version": "1.0.0",
+      "updated": "2026-11-06",
+      "url": "https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md",
+      "text_url": "https://danielpaulwilkinson.github.io/skills/unslop/SKILL.txt",
+      "page": "https://danielpaulwilkinson.github.io/skills/unslop/",
+      "group": "Quality"
     }
   ]
 }

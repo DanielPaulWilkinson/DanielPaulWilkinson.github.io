@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Interrogate skill | Dan Wilkinson</title>
+<meta name="description" content="Use for \&quot;interrogate\&quot;, \&quot;adversarial review\&quot;, \&quot;multi-model review\&quot;, \&quot;challenge this\&quot;, \&quot;stress test this code\&quot;, \&quot;find blind spots\&quot;, or \&quot;tear this apart\&quot;. Multiple LLM reviewers challenge changes from independent angles.&quot; disable-model-invocation: true">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/interrogate/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../agents/">Agents</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Skills</a></li><li aria-current="page">Interrogate</li></ol></nav>
+<h1>Interrogate</h1>
+<p class="lead">Use for \&quot;interrogate\&quot;, \&quot;adversarial review\&quot;, \&quot;multi-model review\&quot;, \&quot;challenge this\&quot;, \&quot;stress test this code\&quot;, \&quot;find blind spots\&quot;, or \&quot;tear this apart\&quot;. Multiple LLM reviewers challenge changes from independent angles.&quot; disable-model-invocation: true</p>
+<div class="fetch"><p class="fetch-label" id="l-99973">Point your agent at this file</p><p class="fetch-url"><code>https://danielpaulwilkinson.github.io/skills/interrogate/SKILL.md</code></p><button class="btn copy" type="button" data-copy="https://danielpaulwilkinson.github.io/skills/interrogate/SKILL.md" hidden>Copy URL</button><p class="copied" role="status" aria-live="polite"></p></div>
+<p class="rawlinks"><a href="SKILL.md">Raw SKILL.md</a> <a href="SKILL.txt">Plain text copy</a> <span class="ver">Version 1.0.0, updated 6 November 2026</span></p>
+<article class="skill-body">
+<p>Spawn one reviewer per configured model to adversarially review code changes. Each model gets the same prompt and rubric. The adversarial signal comes from model diversity, not assigned personas. Models differ in blind spots, priors, and reasoning patterns. Agreement across models is high-confidence signal; lone-model findings are worth reading but lower confidence.</p>
+<p>The deliverable is a synthesized verdict. Do NOT auto-apply changes.</p>
+<h2>Step 1, Determine Scope</h2>
+<p>Identify what to review from context:</p>
+<ul>
+<li>If the user points at specific files or a diff, use that</li>
+<li>If on a feature branch, run <code>git diff main...HEAD</code> (or the appropriate base branch) for the full changeset</li>
+<li>If the user's message references recent work, gather the relevant files</li>
+</ul>
+<p>Package the diff (or file contents) plus any surrounding context files the reviewers need to understand the code.</p>
+<h2>Step 2, State the Intent</h2>
+<p>Before spawning reviewers, state the intent explicitly. What is this code trying to accomplish? Derive this from:</p>
+<ul>
+<li>The user's message</li>
+<li>Commit messages</li>
+<li>PR description if one exists</li>
+<li>The code itself</li>
+</ul>
+<p>Write one clear paragraph. Reviewers challenge whether the work achieves the intent well, not whether the intent itself is correct. If you're unsure about the intent, ask the user before proceeding.</p>
+<h2>Step 3, Spawn Reviewers</h2>
+<p>Launch several independent reviewers in parallel (subagents, separate chats, or another multi-model workflow your tool supports). Prefer three to four reviewers on different model families when available — diversity of blind spots matters more than assigned personas. If your environment has a configured reviewer-model list, use that; otherwise pick the strongest available models across at least two providers.</p>
+<p>For each reviewer:</p>
+<ul>
+<li>Read-only: they must not edit files</li>
+<li>Same prompt and rubric for every reviewer</li>
+<li>Include: the stated intent, the diff or file contents, and the review rubric below</li>
+</ul>
+<h3>Reviewer prompt (fill and send to every reviewer)</h3>
+<ol>
+<li><strong>Intent</strong>: [paragraph from Step 2]</li>
+<li><strong>Diff / files</strong>: [contents]</li>
+<li><strong>Rubric</strong> — for each finding, state severity (blocker / major / minor / note), the concrete failure mode, and a minimal fix suggestion. Cover correctness, security, edge cases, API contracts, tests, and maintainability. Prefer evidence over taste.</li>
+<li><strong>Code-quality lens</strong> — flag duplication, unclear naming, missing error handling at boundaries, and behaviour that will be hard to change later.</li>
+</ol>
+<p>Each reviewer returns structured findings only (no rewritten patches unless asked).</p>
+<h2>Step 4, Synthesize</h2>
+<p>As results come back, build a unified picture:</p>
+<ol>
+<li><strong>Parse all findings</strong> from the reviewers</li>
+<li><strong>Identify consensus</strong>. Findings raised by 2+ models independently are highest signal.</li>
+<li><strong>Identify lone-model findings</strong>. Still worth reading, but weight accordingly.</li>
+<li><strong>Deduplicate</strong>. Different models may describe the same issue differently. Merge these and note which models raised it.</li>
+<li><strong>Note disagreements</strong>. If one model flags something and another explicitly says the opposite, that's useful context for the verdict.</li>
+</ol>
+<h2>Step 5, Lead Judgment</h2>
+<p>You are the lead reviewer, a pragmatic senior engineer, not a neutral aggregator.</p>
+<p>Reviewers only see a slice of the codebase. You have the full context (the goal, the constraints, the timeline, which tradeoffs were already considered). Use that context aggressively.</p>
+<p>Categorize every finding using these buckets:</p>
+<ul>
+<li><strong>Act on</strong>. Real issues affecting correctness, security, or maintainability given the actual goals. These would block a real PR.</li>
+<li><strong>Consider</strong>. Legitimate points, but you're not sure they outweigh the cost of addressing them right now. Worth the user's attention.</li>
+<li><strong>Noted</strong>. Technically valid but not actionable. Context-dependent, premature optimization, or low-impact given the current stage.</li>
+<li><strong>Dismissed</strong>. Wrong, nitpicky, or missing context. Brief explanation why.</li>
+</ul>
+<p>For each finding, include:</p>
+<ul>
+<li>Which model(s) raised it</li>
+<li>The category (act on / consider / noted / dismissed)</li>
+<li>A one-line rationale for the categorization</li>
+</ul>
+<h2>Output Format</h2>
+<p>Present the verdict in this structure:</p>
+<h3>Intent</h3>
+<blockquote>
+<p>[The stated intent paragraph from Step 2]</p>
+</blockquote>
+<h3>Reviewers</h3>
+<ul>
+<li>Reviewer [label]: [model name], [N findings] (one bullet per reviewer)</li>
+</ul>
+<h3>Act On</h3>
+<p>[Findings that should be addressed. For each: description, which models raised it, why it matters.]</p>
+<h3>Consider</h3>
+<p>[Findings worth thinking about. For each: description, which models raised it, tradeoff involved.]</p>
+<h3>Noted</h3>
+<p>[Valid but low-priority. Brief list.]</p>
+<h3>Dismissed</h3>
+<p>[Rejected findings with brief rationale. This shows the user what was filtered out and why, so they can override your judgment if they disagree.]</p>
+<h3>Agreement Map</h3>
+<p>[Where did models agree, where did they diverge, and what does the pattern of agreement/disagreement tell us?]</p>
+</article>
+<p class="back"><a href="../">Back to all skills</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>

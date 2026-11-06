@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Documentation and ADRs skill | Dan Wilkinson</title>
+<meta name="description" content="When and what to document: JSDoc/TSDoc standards for public APIs, README structure, ADR format for architectural decisions, changelog conventions, and code comment philosophy — document the why, not the what.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../agents/">Agents</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Skills</a></li><li aria-current="page">Documentation and ADRs</li></ol></nav>
+<h1>Documentation and ADRs</h1>
+<p class="lead">When and what to document: JSDoc/TSDoc standards for public APIs, README structure, ADR format for architectural decisions, changelog conventions, and code comment philosophy — document the why, not the what.</p>
+<div class="fetch"><p class="fetch-label" id="l-927465">Point your agent at this file</p><p class="fetch-url"><code>https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/SKILL.md</code></p><button class="btn copy" type="button" data-copy="https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/SKILL.md" hidden>Copy URL</button><p class="copied" role="status" aria-live="polite"></p></div>
+<p class="rawlinks"><a href="SKILL.md">Raw SKILL.md</a> <a href="SKILL.txt">Plain text copy</a> <span class="ver">Version 1.0.0, updated 6 November 2026</span></p>
+<article class="skill-body">
+<p>Document the <em>why</em>, not the <em>what</em>. Code describes what it does. Documentation describes why it exists, what the contract is for callers, and what decisions were made that future maintainers should understand.</p>
+<h2>When to Document</h2>
+<p><strong>Always document:</strong></p>
+<ul>
+<li>Exported functions, components, composables, and hooks — every caller needs the contract</li>
+<li>Non-obvious decisions — if you had to think about it, someone else will too</li>
+<li>Workarounds, hacks, and known limitations — context that would otherwise be lost on the next read</li>
+<li>Architecture decisions — ADRs for anything significant or potentially contested</li>
+</ul>
+<p><strong>Document cautiously:</strong></p>
+<ul>
+<li>Implementation details — they become lies the moment the code changes without updating the comment</li>
+</ul>
+<p><strong>Do not document:</strong></p>
+<ul>
+<li>What the code obviously does: <code>// increment the counter</code> above <code>count++</code> adds nothing</li>
+<li>A restatement of the code in prose: a comment that says the same thing as the adjacent code in natural language</li>
+</ul>
+<p><strong>The test</strong>: if the comment would still be accurate after you deleted the code and rewrote it differently to achieve the same result, it documents intent. If it would become false, it documents implementation — and will eventually lie.</p>
+<hr />
+<h2>JSDoc / TSDoc Standards</h2>
+<h3>What to Write</h3>
+<p><code>typescript
+/**
+ * Calculates the total price of an order including applicable tax.
+ *
+ * @param order - The order to calculate. Must have at least one line item.
+ * @param taxRate - Tax rate as a decimal (0.20 for 20%). Must be in range [0, 1].
+ * @returns Total price including tax, rounded to 2 decimal places.
+ * @throws {InvalidOrderError} When the order has no line items.
+ *
+ * @example
+ * const total = calculateOrderTotal(order, 0.20)
+ * // Returns 120.00 for a subtotal of 100.00 at 20% tax
+ */
+function calculateOrderTotal(order: Order, taxRate: TaxRate): Money { ... }</code></p>
+<h3>Minimum viable JSDoc for a public function:</h3>
+<ul>
+<li>One-sentence summary (the first line — shown in IDE tooltips)</li>
+<li><code>@param</code> for any parameter whose name does not fully explain its meaning or constraints</li>
+<li><code>@returns</code> describing the return value and any notable caveats</li>
+<li><code>@throws</code> for known, expected error cases</li>
+<li><code>@example</code> for non-trivial usage patterns</li>
+</ul>
+<h3>What not to add:</h3>
+<ul>
+<li><code>@param id - The user ID</code> — if the parameter name is self-documenting, the JSDoc adds noise</li>
+<li>Descriptions that restate the TypeScript type</li>
+</ul>
+<h3>Vue Component Documentation</h3>
+<p>Document components with the same JSDoc approach:</p>
+<p><code>typescript
+/**
+ * Paginated data table with sortable columns and row-level actions.
+ *
+ * The table manages its own sort state. The parent controls which data
+ * is displayed via the `items` prop and handles actions via emitted events.
+ *
+ * @emits sort-change - When the user changes the sort column or direction.
+ *   Payload: `{ column: string; direction: 'asc' | 'desc' }`
+ * @emits row-click  - When the user clicks a data row. Payload: the full row item.
+ */</code></p>
+<p>Document: the component's purpose, any non-obvious prop constraints, events emitted with payload shapes, and slot usage for complex slot contracts.</p>
+<hr />
+<h2>README Structure</h2>
+<p>A README a new developer can read in 15 minutes and then be productive:</p>
+<p>```markdown</p>
+<h1>Project Name</h1>
+<p>One sentence: what this is and why it exists.</p>
+<h2>Getting Started</h2>
+<h3>Prerequisites</h3>
+<ul>
+<li>Node 20+</li>
+<li>[Any accounts or access required before setup]</li>
+</ul>
+<h3>Setup</h3>
+<p>```sh
+git clone ...
+npm install
+cp .env.example .env</p>
+<h1>Fill in the values in .env — see the comments for where to get each one</h1>
+<p>npm run dev
+```</p>
+<h3>Run the tests</h3>
+<p><code>sh
+npm test</code></p>
+<h2>Architecture Overview</h2>
+<p>2–4 paragraphs: how the system is structured at a high level. What are the main layers? 
+What does each do? Link to detailed docs for each area.</p>
+<h2>Key Concepts</h2>
+<p>Brief glossary of domain-specific terms used in the codebase. What does "order" mean 
+here? What is a "shipment"? Saves hours of confusion for new joiners.</p>
+<h2>Development Guide</h2>
+<h3>Project structure</h3>
+<p>Where to find things: components, stores, API calls, tests, config.</p>
+<h3>Branching strategy</h3>
+<p>Branch naming, PR process, review expectations.</p>
+<h3>Environment variables</h3>
+<p>Link to where they are documented (never the values themselves in the README).</p>
+<h2>Deployment</h2>
+<p>How to deploy. Who does it. What can go wrong.</p>
+<h2>Troubleshooting</h2>
+<p>Known gotchas and their solutions. This section saves future developers hours — 
+add to it every time you waste time on a problem that was not documented.
+```</p>
+<p>Every <code>npm run</code> command a developer will need should be in the README. Screenshots for visual tools; terminal output for CLI tools.</p>
+<hr />
+<h2>Architecture Decision Records (ADRs)</h2>
+<p>An ADR captures a significant architectural or design decision: the context, the options considered, and the chosen direction.</p>
+<h3>When to Write an ADR</h3>
+<p>Write one when:</p>
+<ul>
+<li>Adopting a new technology, library, or framework</li>
+<li>Changing the data model significantly</li>
+<li>Choosing between meaningfully different architectural approaches</li>
+<li>Making a decision that future developers will question without context</li>
+<li>Deprecating an existing approach</li>
+</ul>
+<p>Do not write ADRs for implementation details or routine coding choices.</p>
+<h3>ADR Format</h3>
+<p>```markdown</p>
+<h1>ADR-NNN: [Short imperative title — "Use Pinia instead of Vuex"]</h1>
+<p><strong>Status</strong>: Proposed | Accepted | Deprecated | Superseded by ADR-NNN
+<strong>Date</strong>: YYYY-MM-DD
+<strong>Authors</strong>: [names]</p>
+<h2>Context</h2>
+<p>What problem required a decision? What constraints existed? What was the state of the 
+codebase or team at the time?</p>
+<p>Write this so a developer joining a year later understands why the decision was necessary — 
+not just what was decided.</p>
+<h2>Decision</h2>
+<p>What was decided. State it directly. One to three paragraphs.</p>
+<h2>Alternatives Considered</h2>
+<p>For each alternative: what it was, and the specific reason it was not chosen.
+Do not just list alternatives without explaining why each one lost.</p>
+<h2>Consequences</h2>
+<p>What becomes easier as a result of this decision?
+What becomes harder or more constrained?
+What assumptions does this decision rely on?
+What technical debt does it introduce, if any?
+```</p>
+<p><strong>Numbering</strong>: prefix with <code>ADR-001</code>, <code>ADR-002</code>. Store in <code>docs/decisions/</code> or <code>adr/</code>. Commit ADRs in the same PR as the change they document.</p>
+<p>When an ADR is superseded, update its status and link to the replacement — do not delete it. The history of why a decision changed is part of the value.</p>
+<hr />
+<h2>Changelog</h2>
+<p>Follow <a href="https://keepachangelog.com">Keep a Changelog</a> format. The changelog is for humans who want to know what changed between versions — not for developers reading commit history.</p>
+<p>```markdown</p>
+<h1>Changelog</h1>
+<h2>[Unreleased]</h2>
+<h2>[2.1.0] - 2024-02-01</h2>
+<h3>Added</h3>
+<ul>
+<li>User profile avatar upload with crop support</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Order list now sorts by most recent by default</li>
+</ul>
+<h3>Deprecated</h3>
+<ul>
+<li><code>getUserById</code> — use <code>fetchUser</code> instead; will be removed in v3.0</li>
+</ul>
+<h3>Removed</h3>
+<ul>
+<li>Legacy <code>/v1/orders</code> endpoint (deprecated in v2.0.0, sunset 2024-01-31)</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Navigation breaks when the URL contains a hash</li>
+</ul>
+<h3>Security</h3>
+<ul>
+<li>Updated <code>fast-xml-parser</code> to fix CVE-2023-34104
+```</li>
+</ul>
+<p><strong>Rules:</strong></p>
+<ul>
+<li>Every user-visible change belongs in the changelog</li>
+<li>Internal refactors do not belong unless they change observable behaviour</li>
+<li>Security fixes always go in the <code>Security</code> section with a CVE reference where available</li>
+<li>Keep <code>[Unreleased]</code> at the top and move it to a release version on ship</li>
+</ul>
+<hr />
+<h2>Code Comment Philosophy</h2>
+<p>Three types of comment that add real value:</p>
+<p><strong>1. Intent</strong>: why does this code exist? What requirement does it serve?
+<code>typescript
+// The API returns epoch timestamps in seconds, not milliseconds
+const timestamp = apiResponse.created_at * 1000</code></p>
+<p><strong>2. Warning</strong>: this is a trap. Future developer — be aware.
+<code>typescript
+// Do NOT use `user.id` here — it may be stale if the user recently updated their profile.
+// Use `auth.currentUser.id` from the auth composable instead.</code></p>
+<p><strong>3. External context</strong>: something outside the code that explains a decision.
+<code>typescript
+// Workaround for a Safari bug with position:sticky inside overflow:scroll containers.
+// See: https://bugs.webkit.org/show_bug.cgi?id=XXXXX
+// Remove once Safari 18 is the minimum supported version.</code></p>
+<p>One type that adds no value:</p>
+<p><strong>4. Restatement</strong>: says exactly what the code says.
+<code>typescript
+// Get the user by ID
+const user = await getUser(id)</code></p>
+<hr />
+<h2>Checklist</h2>
+<ul>
+<li>[ ] All exported functions, components, and composables have a JSDoc summary</li>
+<li>[ ] <code>@throws</code> documented for all known error cases</li>
+<li>[ ] <code>@example</code> added for non-trivial usage</li>
+<li>[ ] README includes working setup steps a new developer can follow without asking anyone</li>
+<li>[ ] Significant architectural decisions have committed ADRs</li>
+<li>[ ] Changelog updated for every user-visible or breaking change</li>
+<li>[ ] Security fixes in changelog reference the CVE</li>
+<li>[ ] Comments explain why or warn — not what the code already shows</li>
+<li>[ ] No commented-out code in production — use version control to recover deleted code</li>
+</ul>
+</article>
+<p class="back"><a href="../">Back to all skills</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>

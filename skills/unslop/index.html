@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Unslop skill | Dan Wilkinson</title>
+<meta name="description" content="Detect and remove AI writing patterns. Scan text for puffery, vague attributions, AI vocabulary, and style tells. Rewrite for clarity and human voice.&quot; aliases: [&quot;ai-text-detection&quot;, &quot;human-voice&quot;]">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/unslop/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../agents/">Agents</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Skills</a></li><li aria-current="page">Unslop</li></ol></nav>
+<h1>Unslop</h1>
+<p class="lead">Detect and remove AI writing patterns. Scan text for puffery, vague attributions, AI vocabulary, and style tells. Rewrite for clarity and human voice.&quot; aliases: [&quot;ai-text-detection&quot;, &quot;human-voice&quot;]</p>
+<div class="fetch"><p class="fetch-label" id="l-234170">Point your agent at this file</p><p class="fetch-url"><code>https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md</code></p><button class="btn copy" type="button" data-copy="https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md" hidden>Copy URL</button><p class="copied" role="status" aria-live="polite"></p></div>
+<p class="rawlinks"><a href="SKILL.md">Raw SKILL.md</a> <a href="SKILL.txt">Plain text copy</a> <span class="ver">Version 1.0.0, updated 6 November 2026</span></p>
+<article class="skill-body">
+<blockquote>
+<p>Source: cursor/plugins pstack.</p>
+</blockquote>
+<p>Remove AI patterns and add human voice to text, documentation, comments, and generated content.</p>
+<h2>Process</h2>
+<ol>
+<li><strong>Scan</strong> for patterns below.</li>
+<li><strong>Rewrite</strong> — preserve meaning, match intended tone.</li>
+<li><strong>Add soul</strong> (see next section).</li>
+<li><strong>Self-audit</strong>: "What makes this obviously AI generated?" Fix remaining tells.</li>
+</ol>
+<h2>Adding soul</h2>
+<p>Removing patterns is half the job. Sterile, voiceless writing is just as obvious.</p>
+<ul>
+<li><strong>Have opinions.</strong> React to facts instead of neutrally listing pros and cons.</li>
+<li><strong>Vary rhythm.</strong> Short sentences. Then longer ones that take their time. Mix it up.</li>
+<li><strong>Acknowledge complexity.</strong> "Impressive but also kind of unsettling" beats "impressive."</li>
+<li><strong>Use "I" when it fits.</strong> First person isn't unprofessional.</li>
+<li><strong>Let some mess in.</strong> Perfect structure looks machine-made.</li>
+<li><strong>Be specific.</strong> Not "this is concerning" but "there's something unsettling about agents churning away at 3am."</li>
+</ul>
+<h2>Patterns to detect and fix</h2>
+<h3>Content</h3>
+<ol>
+<li>
+<p><strong>Puffery</strong> — "pivotal moment", "testament to", "evolving landscape", "setting the stage for", "indelible mark", "deeply rooted". Cut puffery, state what happened.
+   - ❌ This represents a pivotal moment in the project's evolution.
+   - ✅ This changed how the project works.</p>
+</li>
+<li>
+<p><strong>Name-dropping</strong> — Listing media outlets without context. Pick one, say what was said.
+   - ❌ According to Forbes, Bloomberg, and The New York Times, the trend is growing.
+   - ✅ Forbes reported a 40% increase in adoption.</p>
+</li>
+<li>
+<p><strong>Superficial -ing phrases</strong> — "highlighting...", "ensuring...", "reflecting...", "showcasing...", "fostering...". Delete or expand with real sources.
+   - ❌ The update highlights the importance of security while ensuring backwards compatibility.
+   - ✅ The update maintains backwards compatibility without breaking existing code.</p>
+</li>
+<li>
+<p><strong>Promotional language</strong> — "nestled", "vibrant", "breathtaking", "groundbreaking", "renowned", "stunning", "must-visit". Use neutral descriptions.
+   - ❌ Our groundbreaking, vibrant platform nestled in the cloud.
+   - ✅ Our cloud-based platform.</p>
+</li>
+<li>
+<p><strong>Vague attributions</strong> — "Experts believe", "Industry reports suggest", "Some critics argue". Name the source or delete.
+   - ❌ Experts suggest this approach improves performance.
+   - ✅ Benchmarks show a 25% performance improvement.</p>
+</li>
+<li>
+<p><strong>Formulaic challenges</strong> — "Despite challenges... continues to thrive." Replace with specific facts.
+   - ❌ Despite challenges, the team continues to innovate.
+   - ✅ The team shipped three features despite losing two developers to other projects.</p>
+</li>
+</ol>
+<h3>Language</h3>
+<ol>
+<li>
+<p><strong>AI vocabulary</strong> — Additionally, crucial, delve, enduring, enhance, fostering, garner, interplay, intricate, landscape (abstract), pivotal, showcase, tapestry (abstract), testament, underscore, vibrant. Replace with plain words.
+   - ❌ We delve into the intricate interplay of components to enhance performance.
+   - ✅ We examine how components interact to improve performance.</p>
+</li>
+<li>
+<p><strong>Fancy ways to say "is"</strong> — "serves as", "stands as", "boasts", "features". Just say "is" or "has".
+   - ❌ This tool serves as a powerful solution that boasts enterprise features.
+   - ✅ This tool is powerful and has enterprise features.</p>
+</li>
+<li>
+<p><strong>"Not just X, but Y"</strong> — State the point directly instead.
+   - ❌ This is not just a library, but a complete ecosystem.
+   - ✅ This is a complete ecosystem.</p>
+</li>
+<li>
+<p><strong>Rule of three</strong> — Forcing ideas into groups of three. Use the natural number.
+   - ❌ The system is fast, reliable, and scalable.
+   - ✅ The system is fast and reliable. (Keep only what matters.)</p>
+</li>
+<li>
+<p><strong>Synonym cycling</strong> — protagonist, main character, central figure, hero all in one paragraph. Pick one, repeat it.
+   - ❌ The protagonist faces the antagonist. Our main character must overcome the villain. The hero emerges victorious.
+   - ✅ The protagonist faces the antagonist and emerges victorious.</p>
+</li>
+<li>
+<p><strong>False ranges</strong> — "from X to Y" where X and Y aren't on a meaningful scale. List topics directly.
+   - ❌ Topics range from setup to advanced configuration.
+   - ✅ Setup, basic configuration, and advanced tuning.</p>
+</li>
+</ol>
+<h3>Style</h3>
+<ol>
+<li>
+<p><strong>Em dash overuse</strong> — Avoid em dashes entirely. Use periods or commas only (no parentheses, no en dashes, no hyphen-as-dash substitutes). Em dashes are an AI tell.
+   - ❌ The API handles requests — including edge cases — with grace.
+   - ✅ The API handles requests, including edge cases, with grace.</p>
+</li>
+<li>
+<p><strong>Colon overuse</strong> — Colons are fine before a list or example. Not as mid-sentence connectors.
+   - ❌ If you're coming from automation: instead of registering handlers, describe conditions.
+   - ✅ Describing conditions works better than registering handlers.</p>
+</li>
+<li>
+<p><strong>Boldface overuse</strong> — Don't bold every proper noun or acronym.
+   - ❌ <strong>TypeScript</strong> and <strong>React</strong> are <strong>JavaScript</strong> tools.
+   - ✅ TypeScript and React are JavaScript tools.</p>
+</li>
+<li>
+<p><strong>Inline-header lists</strong> — The tell is a bold label and colon that restates the line: "<strong>Performance:</strong> Performance improved...". Convert to prose. (A bold lead-in that ends in a period and is followed by new detail is fine: "<strong>Schema in TypeScript.</strong> Tables live in one file.")
+   - ❌ <strong>Benefits:</strong> Our approach provides better performance, easier maintenance, and faster development.
+   - ✅ Our approach performs better, is easier to maintain, and speeds up development.</p>
+</li>
+<li>
+<p><strong>Title case headings</strong> — Use sentence case.
+   - ❌ # Important Configuration Details
+   - ✅ # Important configuration details</p>
+</li>
+<li>
+<p><strong>Decorative emojis</strong> — Remove from headings and bullets.
+   - ❌ ## 🚀 Getting Started
+   - ✅ ## Getting started</p>
+</li>
+<li>
+<p><strong>Curly quotes</strong> — Replace with straight quotes.
+   - ❌ "Use straight quotes," not "curly ones."
+   - ✅ "Use straight quotes," not "curly ones."</p>
+</li>
+</ol>
+<h3>Communication artifacts</h3>
+<ol>
+<li>
+<p><strong>Chatbot phrases</strong> — "I hope this helps!", "Let me know if...", "Of course!", "Certainly!", "Found the smoking gun!" Remove.
+   - ❌ I hope this helps! Let me know if you have questions.
+   - ✅ (End naturally without filler.)</p>
+</li>
+<li>
+<p><strong>Cutoff disclaimers</strong> — "While specific details are limited..." Find sources or remove.
+   - ❌ While specific details are limited, reports suggest growth.
+   - ✅ [Provide specific data or remove the claim.]</p>
+</li>
+<li>
+<p><strong>Sycophantic tone</strong> — "Great question! You're absolutely right!" Respond directly.
+   - ❌ Great question! You're absolutely right about the performance impact.
+   - ✅ The performance impact occurs because...</p>
+</li>
+</ol>
+<h3>Filler</h3>
+<ol>
+<li>
+<p><strong>Filler phrases</strong> — "In order to" becomes "To". "Due to the fact that" becomes "Because". "It is important to note that" gets deleted.
+   - ❌ In order to understand this, it is important to note that, due to the fact that the system is distributed, responses may vary.
+   - ✅ Because the system is distributed, responses may vary.</p>
+</li>
+<li>
+<p><strong>Excessive hedging</strong> — "could potentially possibly be argued that it might" becomes "may".
+   - ❌ It could potentially be argued that this might improve performance.
+   - ✅ This may improve performance.</p>
+</li>
+<li>
+<p><strong>Generic conclusions</strong> — "The future looks bright." State specific plans or facts.
+   - ❌ The future looks bright for this technology.
+   - ✅ Version 2.0 ships in Q4 with streaming support.</p>
+</li>
+</ol>
+<h3>Jargon</h3>
+<ol>
+<li><strong>Abstract metaphor nouns</strong> — substrate, wedge, vector, locus, vantage, nexus, primitive (as noun), harness (as metaphor), surface (as in "API surface"), bedrock, scaffolding (as metaphor), modality, paradigm, gold-plating, ratchet (as metaphor), evacuate (for moving code), endgame, north star, flywheel. These read as technical but usually have a plainer concrete word.
+   - ❌ We're leveraging this as a wedge into the enterprise market, using it as a north star for future development.
+   - ✅ We're using this to enter the enterprise market and guiding future development by it.</li>
+</ol>
+<p>Examples of replacements:</p>
+<ul>
+<li>"Substrate" → "base"</li>
+<li>"Wedge in" → "add"</li>
+<li>"Vector" → "way" or "method"</li>
+<li>"Gold-plating" → "more than the job needs"</li>
+<li>"Ratchet" → the mechanism's real name or "a limit that only tightens"</li>
+<li>"Evacuate" → "move out"</li>
+<li>"Endgame" → "the last phase"</li>
+<li>"North star" → "goal" or "target"</li>
+</ul>
+<h3>Plain speech</h3>
+<ol>
+<li><strong>Say what it does, not how it feels</strong> — "the database stays close at hand", "SQL you can read", "types that follow your schema" name a feeling. The fix names the mechanism or a number.
+   - ❌ This library brings types close at hand, letting you write SQL you can read.
+   - ✅ <code>.toSQL()</code> returns the exact string sent to the database. Type definitions auto-sync with schema.</li>
+</ol>
+<p>Ask: what should the reader do or know? If you can't restate it as a concrete instruction, fact, or number, cut it.</p>
+<ol start="2">
+<li>
+<p><strong>Shorten or split dense sentences</strong> — If the reader has to backtrack to parse a sentence, break it in two or drop clauses.
+   - ❌ The middleware, which processes requests before they reach handlers, validates input against a schema defined in the config, ensuring type safety across the entire stack.
+   - ✅ The middleware validates input against the schema. This ensures type safety. Handlers receive clean data.</p>
+</li>
+<li>
+<p><strong>Active voice</strong> — Prefer it. Catch "is/are/was/were + past participle" and name the actor.
+   - ❌ Queries are validated by the compiler. The file is parsed by the loader.
+   - ✅ The compiler validates queries. The loader parses the file.</p>
+</li>
+</ol>
+<p>Passive is fine only when the actor is unknown or genuinely doesn't matter.</p>
+<ol start="4">
+<li>
+<p><strong>Cut adverbs, or use a stronger verb</strong> — "runs quickly" becomes "is fast" or the number. "significantly improves" becomes the measured delta.
+   - ❌ The update significantly improves performance.
+   - ✅ The update adds a 40% performance boost.</p>
+</li>
+<li>
+<p><strong>Prefer the plain word</strong> — utilize → use, leverage → use, facilitate → help, numerous → many, in the event that → if.
+   - ❌ We facilitate numerous improvements by utilizing this approach.
+   - ✅ We improve many things using this approach.</p>
+</li>
+</ol>
+<h2>Workflow</h2>
+<p><strong>For any piece of text:</strong></p>
+<ol>
+<li><strong>Read</strong> the text with fresh eyes.</li>
+<li><strong>Mark</strong> patterns as you spot them — write the line number or quote.</li>
+<li><strong>Rewrite</strong> each pattern using the fixes above. Preserve the original meaning.</li>
+<li><strong>Read aloud</strong> — does it sound human? Natural rhythm?</li>
+<li><strong>Self-audit</strong>: Could this appear unchanged in a different project's docs? Cut it. Does every sentence do work? Keep only what matters.</li>
+<li><strong>Final check</strong>: No puffery, no vague attribution, no AI vocabulary, no false ranges, no filler. ✅</li>
+</ol>
+<h2>When to use this skill</h2>
+<ul>
+<li>Code review of documentation, comments, or generated text</li>
+<li>Writing blog posts, READMEs, or technical guides</li>
+<li>Reviewing AI-generated content before publishing</li>
+<li>Editing your own writing to strip robotic phrasing</li>
+<li>Training models or tuning LLM outputs</li>
+</ul>
+</article>
+<p class="back"><a href="../">Back to all skills</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>

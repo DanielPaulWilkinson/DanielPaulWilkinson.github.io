@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Internationalisation skill | Dan Wilkinson</title>
+<meta name="description" content="Internationalisation patterns: locale architecture, translation key naming conventions, plural forms, date/number/currency formatting with Intl APIs, RTL support, accessibility with i18n, and dynamic locale loading.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/i18n/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../agents/">Agents</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Skills</a></li><li aria-current="page">Internationalisation</li></ol></nav>
+<h1>Internationalisation</h1>
+<p class="lead">Internationalisation patterns: locale architecture, translation key naming conventions, plural forms, date/number/currency formatting with Intl APIs, RTL support, accessibility with i18n, and dynamic locale loading.</p>
+<div class="fetch"><p class="fetch-label" id="l-210497">Point your agent at this file</p><p class="fetch-url"><code>https://danielpaulwilkinson.github.io/skills/i18n/SKILL.md</code></p><button class="btn copy" type="button" data-copy="https://danielpaulwilkinson.github.io/skills/i18n/SKILL.md" hidden>Copy URL</button><p class="copied" role="status" aria-live="polite"></p></div>
+<p class="rawlinks"><a href="SKILL.md">Raw SKILL.md</a> <a href="SKILL.txt">Plain text copy</a> <span class="ver">Version 1.0.0, updated 6 November 2026</span></p>
+<article class="skill-body">
+<p>Internationalisation is architecture, not text replacement. The decisions made here — key structure, plural handling, date formatting — are expensive to change later. Design them correctly from the start.</p>
+<h2>Architecture Decisions</h2>
+<h3>Locale Identification</h3>
+<p>Use IETF BCP 47 language tags:</p>
+<ul>
+<li><code>en-GB</code> (English, UK) not <code>en_GB</code> or <code>ENG</code></li>
+<li><code>fr-FR</code> for French (France), <code>fr-CA</code> for French (Canada)</li>
+<li><code>ar-AE</code> for Arabic (UAE) — distinguishes region-specific formatting</li>
+</ul>
+<p><strong>Language vs. region matters</strong>: <code>en-AU</code> and <code>en-US</code> have different date formats (DD/MM/YYYY vs MM/DD/YYYY), currency symbols, and vocabulary. Do not collapse them to <code>en</code> if those differences matter.</p>
+<h3>Locale Resolution and Fallback</h3>
+<p><code>User preference → Browser locale → Default locale
+en-AU → en → en-GB (your default)</code></p>
+<p>Define the fallback chain explicitly. Warn in development when a key falls back to the default locale — it surfaces translation gaps before they reach production.</p>
+<p>Store the user's locale preference persistently: user profile (authenticated users), localStorage (unauthenticated).</p>
+<hr />
+<h2>Message File Structure</h2>
+<p>Organise translation files by feature or domain — not as a single flat file. A flat file with 500+ keys becomes unmaintainable.</p>
+<p><code>locales/
+  en/
+    common.json      ← shared strings (Save, Cancel, Loading, errors)
+    auth.json        ← login, register, password reset
+    orders.json      ← order-specific strings
+    profile.json     ← profile page strings
+  fr/
+    common.json
+    auth.json
+    ...</code></p>
+<p>Namespaced keys prevent collisions and make the source obvious: <code>orders.status.pending</code> not just <code>pending</code>.</p>
+<p>Dynamic loading: load only the needed namespace on demand. Do not bundle all translations into the initial JS bundle.</p>
+<hr />
+<h2>Translation Key Naming</h2>
+<p>Keys describe the <strong>location and nature</strong> of the string, not the string value.</p>
+<p><strong>Good:</strong>
+<code>auth.login.form.submitButton
+auth.login.error.invalidCredentials
+orders.list.emptyState.heading
+orders.detail.status.pending
+navigation.account.label</code></p>
+<p><strong>Bad:</strong>
+<code>loginButton              ← no location context
+pleaseSignInToContinue   ← describes the value (breaks when the English changes)
+error1                   ← meaningless</code></p>
+<p>Rules:</p>
+<ul>
+<li>Use dot-notation hierarchy: <code>feature.component.element</code></li>
+<li>Keys describe placement and purpose — not content</li>
+<li>Do not use the English string as the key (<code>"Please sign in"</code>) — this couples the key to the English translation and breaks when the English copy changes</li>
+</ul>
+<hr />
+<h2>Pluralisation</h2>
+<p>Never construct plural strings with conditional code:</p>
+<p><code>``typescript
+// Bad — wrong in any language with more than two plural forms
+const message = count === 1 ? 'You have 1 item' :</code>You have ${count} items`</p>
+<p>// Good — use the i18n library's plural API
+t('cart.items', { count })
+```</p>
+<p>Many languages have more than two plural forms:</p>
+<ul>
+<li>Russian: 3 forms (1, 2–4, 5+)</li>
+<li>Arabic: 6 forms</li>
+<li>Polish: 4 forms</li>
+<li>Japanese: 1 form (no plural distinction)</li>
+</ul>
+<p>The i18n library handles CLDR plural rules automatically when you use its plural API.</p>
+<p>Translation file with plural forms:
+<code>json
+{
+  "cart.items": {
+    "one": "You have {count} item",
+    "other": "You have {count} items"
+  }
+}</code></p>
+<hr />
+<h2>Interpolation</h2>
+<p>Never concatenate translated strings with variables — word order differs across languages.</p>
+<p><code>``typescript
+// Bad — "Hello" + name + "! You have" + count + "messages" breaks in many languages</code>${t('greeting')} ${userName}! ${t('messages.count', { count })}`</p>
+<p>// Good — interpolation inside the translation string
+t('greeting.withName', { name: userName })
+// Translation: "Hello, {name}!"  (English)
+// Translation: "{name}さん、こんにちは！"  (Japanese — name first)
+```</p>
+<p>For complex sentences that include counts, names, or other variables, use a single translation key with all variables interpolated. Do not split the sentence across multiple keys.</p>
+<hr />
+<h2>Date, Time, Number, and Currency Formatting</h2>
+<p>Use the <code>Intl</code> APIs or a library that wraps them. Never hardcode format strings.</p>
+<p>```typescript
+// Date formatting — locale-appropriate
+new Intl.DateTimeFormat('en-GB', { dateStyle: 'long' }).format(date)
+// → "15 January 2024"</p>
+<p>new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' }).format(date)
+// → "15. Januar 2024"</p>
+<p>// Number formatting
+new Intl.NumberFormat('de-DE').format(12345.67)
+// → "12.345,67"  (German uses . for thousands, , for decimal)</p>
+<p>// Currency formatting
+new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(99.99)
+// → "£99.99"</p>
+<p>// Relative time
+new Intl.RelativeTimeFormat('es', { numeric: 'auto' }).format(-1, 'day')
+// → "ayer"  (yesterday)
+```</p>
+<p><strong>Rules:</strong></p>
+<ul>
+<li>Always pass the locale explicitly — never rely on the browser's locale matching the user's chosen locale</li>
+<li>Do not use <code>toLocaleDateString()</code> or <code>toLocaleTimeString()</code> without an explicit locale argument</li>
+<li>Store all dates as UTC; convert to local time for display only</li>
+<li>Currency amounts store the ISO currency code alongside the numeric value — <code>{ amount: 99.99, currency: 'GBP' }</code></li>
+</ul>
+<hr />
+<h2>RTL (Right-to-Left) Support</h2>
+<p>Arabic, Hebrew, Persian, and Urdu are RTL. RTL support requires more than flipping text direction.</p>
+<h3>HTML</h3>
+<p>Set <code>dir="rtl"</code> on <code>&lt;html&gt;</code> when the locale is RTL. This flows the entire page layout automatically.</p>
+<p>```html</p>
+<html lang="ar" dir="rtl">
+```
+
+Mark inline LTR content within RTL text:
+```html
+<p>مرحبا <span dir="ltr">user@example.com</span></p>
+```
+
+Numbers and code remain LTR within RTL text.
+
+### CSS
+
+Use logical CSS properties instead of physical directional properties:
+
+| Physical (avoid) | Logical (use) |
+|---|---|
+| `margin-left: 16px` | `margin-inline-start: 16px` |
+| `padding-right: 8px` | `padding-inline-end: 8px` |
+| `border-left: 1px` | `border-inline-start: 1px` |
+| `text-align: left` | `text-align: start` |
+| `float: right` | `float: inline-end` |
+
+Logical properties resolve based on the document's writing direction automatically.
+
+### Icons
+
+Icons with directional meaning (arrows, chevrons, forward/back controls) should be mirrored for RTL. Use `transform: scaleX(-1)` or provide RTL-specific icon variants.
+
+### Testing
+
+Switch the browser or system locale to Arabic and inspect the layout. Common failures: fixed-width containers that clip text, `margin-left: auto` pushing elements the wrong direction, icons not mirrored.
+
+---
+
+## Dynamic Locale Loading
+
+Load only the needed locale at startup. Lazy-load additional namespaces as users navigate to features that need them.
+
+```typescript
+// Initial load — load only current locale's common namespace
+const messages = await import(`./locales/${locale}/common.json`)
+i18n.setLocaleMessage(locale, messages.default)
+
+// Lazy load a feature namespace when the user navigates to it
+async function loadOrdersNamespace(locale: string) {
+  const messages = await import(`./locales/${locale}/orders.json`)
+  i18n.mergeLocaleMessage(locale, messages.default)
+}
+```
+
+---
+
+## Accessibility with i18n
+
+- Always set `<html lang="...">` to the active locale — screen readers use this to select the correct pronunciation engine
+- Update the `lang` attribute dynamically when the user switches locale
+- Keep the language switcher itself accessible — it must work before any locale-specific resources are loaded
+- RTL layouts require `dir="rtl"` on `<html>` — assistive technology uses this for navigation order
+
+---
+
+## Common Pitfalls
+
+| Pitfall | Problem | Fix |
+|---|---|---|
+| Concatenating translated fragments | Word order differs per language | Use interpolation inside a single key |
+| Hardcoded date format strings | Wrong in most locales | `Intl.DateTimeFormat` with explicit locale |
+| Using English string as the key | Breaks when copy changes | Use descriptive key names |
+| Conditional plurals in code | Wrong for languages with > 2 plural forms | i18n library plural API |
+| No fallback locale | Missing key shows raw key to user | Define fallback; warn in dev on missing keys |
+| Single flat translation file | Unmaintainable at scale | Namespace by feature/domain |
+| Same key reused for different contexts | Translation cannot capture context difference | Distinct keys: `action.add.button` vs `math.addition.label` |
+
+---
+
+## Checklist
+
+- [ ] No hardcoded user-visible strings in source code
+- [ ] Translation keys are namespaced and describe placement, not content
+- [ ] Plurals use the i18n library's plural API — no ternary conditionals
+- [ ] Dates, numbers, and currencies formatted with `Intl` APIs and explicit locale
+- [ ] Layout uses logical CSS properties (`margin-inline-start`, not `margin-left`)
+- [ ] `<html lang="...">` and `dir` attributes updated on locale change
+- [ ] Fallback locale defined; missing keys logged as warnings in development
+- [ ] Translation files organised by feature/domain namespace
+- [ ] Locale loading is dynamic — not all locales bundled into initial JS
+</article>
+<p class="back"><a href="../">Back to all skills</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>

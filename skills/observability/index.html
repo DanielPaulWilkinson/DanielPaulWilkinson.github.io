@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Observability skill | Dan Wilkinson</title>
+<meta name="description" content="Design and implement observability for production systems: structured logging, RED metrics, distributed tracing, symptom-based alerting, SLOs, and dashboards. Covers what to instrument, how to structure it, and how to alert on what actually matters.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/observability/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../agents/">Agents</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Skills</a></li><li aria-current="page">Observability</li></ol></nav>
+<h1>Observability</h1>
+<p class="lead">Design and implement observability for production systems: structured logging, RED metrics, distributed tracing, symptom-based alerting, SLOs, and dashboards. Covers what to instrument, how to structure it, and how to alert on what actually matters.</p>
+<div class="fetch"><p class="fetch-label" id="l-464217">Point your agent at this file</p><p class="fetch-url"><code>https://danielpaulwilkinson.github.io/skills/observability/SKILL.md</code></p><button class="btn copy" type="button" data-copy="https://danielpaulwilkinson.github.io/skills/observability/SKILL.md" hidden>Copy URL</button><p class="copied" role="status" aria-live="polite"></p></div>
+<p class="rawlinks"><a href="SKILL.md">Raw SKILL.md</a> <a href="SKILL.txt">Plain text copy</a> <span class="ver">Version 1.0.0, updated 6 November 2026</span></p>
+<article class="skill-body">
+<p>You cannot fix what you cannot see. Observability tells you the health of your system before users report that it is broken.</p>
+<h2>The Three Pillars</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Pillar</th>
+<th>Answers</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Logs</strong></td>
+<td>What happened?</td>
+<td>Debugging specific incidents</td>
+</tr>
+<tr>
+<td><strong>Metrics</strong></td>
+<td>How is it performing over time?</td>
+<td>Trending, alerting, SLOs</td>
+</tr>
+<tr>
+<td><strong>Traces</strong></td>
+<td>Where did a specific request spend its time?</td>
+<td>Latency attribution, dependency mapping</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use all three. They answer different questions and are complementary, not alternatives.</p>
+<hr />
+<h2>Structured Logging</h2>
+<h3>Format: Always JSON</h3>
+<p>Log as machine-parseable JSON — not free-form text strings that require regex to query.</p>
+<p><code>json
+{
+  "timestamp": "2024-01-15T10:23:45.123Z",
+  "level": "error",
+  "service": "order-api",
+  "traceId": "abc-123-xyz",
+  "spanId": "def-456",
+  "userId": "user-789",
+  "action": "order.create",
+  "orderId": "order-999",
+  "errorCode": "PAYMENT_DECLINED",
+  "message": "Order creation failed: payment declined",
+  "durationMs": 342
+}</code></p>
+<p>Always include: <code>timestamp</code>, <code>level</code>, <code>service</code>, <code>message</code>. Add domain context fields as needed. Include <code>traceId</code> on every log line to correlate logs with traces.</p>
+<h3>What to Log</h3>
+<p><strong>Always:</strong></p>
+<ul>
+<li>Application start and shutdown (configuration summary — no secrets)</li>
+<li>Authenticated user requests: user ID, resource, action, outcome</li>
+<li>Authentication events: login, logout, failed login (never log the attempted password)</li>
+<li>Business state transitions: order status changes, payment processing, user account changes</li>
+<li>Outbound calls to external services: target, status code, duration</li>
+<li>Errors and exceptions: full stack trace, contextual fields</li>
+</ul>
+<p><strong>Never:</strong></p>
+<ul>
+<li>Passwords, secret keys, tokens, session IDs</li>
+<li>PII (full names, emails, payment data) unless explicitly required and access-controlled</li>
+<li>Verbose debug trace of every function call in production</li>
+</ul>
+<h3>Log Levels</h3>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Use for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td>Unrecoverable failure requiring human attention</td>
+</tr>
+<tr>
+<td><code>warn</code></td>
+<td>Recoverable issue, degraded state, deprecated feature use</td>
+</tr>
+<tr>
+<td><code>info</code></td>
+<td>Normal notable events: request received, state changed, job completed</td>
+</tr>
+<tr>
+<td><code>debug</code></td>
+<td>Detailed diagnostic information — <strong>off in production</strong> by default</td>
+</tr>
+</tbody>
+</table></div>
+<p>Production log level should be <code>info</code> or <code>warn</code>. <code>debug</code> in production drowns real signals.</p>
+<hr />
+<h2>RED Metrics</h2>
+<p>Instrument every service with three baseline metric categories:</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>What it measures</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rate</strong></td>
+<td>Throughput (requests per second)</td>
+<td><code>http_requests_total</code> (counter)</td>
+</tr>
+<tr>
+<td><strong>Errors</strong></td>
+<td>Error rate (failed requests)</td>
+<td><code>http_errors_total</code> (counter)</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>Latency (how long requests take)</td>
+<td><code>http_request_duration_seconds</code> (histogram)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Instrument at the service boundary first. Add business-domain metrics (orders placed, payments processed) as a second layer.</p>
+<h3>Metric Types</h3>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Use for</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Counter</strong></td>
+<td>Monotonically increasing value; rate of change is meaningful</td>
+<td>Total requests, total errors</td>
+</tr>
+<tr>
+<td><strong>Gauge</strong></td>
+<td>Current value that can go up or down</td>
+<td>Queue depth, active connections, cache size</td>
+</tr>
+<tr>
+<td><strong>Histogram</strong></td>
+<td>Distribution of values; enables percentile calculations</td>
+<td>Request duration, payload size</td>
+</tr>
+</tbody>
+</table></div>
+<p>For latency, always use a histogram — averages are misleading. Report p50, p95, and p99. A p99 of 5s means 1% of users wait 5 seconds.</p>
+<h3>Label Cardinality</h3>
+<p>Labels slice metrics into dimensions. Keep cardinality bounded — unbounded labels explode storage and query cost.</p>
+<p><strong>Good labels</strong>: <code>service</code>, <code>endpoint</code>, <code>http_method</code>, <code>status_code</code>, <code>environment</code></p>
+<p><strong>Never as labels</strong>: <code>user_id</code>, <code>request_id</code>, <code>session_token</code>, <code>email</code> — these are unbounded and create millions of unique label combinations.</p>
+<hr />
+<h2>Distributed Tracing</h2>
+<p>A trace follows a single request through all the services and operations it touches. Each unit of work within a trace is a <strong>span</strong>.</p>
+<h3>What to Instrument as Spans</h3>
+<ul>
+<li>Incoming HTTP requests</li>
+<li>Outbound HTTP calls to other services</li>
+<li>Database queries (include sanitised query string, rows affected)</li>
+<li>Cache operations (hit/miss)</li>
+<li>Message queue publishes and consumes</li>
+<li>External service SDK calls</li>
+</ul>
+<h3>Context Propagation</h3>
+<p>Pass the <code>traceparent</code> header (W3C Trace Context standard) on every outbound call. This links spans across service boundaries into a single trace.</p>
+<p><code>typescript
+// When making an outbound call, include the trace context
+const response = await fetch(url, {
+  headers: {
+    ...getTraceContextHeaders(), // traceparent, tracestate
+    'Content-Type': 'application/json',
+  }
+});</code></p>
+<h3>Useful Span Attributes (OpenTelemetry semantic conventions)</h3>
+<p><code>http.method, http.url, http.status_code, http.response_content_length
+db.system, db.statement, db.operation, db.sql.table
+messaging.system, messaging.destination, messaging.message_id</code></p>
+<hr />
+<h2>Alerting</h2>
+<h3>Alert on Symptoms, Not Causes</h3>
+<p><strong>Good alert</strong>: "5xx error rate &gt; 1% for 5 minutes" — users are being affected right now.</p>
+<p><strong>Bad alert</strong>: "CPU utilisation &gt; 80%" — an internal metric. The service may be healthy despite high CPU.</p>
+<p>Alert on user-facing symptoms:</p>
+<ul>
+<li>Error rate above threshold</li>
+<li>Request latency p99 above threshold</li>
+<li>Success rate below threshold</li>
+<li>Health check endpoint failing</li>
+</ul>
+<h3>Alert Quality</h3>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Actionable</strong></td>
+<td>Every alert maps to a runbook with specific steps</td>
+</tr>
+<tr>
+<td><strong>Relevant</strong></td>
+<td>Alert fires when users are affected, not when something is merely unusual</td>
+</tr>
+<tr>
+<td><strong>Low noise</strong></td>
+<td>False positives get ignored — tune thresholds before shipping</td>
+</tr>
+<tr>
+<td><strong>Fast</strong></td>
+<td>Alert fires before users report the problem</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Alert fatigue rule</strong>: if an alert fires more than twice a week without resulting in action, either fix the underlying issue or raise the threshold. An alert that is always firing is noise, not a signal.</p>
+<h3>Severity Levels</h3>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Definition</th>
+<th>Response time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical (P1)</td>
+<td>User-facing service down or severely degraded</td>
+<td>Immediate, 24/7</td>
+</tr>
+<tr>
+<td>High (P2)</td>
+<td>Significant degradation affecting many users</td>
+<td>Within 30 minutes</td>
+</tr>
+<tr>
+<td>Medium (P3)</td>
+<td>Partial degradation or SLO at risk</td>
+<td>Business hours</td>
+</tr>
+<tr>
+<td>Low (P4)</td>
+<td>Informational, approaching a threshold</td>
+<td>Review next day</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>SLOs (Service Level Objectives)</h2>
+<p>An SLO is a target for a user-experience metric. It sets the reliability bar and creates a shared language between engineering and stakeholders.</p>
+<h3>Define SLOs Around User Experience</h3>
+<ul>
+<li><strong>Availability</strong>: "99.9% of requests return a successful response over a 30-day rolling window"</li>
+<li><strong>Latency</strong>: "95% of requests complete in under 300ms"</li>
+<li><strong>Error rate</strong>: "Error rate remains below 0.1% in any 5-minute window"</li>
+</ul>
+<h3>Error Budget</h3>
+<p>If SLO is 99.9%, the error budget is 0.1% — approximately 43 minutes of downtime per month.</p>
+<p>When the error budget is depleted:</p>
+<ul>
+<li>Reliability work takes priority over feature work</li>
+<li>Root cause analysis is required before the next deployment</li>
+</ul>
+<p>Track error budget burn rate on dashboards — a fast burn rate is an early warning of SLO breach.</p>
+<hr />
+<h2>Dashboards</h2>
+<p>A useful dashboard answers a specific question at a glance. An unfocused dashboard is noise.</p>
+<p><strong>Service health dashboard</strong> — one per service:</p>
+<ul>
+<li>Requests per second (rate)</li>
+<li>Error rate (%)</li>
+<li>Latency (p50, p95, p99)</li>
+<li>SLO burn rate</li>
+</ul>
+<p><strong>Business metrics dashboard</strong> — domain-specific:</p>
+<ul>
+<li>Orders placed per hour</li>
+<li>Payment success rate</li>
+<li>Active users</li>
+</ul>
+<p><strong>Principle</strong>: if a dashboard panel requires explanation to interpret, redesign it or add a title that states the question it answers.</p>
+<hr />
+<h2>Checklist</h2>
+<ul>
+<li>[ ] Logs are structured JSON with <code>timestamp</code>, <code>level</code>, <code>service</code>, <code>traceId</code>, <code>message</code></li>
+<li>[ ] No passwords, tokens, or PII in logs</li>
+<li>[ ] RED metrics (rate, errors, duration) instrumented for all services</li>
+<li>[ ] Histograms used for latency — percentiles available (p95, p99)</li>
+<li>[ ] Distributed trace context propagated on all outbound calls</li>
+<li>[ ] Alerts fire on user-facing symptoms, not internal metrics</li>
+<li>[ ] Every alert has a corresponding runbook</li>
+<li>[ ] SLOs defined with quantified error budgets</li>
+<li>[ ] Service health dashboard covers rate, errors, and latency</li>
+</ul>
+</article>
+<p class="back"><a href="../">Back to all skills</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>

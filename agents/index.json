@@ -41,68 +41,68 @@
       "skills": [
         {
           "name": "api-design",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/api-design/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "best-practices",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/best-practices/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "challenge",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/challenge/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "data-modelling",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/data-modelling/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "decision-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/decision-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "documentation-and-adrs",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "goal-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/goal-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "investigation",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/investigation/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "option-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/option-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "recommendation",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/recommendation/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "risk-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/risk-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "solution-discovery",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/solution-discovery/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "unslop",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md",
+          "status": "in library"
         }
       ],
       "mentions_agents": [],
@@ -156,8 +156,8 @@
         },
         {
           "name": "blast-radius",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/blast-radius/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "review",
@@ -166,8 +166,8 @@
         },
         {
           "name": "unslop",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md",
+          "status": "in library"
         }
       ],
       "mentions_agents": [],
@@ -210,13 +210,13 @@
       "skills": [
         {
           "name": "blast-radius",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/blast-radius/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "diagnose",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/diagnose/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "review",
@@ -225,8 +225,8 @@
         },
         {
           "name": "test-writing",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/test-writing/SKILL.md",
+          "status": "in library"
         }
       ],
       "mentions_agents": [
@@ -272,18 +272,18 @@
       "skills": [
         {
           "name": "documentation-and-adrs",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "goal-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/goal-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "unslop",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md",
+          "status": "in library"
         }
       ],
       "mentions_agents": [],
@@ -331,23 +331,23 @@
         },
         {
           "name": "best-practices",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/best-practices/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "error-handling",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/error-handling/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "frontend-ui-engineering",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/frontend-ui-engineering/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "incremental-implementation",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/incremental-implementation/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "review",
@@ -356,8 +356,8 @@
         },
         {
           "name": "ux-patterns",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/ux-patterns/SKILL.md",
+          "status": "in library"
         }
       ],
       "mentions_agents": [],
@@ -426,38 +426,38 @@
       "skills": [
         {
           "name": "browser-testing-with-devtools",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/browser-testing-with-devtools/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "diagnose",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/diagnose/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "goal-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/goal-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "observability",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/observability/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "performance-optimization",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/performance-optimization/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "risk-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/risk-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "unslop",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md",
+          "status": "in library"
         }
       ],
       "mentions_agents": [
@@ -507,13 +507,13 @@
         },
         {
           "name": "browser-testing-with-devtools",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/browser-testing-with-devtools/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "goal-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/goal-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "review",
@@ -522,8 +522,8 @@
         },
         {
           "name": "test-writing",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/test-writing/SKILL.md",
+          "status": "in library"
         }
       ],
       "mentions_agents": [],
@@ -566,28 +566,28 @@
       "skills": [
         {
           "name": "best-practices",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/best-practices/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "blast-radius",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/blast-radius/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "code-simplification",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/code-simplification/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "documentation-and-adrs",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/documentation-and-adrs/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "incremental-implementation",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/incremental-implementation/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "review",
@@ -596,8 +596,8 @@
         },
         {
           "name": "test-writing",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/test-writing/SKILL.md",
+          "status": "in library"
         }
       ],
       "mentions_agents": [],
@@ -638,18 +638,18 @@
       "skills": [
         {
           "name": "goal-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/goal-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "risk-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/risk-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "unslop",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md",
+          "status": "in library"
         }
       ],
       "mentions_agents": [],
@@ -692,33 +692,33 @@
       "skills": [
         {
           "name": "best-practices",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/best-practices/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "goal-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/goal-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "investigation",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/investigation/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "risk-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/risk-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "security-and-hardening",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/security-and-hardening/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "unslop",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md",
+          "status": "in library"
         }
       ],
       "mentions_agents": [
@@ -765,58 +765,58 @@
       "skills": [
         {
           "name": "best-practices",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/best-practices/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "challenge",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/challenge/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "decision-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/decision-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "diagnose",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/diagnose/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "goal-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/goal-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "investigation",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/investigation/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "option-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/option-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "recommendation",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/recommendation/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "risk-analysis",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/risk-analysis/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "solution-discovery",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/solution-discovery/SKILL.md",
+          "status": "in library"
         },
         {
           "name": "unslop",
-          "url": null,
-          "status": "not yet in library"
+          "url": "https://danielpaulwilkinson.github.io/skills/unslop/SKILL.md",
+          "status": "in library"
         }
       ],
       "mentions_agents": [

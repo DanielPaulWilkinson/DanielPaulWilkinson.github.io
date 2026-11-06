@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Security and hardening skill | Dan Wilkinson</title>
+<meta name="description" content="Audits code for security vulnerabilities using OWASP Top 10 methodology. Covers input validation, authentication, authorisation, secrets handling, XSS/CSRF/injection prevention, and dependency risk. Use during code review, pre-release audits, or dedicated security investigations.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/security-and-hardening/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../agents/">Agents</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Skills</a></li><li aria-current="page">Security and hardening</li></ol></nav>
+<h1>Security and hardening</h1>
+<p class="lead">Audits code for security vulnerabilities using OWASP Top 10 methodology. Covers input validation, authentication, authorisation, secrets handling, XSS/CSRF/injection prevention, and dependency risk. Use during code review, pre-release audits, or dedicated security investigations.</p>
+<div class="fetch"><p class="fetch-label" id="l-52851">Point your agent at this file</p><p class="fetch-url"><code>https://danielpaulwilkinson.github.io/skills/security-and-hardening/SKILL.md</code></p><button class="btn copy" type="button" data-copy="https://danielpaulwilkinson.github.io/skills/security-and-hardening/SKILL.md" hidden>Copy URL</button><p class="copied" role="status" aria-live="polite"></p></div>
+<p class="rawlinks"><a href="SKILL.md">Raw SKILL.md</a> <a href="SKILL.txt">Plain text copy</a> <span class="ver">Version 1.0.0, updated 6 November 2026</span></p>
+<article class="skill-body">
+<p>Identify real attack vectors, not hypothetical ones. Every finding must have a concrete exploit path — without it, the finding is noise.</p>
+<h2>Audit Approach</h2>
+<p>Work through each risk category systematically. For each finding, state:</p>
+<ol>
+<li><strong>The attack vector</strong> — how an attacker would exploit it</li>
+<li><strong>The impact</strong> — what they could access, modify, or destroy</li>
+<li><strong>The fix</strong> — the specific code change that closes the vulnerability</li>
+</ol>
+<hr />
+<h2>OWASP Top 10 (2021)</h2>
+<h3>A01: Broken Access Control</h3>
+<p>The most common and impactful category. Authentication proves who you are; authorisation controls what you can do.</p>
+<ul>
+<li>Is every action checked for authorisation, not just authentication?</li>
+<li>Can a user access or modify another user's data by changing an ID in the URL or request body (IDOR — Insecure Direct Object Reference)?</li>
+<li>Are access control checks enforced server-side? Client-side-only checks (hidden UI, frontend route guards) are not security controls.</li>
+<li>Are admin or elevated-privilege actions protected against CSRF?</li>
+<li>Can privilege escalation occur through parameter manipulation or JWT claims modification?</li>
+</ul>
+<p><strong>Frontend rule</strong>: hiding a UI element is not authorisation. Assume every hidden route, button, and API call can be reached directly.</p>
+<hr />
+<h3>A02: Cryptographic Failures</h3>
+<ul>
+<li>Are passwords hashed with a modern adaptive algorithm: bcrypt, argon2, or scrypt? Never MD5, SHA1, or unsalted SHA-256.</li>
+<li>Is sensitive data (PII, payment data, health data) encrypted at rest?</li>
+<li>Is TLS enforced for all communication? Are certificates valid and auto-renewed?</li>
+<li>Are cryptographic keys and certificates in a secrets manager — not hardcoded or in version control?</li>
+<li>Are tokens generated with a CSPRNG and of sufficient entropy (not sequential IDs)?</li>
+</ul>
+<hr />
+<h3>A03: Injection</h3>
+<p><strong>SQL</strong>: Parameterised queries only. No string concatenation in SQL — including ORDER BY, table names, and column names if they accept user input.</p>
+<p><strong>XSS (Cross-Site Scripting)</strong>:</p>
+<ul>
+<li>Flag every use of <code>v-html</code>, <code>innerHTML</code>, <code>dangerouslySetInnerHTML</code>, <code>document.write</code></li>
+<li>If user-supplied content reaches the DOM via these, is it sanitised by a trusted library (DOMPurify)?</li>
+<li>Verify Vue's template engine escapes interpolated values — it does by default, but <code>v-html</code> bypasses it entirely</li>
+<li>Flag <code>eval()</code>, <code>Function(string)</code>, <code>setTimeout(string)</code>, <code>setInterval(string)</code></li>
+</ul>
+<p><strong>Command injection</strong>: shell commands constructed from user input — flag and require allowlisting.</p>
+<p><strong>Template injection</strong>: user input inserted into server-side template strings.</p>
+<hr />
+<h3>A04: Insecure Design</h3>
+<ul>
+<li>Are there business logic flaws? (e.g., a discount applied multiple times, a quantity field that accepts negative values, a free-tier limit bypassable by racing requests)</li>
+<li>Is rate limiting applied to sensitive operations: login, password reset, OTP, registration?</li>
+<li>Are OTPs and password reset links single-use and short-lived?</li>
+<li>Are there race conditions in state transitions (TOCTOU — time-of-check-to-time-of-use)?</li>
+</ul>
+<hr />
+<h3>A05: Security Misconfiguration</h3>
+<ul>
+<li>Are default credentials changed in all environments?</li>
+<li>Do production error responses expose stack traces, file paths, or framework details?</li>
+<li>Are HTTP security headers set?</li>
+</ul>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Content-Security-Policy</code></td>
+<td>Restricts which resources can load (XSS mitigation)</td>
+</tr>
+<tr>
+<td><code>Strict-Transport-Security</code></td>
+<td>Forces HTTPS</td>
+</tr>
+<tr>
+<td><code>X-Content-Type-Options: nosniff</code></td>
+<td>Prevents MIME sniffing</td>
+</tr>
+<tr>
+<td><code>X-Frame-Options: DENY</code></td>
+<td>Prevents clickjacking</td>
+</tr>
+<tr>
+<td><code>Referrer-Policy</code></td>
+<td>Controls referrer information</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Are CORS policies as restrictive as possible? <code>Access-Control-Allow-Origin: *</code> on authenticated endpoints is a critical finding.</li>
+<li>Are unused features, endpoints, debug routes, and sample accounts disabled in production?</li>
+</ul>
+<hr />
+<h3>A06: Vulnerable and Outdated Components</h3>
+<ul>
+<li>Run <code>npm audit --audit-level=moderate</code> — are there unfixed CVEs in the dependency tree?</li>
+<li>Are major dependencies on supported, actively maintained versions?</li>
+<li>Are transitive dependencies pinned via lockfile (<code>package-lock.json</code>, <code>yarn.lock</code>)?</li>
+</ul>
+<p><strong>CI gate</strong>: <code>npm audit --audit-level=high</code> should fail the build.</p>
+<hr />
+<h3>A07: Identification and Authentication Failures</h3>
+<ul>
+<li>Are session tokens invalidated on logout (server-side, not just client-side cookie deletion)?</li>
+<li>Are password reset tokens single-use, short-lived (&lt; 1 hour), and unpredictable?</li>
+<li>Is there account lockout or exponential backoff on login failures?</li>
+<li>Are JWTs validated fully: signature algorithm, expiry (<code>exp</code>), issuer (<code>iss</code>), audience (<code>aud</code>)? Beware the <code>alg: none</code> attack.</li>
+<li>Are refresh tokens stored in <code>httpOnly</code> cookies — not <code>localStorage</code> (XSS accessible) or <code>sessionStorage</code>?</li>
+</ul>
+<hr />
+<h3>A08: Software and Data Integrity Failures</h3>
+<ul>
+<li>Is <code>npm install</code> always run from a lockfile in CI (not <code>npm install --legacy-peer-deps</code> without a lock)?</li>
+<li>Are CI/CD pipeline files protected against modification by untrusted contributors?</li>
+<li>Are third-party scripts loaded from a CDN validated with Subresource Integrity (<code>integrity="sha384-..."</code> attribute)?</li>
+</ul>
+<hr />
+<h3>A09: Security Logging and Monitoring Failures</h3>
+<ul>
+<li>Are authentication events logged: login, logout, failed login, password reset?</li>
+<li>Are access control violations (403s) logged with enough context to investigate?</li>
+<li>Do logs include: timestamp, user ID, IP, resource, action, outcome — without including passwords, tokens, or PII?</li>
+<li>Are logs stored separately from the application and write-protected?</li>
+</ul>
+<hr />
+<h3>A10: Server-Side Request Forgery (SSRF)</h3>
+<ul>
+<li>Does the application fetch URLs provided or influenced by users?</li>
+<li>Are internal network addresses (<code>169.254.x.x</code>, <code>10.x.x.x</code>, <code>localhost</code>) blocked in an outbound URL allowlist?</li>
+<li>Are redirects followed without re-checking the destination against the allowlist?</li>
+</ul>
+<hr />
+<h2>Secrets Management</h2>
+<ul>
+<li><strong>Never</strong> commit secrets to version control. Scan <code>.env</code> files, config files, and any hardcoded strings.</li>
+<li>Git scan command: <code>git log -p --all | grep -i -E '(password|secret|key|token|api_key)\s*='</code></li>
+<li>Confirm <code>.gitignore</code> contains <code>.env</code>, <code>.env.*</code>, and any local config files</li>
+<li>Environment variables prefixed <code>VITE_</code>, <code>NEXT_PUBLIC_</code>, or <code>REACT_APP_</code> are embedded in the client bundle — they are visible to any user. Never put secrets there.</li>
+<li>Production secrets belong in a secrets manager (Vault, AWS Secrets Manager, GitHub Encrypted Secrets).</li>
+</ul>
+<hr />
+<h2>Input Validation</h2>
+<p>Validate at every system boundary — user input, API responses, URL parameters, file uploads:</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Is it the expected type?</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>Within acceptable bounds?</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>Matches expected pattern (email, UUID, URL)?</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>Within length/size limits?</td>
+</tr>
+<tr>
+<td>Allowed values</td>
+<td>If a finite set, is the value in the set?</td>
+</tr>
+</tbody>
+</table></div>
+<p>TypeScript types are compile-time only. They do not validate runtime data crossing a network boundary.</p>
+<hr />
+<h2>Dependency Risk Assessment</h2>
+<p>Before adding a new dependency, verify:</p>
+<ol>
+<li>Download count and maintenance activity (last commit date, open issues, active maintainer)</li>
+<li><code>npm audit</code> result after adding</li>
+<li>Known CVEs in the advisory database</li>
+<li>License compatibility</li>
+<li>Transitive dependency footprint — a small utility pulling in many transitive deps multiplies the attack surface</li>
+</ol>
+<hr />
+<h2>Checklist</h2>
+<ul>
+<li>[ ] Every authenticated action checks authorisation, not just authentication</li>
+<li>[ ] No user-controlled content reaches the DOM without sanitisation</li>
+<li>[ ] No secrets in source code or committed <code>.env</code> files</li>
+<li>[ ] <code>npm audit</code> passes at high severity (moderate for explicit review)</li>
+<li>[ ] HTTP security headers configured</li>
+<li>[ ] Rate limiting on login, registration, and password reset</li>
+<li>[ ] Session tokens invalidated server-side on logout</li>
+<li>[ ] Production errors reveal no stack traces or internal paths</li>
+<li>[ ] JWTs validated for signature, expiry, issuer, and audience</li>
+<li>[ ] Tokens stored in <code>httpOnly</code> cookies, not localStorage</li>
+</ul>
+</article>
+<p class="back"><a href="../">Back to all skills</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>

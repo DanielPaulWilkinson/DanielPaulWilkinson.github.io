@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Data modelling skill | Dan Wilkinson</title>
+<meta name="description" content="Domain model design: entities vs value objects, making invalid states unrepresentable in the type system, discriminated unions for state machines, relationship patterns, normalisation principles, and type-driven design for correctness.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/data-modelling/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../agents/">Agents</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Skills</a></li><li aria-current="page">Data modelling</li></ol></nav>
+<h1>Data modelling</h1>
+<p class="lead">Domain model design: entities vs value objects, making invalid states unrepresentable in the type system, discriminated unions for state machines, relationship patterns, normalisation principles, and type-driven design for correctness.</p>
+<div class="fetch"><p class="fetch-label" id="l-930381">Point your agent at this file</p><p class="fetch-url"><code>https://danielpaulwilkinson.github.io/skills/data-modelling/SKILL.md</code></p><button class="btn copy" type="button" data-copy="https://danielpaulwilkinson.github.io/skills/data-modelling/SKILL.md" hidden>Copy URL</button><p class="copied" role="status" aria-live="polite"></p></div>
+<p class="rawlinks"><a href="SKILL.md">Raw SKILL.md</a> <a href="SKILL.txt">Plain text copy</a> <span class="ver">Version 1.0.0, updated 6 November 2026</span></p>
+<article class="skill-body">
+<p>A good data model makes invalid states unrepresentable. Business rules encoded in structure cannot be bypassed; business rules scattered as runtime checks can be.</p>
+<h2>Core Concepts</h2>
+<h3>Entity vs Value Object</h3>
+<p><strong>Entity</strong>: has an identity that persists independently of its attributes. Two entities with identical data are different things if they have different identities.</p>
+<p><code>typescript
+// Entity — identity is User.id; same email doesn't mean same user
+interface User {
+  id: UserId           // identity
+  email: EmailAddress
+  name: FullName
+  createdAt: Date
+}</code></p>
+<p><strong>Value Object</strong>: defined entirely by its value. Two value objects with equal data are interchangeable. No identity of their own.</p>
+<p><code>typescript
+// Value object — same address value = same address
+type EmailAddress = string &amp; { readonly _brand: 'EmailAddress' }
+type Money = { readonly amount: number; readonly currency: CurrencyCode }</code></p>
+<p><strong>Rule of thumb</strong>: if you would say "the same user" (identity matters), it is an entity. If you would say "the same email address" (value is what matters), it is a value object.</p>
+<hr />
+<h2>Make Invalid States Unrepresentable</h2>
+<p>The compiler should prevent invalid data from being constructed — not runtime checks after the fact.</p>
+<h3>Branded / Nominal Types</h3>
+<p>Prevent mixing up values with the same structural type:</p>
+<p>```typescript
+type UserId = string &amp; { readonly _brand: 'UserId' }
+type OrderId = string &amp; { readonly _brand: 'OrderId' }
+type ProductId = string &amp; { readonly _brand: 'ProductId' }</p>
+<p>// The compiler will reject this — OrderId is not assignable to UserId
+function getUser(id: UserId): User { ... }
+getUser(order.id) // TypeError at compile time
+```</p>
+<p>Define constructor functions that validate and brand values:
+<code>typescript
+function parseUserId(raw: string): UserId {
+  if (!isUUID(raw)) throw new Error('Invalid UserId')
+  return raw as UserId
+}</code></p>
+<h3>Discriminated Unions for State Machines</h3>
+<p>Model mutually exclusive states as a union. Each branch carries only the data that exists in that state.</p>
+<p>```typescript
+// Bad — optional fields proliferate; no compiler guarantee they are set correctly
+interface Order {
+  status: 'pending' | 'paid' | 'cancelled'
+  paidAt?: Date          // only relevant when paid
+  paymentRef?: string    // only relevant when paid
+  cancelledAt?: Date     // only relevant when cancelled
+  cancelReason?: string  // only relevant when cancelled
+}</p>
+<p>// Good — each state is a separate type; invalid combinations are impossible
+type Order =
+  | { status: 'pending';   createdAt: Date }
+  | { status: 'paid';      createdAt: Date; paidAt: Date; paymentRef: string }
+  | { status: 'cancelled'; createdAt: Date; cancelledAt: Date; reason: string }
+```</p>
+<p>Pattern matching forces exhaustive handling at every call site:</p>
+<p><code>typescript
+function describeOrder(order: Order): string {
+  switch (order.status) {
+    case 'pending':   return 'Awaiting payment'
+    case 'paid':      return `Paid on ${order.paidAt.toDateString()}`
+    case 'cancelled': return `Cancelled: ${order.reason}`
+    // TypeScript errors if a case is unhandled
+  }
+}</code></p>
+<h3>Non-Empty Arrays</h3>
+<p>Encode the "at least one" constraint in the type:</p>
+<p>```typescript
+type NonEmptyArray<T> = [T, ...T[]]</p>
+<p>function applyDiscounts(items: NonEmptyArray<LineItem>): Total { ... }
+// Caller cannot pass an empty array — the compiler rejects it
+```</p>
+<h3>Constrained Numeric Ranges</h3>
+<p>For values with known bounds, validate at the boundary and encode in a branded type:</p>
+<p>```typescript
+type Percentage = number &amp; { readonly _brand: 'Percentage' } // 0–100
+type TaxRate = number &amp; { readonly _brand: 'TaxRate' }       // 0–1</p>
+<p>function parseTaxRate(n: number): TaxRate {
+  if (n &lt; 0 || n &gt; 1) throw new Error('Tax rate must be between 0 and 1')
+  return n as TaxRate
+}
+```</p>
+<hr />
+<h2>Relationship Patterns</h2>
+<h3>Ownership vs Reference</h3>
+<p><strong>Composition (owns)</strong>: the child cannot meaningfully exist without the parent. Destroy the parent → destroy the children.</p>
+<p><code>typescript
+// Order owns its line items — a line item has no meaning outside an order
+interface Order {
+  id: OrderId
+  lineItems: LineItem[]  // embedded; no separate LineItem identity
+}</code></p>
+<p><strong>Association (references)</strong>: the related entity exists and is managed independently.</p>
+<p><code>typescript
+// Order references a Customer — the customer exists independently of orders
+interface Order {
+  id: OrderId
+  customerId: CustomerId   // ID reference; Customer is not embedded
+}</code></p>
+<h3>Many-to-Many</h3>
+<p>Represent via a named join entity that can carry its own data:</p>
+<p>```typescript
+// Bad — obscures that the relationship has its own data
+interface Project {
+  memberIds: UserId[]
+}</p>
+<p>// Good — join entity carries the relationship's own data
+interface ProjectMembership {
+  projectId: ProjectId
+  userId: UserId
+  role: ProjectRole
+  joinedAt: Date
+}
+```</p>
+<hr />
+<h2>Normalisation Principles</h2>
+<h3>First Normal Form (1NF)</h3>
+<p>Each attribute holds a single, atomic value. No repeating groups, no delimited lists in a single field.</p>
+<ul>
+<li>Bad: <code>tags: "javascript,typescript,vue"</code> (delimited string in one column)</li>
+<li>Good: separate <code>Tag</code> entity with a join table, or a proper array column</li>
+</ul>
+<h3>Do Not Denormalise Without a Measured Reason</h3>
+<p>Denormalisation (duplicating data for read performance) introduces a consistency risk. Do it deliberately:</p>
+<ul>
+<li>Define which copy is the source of truth</li>
+<li>Document the process for keeping copies in sync</li>
+<li>Use it only after profiling shows normalised reads are too slow</li>
+</ul>
+<h3>Avoid the "Magic String" Pattern</h3>
+<p>Replace repeated string constants with enums or union types:</p>
+<p>```typescript
+// Bad — typos are silently valid; no autocomplete
+const status = 'cancled' // typo undetected at compile time</p>
+<p>// Good
+type OrderStatus = 'pending' | 'paid' | 'cancelled'
+const status: OrderStatus = 'cancled' // TypeError
+```</p>
+<hr />
+<h2>Type System Design</h2>
+<h3>Domain Vocabulary in Types</h3>
+<p>Types should use domain language, not implementation language:</p>
+<p>```typescript
+// Bad — bare primitives; no domain meaning
+function createOrder(userId: string, items: { id: string; qty: number }[])</p>
+<p>// Good — types express domain concepts
+function createOrder(customerId: CustomerId, items: NonEmptyArray<OrderLineItem>)
+```</p>
+<h3>Derive Secondary Types</h3>
+<p>When a type is used in multiple forms (create, update, view), derive the variants from the authoritative domain type:</p>
+<p>```typescript
+interface User { id: UserId; email: EmailAddress; name: FullName; createdAt: Date }</p>
+<p>type CreateUserInput = Omit&lt;User, 'id' | 'createdAt'&gt;     // derived
+type UpdateUserInput = Partial&lt;Omit&lt;User, 'id' | 'createdAt'&gt;&gt;  // derived
+```</p>
+<p>This ensures they stay in sync — change <code>User</code> and both derived types update automatically.</p>
+<hr />
+<h2>Domain Modelling Checklist</h2>
+<p>Before finalising a model:</p>
+<ul>
+<li>[ ] Entities have stable identities; value objects are compared by value</li>
+<li>[ ] Invalid states are unrepresentable — discriminated unions, branded types, or constrained types</li>
+<li>[ ] Optional fields are only optional when the concept genuinely does not apply (not "we don't know yet")</li>
+<li>[ ] Entity relationships use embedding (composition) vs. ID reference (association) correctly</li>
+<li>[ ] Many-to-many relationships have a named join entity if the relationship carries its own data</li>
+<li>[ ] Domain concepts have their own named types — not bare <code>string</code>, <code>number</code>, <code>boolean</code></li>
+<li>[ ] The model reads in domain language — a non-technical domain expert could understand entity names</li>
+</ul>
+<hr />
+<h2>Common Mistakes</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Problem</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bare <code>string</code> for all IDs</td>
+<td>Easy to mix up entity IDs</td>
+<td>Branded types: <code>UserId</code>, <code>OrderId</code>, <code>ProductId</code></td>
+</tr>
+<tr>
+<td>Optional fields for absent-but-unknown data</td>
+<td>Null proliferation; every access requires guards</td>
+<td>Discriminated union; require value at construction</td>
+</tr>
+<tr>
+<td>Flat status strings with conditional optional fields</td>
+<td>Invalid states representable</td>
+<td>Discriminated union per state</td>
+</tr>
+<tr>
+<td>Embedding mutable related entities</td>
+<td>Synchronisation problems</td>
+<td>Reference by ID; load independently</td>
+</tr>
+<tr>
+<td>Duplicate type definitions for related shapes</td>
+<td>Types diverge over time</td>
+<td>Derive with <code>Omit</code>, <code>Pick</code>, <code>Partial</code> from one authoritative type</td>
+</tr>
+<tr>
+<td>Deep nesting</td>
+<td>Hard to query, update, and reason about</td>
+<td>Flatten with ID references; limit nesting to 2 levels</td>
+</tr>
+<tr>
+<td><code>any</code> or <code>object</code> for domain values</td>
+<td>No type safety on critical data</td>
+<td>Specific types for every domain concept</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+<p class="back"><a href="../">Back to all skills</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>

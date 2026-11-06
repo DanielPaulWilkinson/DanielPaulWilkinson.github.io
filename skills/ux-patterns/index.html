@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>UX patterns skill | Dan Wilkinson</title>
+<meta name="description" content="UI/UX design patterns for production-quality interfaces: loading, empty, error, and success states; form design; interaction feedback; progressive disclosure; and Nielsen&#x27;s usability heuristics.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/ux-patterns/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../agents/">Agents</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Skills</a></li><li aria-current="page">UX patterns</li></ol></nav>
+<h1>UX patterns</h1>
+<p class="lead">UI/UX design patterns for production-quality interfaces: loading, empty, error, and success states; form design; interaction feedback; progressive disclosure; and Nielsen&#x27;s usability heuristics.</p>
+<div class="fetch"><p class="fetch-label" id="l-127623">Point your agent at this file</p><p class="fetch-url"><code>https://danielpaulwilkinson.github.io/skills/ux-patterns/SKILL.md</code></p><button class="btn copy" type="button" data-copy="https://danielpaulwilkinson.github.io/skills/ux-patterns/SKILL.md" hidden>Copy URL</button><p class="copied" role="status" aria-live="polite"></p></div>
+<p class="rawlinks"><a href="SKILL.md">Raw SKILL.md</a> <a href="SKILL.txt">Plain text copy</a> <span class="ver">Version 1.0.0, updated 6 November 2026</span></p>
+<article class="skill-body">
+<p>Every interface has states beyond the happy path. Design all of them — or users will encounter blank screens, confusing failures, and dead ends.</p>
+<h2>The Four States Every Data-Driven Component Needs</h2>
+<p>Any component that loads data or accepts input exists in at least four states. Design all four before writing code.</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>What the user sees</th>
+<th>What it communicates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Loading</strong></td>
+<td>Skeleton screen or spinner</td>
+<td>"Working on it"</td>
+</tr>
+<tr>
+<td><strong>Empty</strong></td>
+<td>Designed empty state</td>
+<td>"Nothing here yet" — with a next action</td>
+</tr>
+<tr>
+<td><strong>Error</strong></td>
+<td>Error message and recovery path</td>
+<td>"Something went wrong" — here is what to do</td>
+</tr>
+<tr>
+<td><strong>Populated</strong></td>
+<td>The data</td>
+<td>"Here is what you asked for"</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>Loading State</h2>
+<ul>
+<li><strong>Skeleton screens</strong> (content-shaped placeholders) for content that loads once on page entry — they reduce perceived load time by setting shape expectations</li>
+<li><strong>Spinners</strong> for short operations or actions triggered by the user (button submits, search queries)</li>
+<li><strong>Disable interactive elements</strong> while an operation is in progress to prevent double-submission</li>
+<li>For operations expected to take &gt; 3 seconds: show progress with an estimate or a progress bar</li>
+<li>Never leave the previous state visible and stale while new data is loading — indicate clearly that a refresh is in progress</li>
+</ul>
+<hr />
+<h2>Empty State</h2>
+<p>Empty is not zero — it is the user's first experience of a feature. Design it deliberately.</p>
+<p>A good empty state:</p>
+<ul>
+<li>Explains what will appear here when there is content ("Your orders will appear here once you place one")</li>
+<li>Provides a direct call to action ("Place your first order →")</li>
+<li>Includes an illustration or contextual icon that makes the purpose clear</li>
+<li>Does not show a blank container or "No results found" without context</li>
+</ul>
+<hr />
+<h2>Error State</h2>
+<ul>
+<li>Describe what went wrong in plain language — not error codes or technical identifiers</li>
+<li>Tell the user what they can do: retry, go back, contact support, check their connection</li>
+<li>Distinguish clearly between:</li>
+<li><strong>User errors</strong> (validation, wrong input) — inline, adjacent to the field, in the user's control</li>
+<li><strong>System errors</strong> (service failure, network problem) — page or section level, not user's fault</li>
+<li>Offer a retry button for transient failures (network errors, service timeouts)</li>
+<li>For destructive or irreversible errors, provide a clear path to recovery or escalation</li>
+</ul>
+<hr />
+<h2>Success State</h2>
+<ul>
+<li>Confirm the action completed: "Your changes have been saved", "Order placed successfully"</li>
+<li>For repeatable form workflows (data entry forms): clear or reset the form after success</li>
+<li>For destructive actions (delete, send): confirm specifically what was completed ("Profile deleted. Changes cannot be undone.")</li>
+<li>Do not silently succeed — users who are not told something worked will re-submit</li>
+</ul>
+<hr />
+<h2>Form Design</h2>
+<h3>Labels</h3>
+<ul>
+<li>Every input has a visible, always-present label — not just placeholder text</li>
+<li>Placeholder text disappears on typing and has insufficient contrast — it cannot substitute for a label</li>
+<li>Label position: above the field is most scannable; inline labels (placeholders) are a common accessibility failure</li>
+</ul>
+<h3>Validation timing</h3>
+<ul>
+<li>Validate on <strong>blur</strong> (when the user leaves the field) — not on every keystroke, which is intrusive</li>
+<li>Validate on <strong>submit</strong> for any fields the user skipped</li>
+<li>Show inline errors directly adjacent to the field they describe, not only in a summary banner</li>
+</ul>
+<h3>Error messages</h3>
+<ul>
+<li>Describe the specific problem: "Enter a valid email address" not "Invalid input"</li>
+<li>Describe how to fix it: "Password must be at least 8 characters" not "Password too short"</li>
+<li>Do not clear the user's input when showing a validation error — preserve the field value</li>
+</ul>
+<h3>Submit button states</h3>
+<ul>
+<li>Disable or show a loading indicator on the submit button during submission — prevent double submission</li>
+<li>Re-enable after a failure so the user can retry</li>
+<li>Label the button with what it does: "Save changes", "Place order", "Create account" — not just "Submit"</li>
+</ul>
+<h3>Multi-step forms</h3>
+<ul>
+<li>Show step count and progress: "Step 2 of 4"</li>
+<li>Allow the user to go back without losing data</li>
+<li>Save progress where possible for longer flows</li>
+</ul>
+<hr />
+<h2>Interaction Feedback</h2>
+<p>Every user action should produce visible feedback within 100ms. Anything longer feels broken.</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Delay</th>
+<th>User perception</th>
+<th>Appropriate response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–100ms</td>
+<td>Instantaneous</td>
+<td>Immediate visual state change (hover, pressed)</td>
+</tr>
+<tr>
+<td>100ms–1s</td>
+<td>Slight pause — acceptable</td>
+<td>Visual feedback started (spinner, disabled state)</td>
+</tr>
+<tr>
+<td>1–10s</td>
+<td>Uncomfortable</td>
+<td>Spinner or progress with message</td>
+</tr>
+<tr>
+<td>&gt; 10s</td>
+<td>Frustrating</td>
+<td>Progress bar with time estimate; consider background processing</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Affordance</h3>
+<p>Elements that can be interacted with should look like they can be:</p>
+<ul>
+<li>Buttons are distinguishable from text (shape, fill, or elevation)</li>
+<li>Links are underlined or distinctly coloured — not styled to look like buttons unless they navigate</li>
+<li>Draggable items have a handle cursor (<code>cursor: grab</code>) or a grip icon</li>
+<li>Disabled elements are visually distinct and do not receive focus</li>
+</ul>
+<hr />
+<h2>Progressive Disclosure</h2>
+<p>Show only what the user needs for the current task. Reveal additional complexity on demand.</p>
+<p><strong>Use when:</strong></p>
+<ul>
+<li>An interface has many options but users typically need only a few</li>
+<li>Advanced settings exist that are rarely used</li>
+<li>An action reveals contextual information ("Show details", "Advanced options")</li>
+</ul>
+<p><strong>Common patterns:</strong></p>
+<ul>
+<li><strong>Accordion</strong>: collapse related content, expand on demand</li>
+<li><strong>"Show more" / "Show less"</strong>: truncate long content and reveal</li>
+<li><strong>Tabs</strong>: separate related but distinct content into named views</li>
+<li><strong>Step wizard</strong>: guide through a process one step at a time, hiding future steps</li>
+</ul>
+<p><strong>Do not use for:</strong> information the user needs for the primary task. Progressive disclosure is for secondary and advanced options, not core content.</p>
+<hr />
+<h2>Navigation Patterns</h2>
+<ul>
+<li><strong>Breadcrumbs</strong>: show the hierarchy path; each segment is a link back to that level</li>
+<li><strong>Active state</strong>: clearly mark the current page in navigation (colour, weight, <code>aria-current="page"</code>)</li>
+<li><strong>Back navigation</strong>: preserve scroll position and unsaved state when returning to a list from a detail view</li>
+<li><strong>Pagination vs. infinite scroll</strong>:</li>
+<li>Pagination: when users need to find specific items, return to their place, or share a URL to a specific page</li>
+<li>Infinite scroll: when browsing a feed with no specific destination (social, discovery)</li>
+<li><strong>Sticky navigation</strong>: keep primary navigation accessible on scroll for pages where users navigate frequently</li>
+</ul>
+<hr />
+<h2>Nielsen's 10 Usability Heuristics</h2>
+<p>Apply as a quick audit pass on any UI:</p>
+<ol>
+<li><strong>Visibility of system status</strong> — users always know what is happening</li>
+<li><strong>Match between system and real world</strong> — familiar language, not jargon</li>
+<li><strong>User control and freedom</strong> — undo, back, cancel are always available</li>
+<li><strong>Consistency and standards</strong> — platform conventions are followed</li>
+<li><strong>Error prevention</strong> — confirm destructive actions; validate before submission</li>
+<li><strong>Recognition over recall</strong> — options visible; minimise memory load</li>
+<li><strong>Flexibility and efficiency</strong> — shortcuts for power users; simple path for novices</li>
+<li><strong>Aesthetic and minimalist design</strong> — irrelevant information competes for attention</li>
+<li><strong>Help users recognise, diagnose, and recover from errors</strong> — plain language; suggest a fix</li>
+<li><strong>Help and documentation</strong> — contextual help available; edge cases documented</li>
+</ol>
+<hr />
+<h2>Common Anti-Patterns</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Problem</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blank loading screen</td>
+<td>Users think it is broken</td>
+<td>Skeleton screens or immediate spinner</td>
+</tr>
+<tr>
+<td>"No results" with no context</td>
+<td>Dead end for users</td>
+<td>Explain why; suggest alternatives</td>
+</tr>
+<tr>
+<td>Form cleared on validation error</td>
+<td>User loses their input</td>
+<td>Preserve field values; show errors</td>
+</tr>
+<tr>
+<td>Success with no feedback</td>
+<td>User re-submits</td>
+<td>Show confirmation message</td>
+</tr>
+<tr>
+<td>Confirm dialog with two ambiguous options</td>
+<td>"OK" vs "OK"</td>
+<td>Use action labels: "Delete" and "Cancel"</td>
+</tr>
+<tr>
+<td>Submitting disabled with no explanation</td>
+<td>User is confused</td>
+<td>Show which fields are invalid</td>
+</tr>
+<tr>
+<td>Modal without a close affordance</td>
+<td>Trapped user</td>
+<td>Always provide Escape key + visible close button</td>
+</tr>
+<tr>
+<td>Hover-only interactions</td>
+<td>Inaccessible on touch and keyboard</td>
+<td>All hover content also on focus</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+<p class="back"><a href="../">Back to all skills</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>

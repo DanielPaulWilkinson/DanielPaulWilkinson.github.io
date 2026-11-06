@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Performance optimisation skill | Dan Wilkinson</title>
+<meta name="description" content="Systematic approach to performance work: measure first, identify the highest-impact bottleneck, fix it, then measure again. Covers Core Web Vitals, bundle analysis, rendering performance, caching, and network optimisation.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/performance-optimization/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../agents/">Agents</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Skills</a></li><li aria-current="page">Performance optimisation</li></ol></nav>
+<h1>Performance optimisation</h1>
+<p class="lead">Systematic approach to performance work: measure first, identify the highest-impact bottleneck, fix it, then measure again. Covers Core Web Vitals, bundle analysis, rendering performance, caching, and network optimisation.</p>
+<div class="fetch"><p class="fetch-label" id="l-961743">Point your agent at this file</p><p class="fetch-url"><code>https://danielpaulwilkinson.github.io/skills/performance-optimization/SKILL.md</code></p><button class="btn copy" type="button" data-copy="https://danielpaulwilkinson.github.io/skills/performance-optimization/SKILL.md" hidden>Copy URL</button><p class="copied" role="status" aria-live="polite"></p></div>
+<p class="rawlinks"><a href="SKILL.md">Raw SKILL.md</a> <a href="SKILL.txt">Plain text copy</a> <span class="ver">Version 1.0.0, updated 6 November 2026</span></p>
+<article class="skill-body">
+<p>Measure before optimising. An unmeasured optimisation is guesswork. A change that does not improve a tracked metric is waste.</p>
+<h2>The Rule: Measure → Identify → Fix → Measure Again</h2>
+<ol>
+<li>Record the baseline metric with a reproducible method</li>
+<li>Identify the actual bottleneck (not a guess)</li>
+<li>Apply one fix at a time — multiple simultaneous changes hide which one helped</li>
+<li>Re-measure with the same tool to confirm improvement</li>
+<li>Confirm no regression in other metrics</li>
+</ol>
+<p>Never ship a performance fix without a before/after comparison.</p>
+<hr />
+<h2>Core Web Vitals</h2>
+<p>Google's user-experience metrics. LCP affects SEO; all three affect perceived quality and user trust.</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>What it measures</th>
+<th>Good</th>
+<th>Needs work</th>
+<th>Poor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LCP</strong> — Largest Contentful Paint</td>
+<td>Main content load speed</td>
+<td>&lt; 2.5s</td>
+<td>2.5–4s</td>
+<td>&gt; 4s</td>
+</tr>
+<tr>
+<td><strong>INP</strong> — Interaction to Next Paint</td>
+<td>Responsiveness to input</td>
+<td>&lt; 200ms</td>
+<td>200–500ms</td>
+<td>&gt; 500ms</td>
+</tr>
+<tr>
+<td><strong>CLS</strong> — Cumulative Layout Shift</td>
+<td>Visual stability</td>
+<td>&lt; 0.1</td>
+<td>0.1–0.25</td>
+<td>&gt; 0.25</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>Measurement Tools</h2>
+<p><strong>Synthetic (in-browser):</strong></p>
+<ul>
+<li>Chrome DevTools → Performance tab: record traces, inspect main thread, identify long tasks and layout events</li>
+<li>Chrome DevTools → Network tab: request waterfall, transfer sizes, cache behaviour, time-to-first-byte</li>
+<li>Lighthouse: automated CWV audit with recommendations — run via Chrome DevTools or <code>npx lighthouse</code></li>
+</ul>
+<p><strong>Bundle analysis:</strong></p>
+<ul>
+<li><code>rollup-visualizer</code> (Vite): add to <code>vite.config.ts</code> plugins — generates a treemap of bundle composition</li>
+<li><code>webpack-bundle-analyzer</code> (Webpack): equivalent for webpack builds</li>
+<li><code>source-map-explorer</code>: analyses the final bundle using source maps</li>
+</ul>
+<p><strong>Runtime / real-user:</strong></p>
+<ul>
+<li>Vue DevTools → Performance tab: component render timings, event traces</li>
+<li>Chrome DevTools → Memory tab: heap snapshots, allocation timeline for memory leaks</li>
+</ul>
+<p><strong>Important</strong>: always measure in a production build (<code>npm run build &amp;&amp; npm run preview</code>). Dev mode intentionally skips optimisations and is 3–10× slower.</p>
+<hr />
+<h2>Profiling Workflow</h2>
+<ol>
+<li><strong>Reproduce the slow scenario</strong> in a production-like build</li>
+<li><strong>Record a trace</strong> covering the specific user action being measured</li>
+<li><strong>Identify the bottleneck</strong>: the longest tasks on the main thread, the heaviest network transfers, the most frequent renders</li>
+<li><strong>Confirm the root cause</strong> in code before changing anything — find the specific file and function</li>
+<li><strong>Apply one fix</strong> — do not bundle multiple changes</li>
+<li><strong>Re-measure</strong> to confirm the metric improved</li>
+<li><strong>Check for regressions</strong> — LCP, INP, and CLS can trade off against each other</li>
+</ol>
+<hr />
+<h2>Bundle Size</h2>
+<h3>Identify what is large</h3>
+<ul>
+<li>Run bundle analyser — look for unexpectedly large modules and duplicates</li>
+<li>Two versions of the same package in the bundle is a common, non-obvious problem (check with <code>npm ls &lt;package&gt;</code>)</li>
+<li>Look for packages imported in full that support tree-shaking: <code>import _ from 'lodash'</code> vs. <code>import debounce from 'lodash/debounce'</code></li>
+</ul>
+<h3>Reduction strategies</h3>
+<ul>
+<li><strong>Code splitting</strong>: <code>import()</code> for routes and heavy non-critical components</li>
+<li><strong>Lazy loading</strong>: defer below-the-fold components until after initial paint</li>
+<li><strong>Replace heavy libraries</strong>: moment.js → date-fns, full lodash → lodash-es cherry-picks, heavy chart libs → lightweight alternatives</li>
+<li><strong>Move to server-side</strong>: utilities only used in SSR/API routes do not belong in the client bundle</li>
+<li><strong>Image optimisation</strong>: WebP or AVIF format, correct intrinsic dimensions, <code>loading="lazy"</code> for off-screen images</li>
+</ul>
+<h3>Bundle size budget</h3>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Target (uncompressed)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical path (initial paint)</td>
+<td>&lt; 100KB JS</td>
+</tr>
+<tr>
+<td>Total initial JS</td>
+<td>&lt; 300KB</td>
+</tr>
+<tr>
+<td>Any single lazy-loaded chunk</td>
+<td>&lt; 100KB</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>Rendering Performance (Vue)</h2>
+<h3>Unnecessary re-renders</h3>
+<ul>
+<li>Components re-render when any reactive dependency changes — trace which reactive values a component actually reads</li>
+<li>Use <code>computed</code> instead of recalculating in template expressions — computed values are cached until their dependencies change</li>
+<li><code>v-once</code> for content that never changes after initial render</li>
+<li><code>v-memo</code> for list items that should only re-render on specific prop changes</li>
+<li>Avoid reactive getters that return new object/array references on every call — Vue treats them as changed even if the content is identical</li>
+</ul>
+<h3>Expensive computations</h3>
+<ul>
+<li>Heavy calculations in <code>computed</code> are cached — prefer them over <code>methods</code> called in templates</li>
+<li>Move expensive pure functions outside components and call them lazily</li>
+<li>Web Workers for CPU-intensive work that would block the main thread (parsing, encryption, large data transforms)</li>
+</ul>
+<h3>Long lists</h3>
+<ul>
+<li>Virtualise lists with more than ~100 visible items — render only the visible rows</li>
+<li>Use <code>vue-virtual-scroller</code> or equivalent</li>
+<li><code>key</code> attribute on <code>v-for</code> items must be stable and unique — avoid array index as key in sorted/filtered lists</li>
+</ul>
+<h3>Layout thrashing</h3>
+<ul>
+<li>Do not read layout properties (<code>offsetHeight</code>, <code>getBoundingClientRect</code>, <code>scrollTop</code>) inside loops</li>
+<li>Batch all DOM reads first, then all writes — interleaving reads and writes forces the browser to recalculate layout repeatedly</li>
+</ul>
+<hr />
+<h2>Network Performance</h2>
+<ul>
+<li><strong>Preconnect</strong> to critical third-party origins (fonts, CDNs): <code>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</code></li>
+<li><strong>Preload</strong> critical resources that the browser discovers late: <code>&lt;link rel="preload" as="image" href="/hero.webp"&gt;</code></li>
+<li><strong>HTTP/2</strong>: multiplexes many requests over one connection — small parallel requests are cheap</li>
+<li><strong>Caching</strong>: static assets should have content-hash filenames and long <code>Cache-Control: max-age</code>; API responses should have the shortest acceptable TTL</li>
+<li><strong>Eliminate render-blocking resources</strong>: CSS in <code>&lt;head&gt;</code> is fine; JavaScript should be <code>async</code> or <code>defer</code> unless truly critical</li>
+</ul>
+<hr />
+<h2>Caching Strategy</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>When to cache</th>
+<th>Invalidation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP cache</td>
+<td>Static assets, stable API data</td>
+<td>Content-hash filenames; <code>Cache-Control</code> headers</td>
+</tr>
+<tr>
+<td>In-memory (Pinia store)</td>
+<td>Frequently read, rarely changing data within a session</td>
+<td>Clear on logout / data mutation</td>
+</tr>
+<tr>
+<td>Browser storage (localStorage)</td>
+<td>User preferences, draft content</td>
+<td>Explicit clear; version key for schema changes</td>
+</tr>
+<tr>
+<td>Service worker</td>
+<td>Full offline support</td>
+<td><code>workbox</code> strategies; activate new SW on update</td>
+</tr>
+</tbody>
+</table></div>
+<p>Define invalidation strategy before adding any cache. Stale data is a correctness problem, not just a UX problem.</p>
+<hr />
+<h2>Anti-Patterns</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optimising before measuring</td>
+<td>May fix the wrong bottleneck</td>
+</tr>
+<tr>
+<td>Measuring in dev mode</td>
+<td>Results are not representative of production</td>
+</tr>
+<tr>
+<td>Multiple simultaneous changes</td>
+<td>Cannot isolate which change helped</td>
+</tr>
+<tr>
+<td><code>debounce</code> as a performance fix</td>
+<td>Masks the real problem; does not fix it</td>
+</tr>
+<tr>
+<td>Adding a cache without an invalidation strategy</td>
+<td>Stale data bugs</td>
+</tr>
+<tr>
+<td>Premature code splitting</td>
+<td>Increases request count; may worsen LCP</td>
+</tr>
+<tr>
+<td>Fixing CPU when the bottleneck is network</td>
+<td>Wrong layer</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>Checklist</h2>
+<ul>
+<li>[ ] Baseline metric recorded with a specific tool before the change</li>
+<li>[ ] Improvement confirmed with the same tool after the change</li>
+<li>[ ] No regression in other Core Web Vitals</li>
+<li>[ ] Bundle size not exceeded without justification</li>
+<li>[ ] Measurement performed in a production build</li>
+<li>[ ] Caching additions have a defined invalidation strategy</li>
+<li>[ ] Long lists are virtualised if &gt; 100 visible items</li>
+</ul>
+</article>
+<p class="back"><a href="../">Back to all skills</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Test writing skill | Dan Wilkinson</title>
+<meta name="description" content="Writes effective tests that catch real bugs: unit, integration, and E2E. Covers TDD red-green-refactor, test pyramid strategy, behaviour-driven naming, mocking boundaries, and systematic edge case coverage.">
+<link rel="canonical" href="https://danielpaulwilkinson.github.io/skills/test-writing/">
+<link rel="alternate" type="application/json" href="https://danielpaulwilkinson.github.io/skills/index.json" title="Skill index">
+<meta name="theme-color" content="#1F3A5F">
+<link rel="preload" href="../../fonts/source-serif-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../skills/copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><nav class="wrap" aria-label="Main"><a class="brand" href="../../">Dan Wilkinson</a><ul><li><a href="../../#work">Work</a></li><li><a href="../../skills/">Skills</a></li><li><a href="../../agents/">Agents</a></li><li><a href="../../#contact">Contact</a></li></ul></nav></header>
+<main id="main" class="project skill"><div class="wrap narrow">
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Skills</a></li><li aria-current="page">Test writing</li></ol></nav>
+<h1>Test writing</h1>
+<p class="lead">Writes effective tests that catch real bugs: unit, integration, and E2E. Covers TDD red-green-refactor, test pyramid strategy, behaviour-driven naming, mocking boundaries, and systematic edge case coverage.</p>
+<div class="fetch"><p class="fetch-label" id="l-307190">Point your agent at this file</p><p class="fetch-url"><code>https://danielpaulwilkinson.github.io/skills/test-writing/SKILL.md</code></p><button class="btn copy" type="button" data-copy="https://danielpaulwilkinson.github.io/skills/test-writing/SKILL.md" hidden>Copy URL</button><p class="copied" role="status" aria-live="polite"></p></div>
+<p class="rawlinks"><a href="SKILL.md">Raw SKILL.md</a> <a href="SKILL.txt">Plain text copy</a> <span class="ver">Version 1.0.0, updated 6 November 2026</span></p>
+<article class="skill-body">
+<p>Write tests that catch real bugs and describe expected behaviour. A test that cannot fail is not a test.</p>
+<h2>Core Principle</h2>
+<p>Test behaviour, not implementation. Tests should describe what the system does from the outside — inputs, outputs, side effects — not how it does it internally. Tests tied to implementation details break on every refactor; tests tied to behaviour survive them.</p>
+<h2>When to Use</h2>
+<ul>
+<li>Before writing new code (TDD: write the failing test first)</li>
+<li>After implementation, to add coverage for edge cases, error paths, and unhappy flows</li>
+<li>When fixing a bug (write a failing test that reproduces the bug, then fix it)</li>
+<li>When reviewing tests that only assert existence without interaction verification</li>
+</ul>
+<p><strong>When NOT to use:</strong></p>
+<ul>
+<li>Do not write tests for trivial boilerplate with no logic</li>
+<li>Do not write tests to hit a coverage percentage — write them to prevent real failures</li>
+</ul>
+<hr />
+<h2>Test Pyramid</h2>
+<p><code>E2E tests (few)
+       ─────────────────
+    Integration tests (some)
+   ──────────────────────────
+  Unit tests (many)
+─────────────────────────────────</code></p>
+<p><strong>Unit tests</strong>: one function or component in isolation. Fast, precise, many. Mock all external dependencies.</p>
+<p><strong>Integration tests</strong>: two or more real units working together. Test at API/composable boundaries. Some mocking allowed.</p>
+<p><strong>E2E tests</strong>: the full user journey through the real application. Slow, brittle — keep few, make them high value.</p>
+<hr />
+<h2>TDD: Red-Green-Refactor</h2>
+<ol>
+<li><strong>Red</strong> — write a failing test that describes the desired behaviour. Run it; confirm it fails for the right reason.</li>
+<li><strong>Green</strong> — write the minimal code to make it pass. Do not over-engineer.</li>
+<li><strong>Refactor</strong> — clean the code while keeping the test green. Run tests after each change.</li>
+</ol>
+<p>Never skip the Red step. A test written after the code is already working cannot tell you whether it would have caught the bug.</p>
+<hr />
+<h2>Anatomy of a Good Test</h2>
+<p><strong>Structure: Arrange — Act — Assert</strong></p>
+<p>```typescript
+it('returns EMAIL_ALREADY_REGISTERED when the email is already in use', async () =&gt; {
+  // Arrange
+  const existingUser = createUser({ email: 'test@example.com' });
+  await userRepository.save(existingUser);</p>
+<p>// Act
+  const result = await registerUser({ email: 'test@example.com', password: 'hunter2' });</p>
+<p>// Assert
+  expect(result.ok).toBe(false);
+  expect(result.error).toBe('EMAIL_ALREADY_REGISTERED');
+});
+```</p>
+<p><strong>One behaviour per test.</strong> Multiple assertions per test are fine when they all verify the same behaviour. Multiple behaviours per test is not.</p>
+<p><strong>Test names describe behaviour, not code:</strong></p>
+<ul>
+<li>Bad: <code>test('registerUser function')</code></li>
+<li>Bad: <code>test('returns false')</code></li>
+<li>Good: <code>it('returns EMAIL_ALREADY_REGISTERED when the email is already in use')</code></li>
+<li>Good: <code>it('redirects to the dashboard after successful login')</code></li>
+</ul>
+<hr />
+<h2>What to Test</h2>
+<h3>Always test:</h3>
+<ul>
+<li>The happy path (correct inputs → expected output)</li>
+<li>The error path (bad inputs, system failures → correct error handling)</li>
+<li>Edge cases: empty arrays, null/undefined, zero, max/min values, empty strings</li>
+<li>Boundary conditions: exactly at limits (0, 1, N, N+1)</li>
+<li>Async failures: what happens when a promise rejects or a request times out</li>
+</ul>
+<h3>Coverage priority by area:</h3>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Priority</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business logic and domain rules</td>
+<td>High</td>
+<td>Bugs here cost the most</td>
+</tr>
+<tr>
+<td>API boundaries and data transforms</td>
+<td>High</td>
+<td>Contracts must hold</td>
+</tr>
+<tr>
+<td>Components with conditional rendering or interactions</td>
+<td>Medium</td>
+<td>Behaviour visible to users</td>
+</tr>
+<tr>
+<td>Pure layout/presentational components</td>
+<td>Low</td>
+<td>E2E covers these</td>
+</tr>
+<tr>
+<td>Third-party library wrappers</td>
+<td>Lowest</td>
+<td>Test your code, not the library</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>Mocking Strategy</h2>
+<p>Mock at the boundary of your system — not inside it. A mock replaces an external dependency (HTTP, database, time, random). It does not replace internal functions.</p>
+<p><strong>Mock these:</strong></p>
+<ul>
+<li>HTTP clients (<code>fetch</code>, <code>axios</code>, <code>ofetch</code>)</li>
+<li>Database repositories or ORM clients</li>
+<li>External service SDKs</li>
+<li><code>Date.now()</code>, <code>setTimeout</code>, <code>Math.random()</code></li>
+<li>File system access</li>
+</ul>
+<p><strong>Do not mock these:</strong></p>
+<ul>
+<li>Internal utility functions</li>
+<li>Domain objects — use real ones with test data factories</li>
+<li>The function under test itself</li>
+</ul>
+<p><strong>Spies</strong>: use only when you need to assert a function was called with specific arguments (e.g., analytics events, side-effect calls).</p>
+<hr />
+<h2>Vue Component Tests</h2>
+<p>Test components as users interact with them:</p>
+<ul>
+<li>Query by accessible role, label, or visible text — not by CSS class or component name</li>
+<li>Trigger user events (<code>click</code>, <code>input</code>, <code>submit</code>, <code>keydown</code>) — never call internal methods directly</li>
+<li>Assert on what the user sees — not on internal state or component data</li>
+</ul>
+<p>```typescript
+// Bad — tests implementation detail (internal state)
+expect(wrapper.vm.isSubmitting).toBe(true);</p>
+<p>// Good — tests user-visible behaviour
+expect(screen.getByRole('button', { name: 'Submit' })).toBeDisabled();
+```</p>
+<p>For async operations, use <code>flushPromises()</code> or <code>waitFor()</code> — never arbitrary <code>setTimeout</code>.</p>
+<hr />
+<h2>Edge Case Checklist</h2>
+<p>For any new function or component, verify:</p>
+<ul>
+<li>[ ] Empty input (empty string, empty array, null, undefined)</li>
+<li>[ ] Single-element input where multiple are expected</li>
+<li>[ ] Maximum or minimum boundary values</li>
+<li>[ ] Concurrent calls or rapid re-triggers</li>
+<li>[ ] Async failure (rejected promise, network timeout)</li>
+<li>[ ] Missing permissions or unauthenticated user</li>
+<li>[ ] Partial data (some fields present, others absent)</li>
+<li>[ ] Idempotency — does calling twice produce the same result?</li>
+</ul>
+<hr />
+<h2>Flaky Test Prevention</h2>
+<p>Flaky tests fail intermittently without code changes. Prevent them:</p>
+<ul>
+<li>Never use <code>setTimeout</code> or <code>sleep</code> in tests — use <code>vi.runAllTimers()</code>, <code>flushPromises()</code>, or <code>waitFor()</code></li>
+<li>Never depend on test execution order — each test must be independently runnable</li>
+<li>Reset all mocks and shared state in <code>beforeEach</code> / <code>afterEach</code></li>
+<li>Avoid fixed date assertions — freeze time with <code>vi.useFakeTimers()</code> or use relative assertions</li>
+<li>Use explicit waits (<code>waitFor</code>) instead of assuming async operations have finished</li>
+</ul>
+<hr />
+<h2>Red Flags</h2>
+<ul>
+<li>Tests with no assertions, or always-true assertions (<code>expect(true).toBe(true)</code>)</li>
+<li>Tests that only assert a function was called, not what it returned or what changed</li>
+<li>Tests querying by CSS class names or <code>data-testid</code> values that describe implementation</li>
+<li>Long <code>beforeEach</code> setup blocks — suggests the unit is too large</li>
+<li>Tests that break when you rename an internal variable</li>
+<li>No tests for error state, empty state, or loading state</li>
+<li>Mocking the function under test</li>
+<li>100% line coverage with 0% behaviour coverage</li>
+</ul>
+</article>
+<p class="back"><a href="../">Back to all skills</a></p>
+</div></main>
+<footer class="contact"><div class="wrap"><p class="small">&copy; 2026 Daniel Wilkinson · <a href="mailto:dpw.developer+side@gmail.com">dpw.developer@gmail.com</a></p></div></footer>
+</body>
+</html>
